@@ -15,7 +15,8 @@
 
         public PromotersController(ApplicationDbContext db)
         {
-            this.Db = db;
+          
+            this.db = db;
         }
 
         public ApplicationDbContext Db { get; }
@@ -42,10 +43,11 @@
                 Age = model.Age,
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
+
             };
+            this.db.Promoters.Add(promoter);
+            this.db.SaveChanges();
             return this.Redirect("/");
-            db.Promoters.Add(promoter);
-            db.SaveChanges(); 
         }
     }
 }

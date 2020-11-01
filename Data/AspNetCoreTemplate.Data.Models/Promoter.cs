@@ -13,7 +13,8 @@
 
         public string Description { get; set; }
 
-        public string Ability { get; set; } // TODO:
+        public string Ability { get; set; } 
+        // TODO:
 
         public string ImageUrl { get; set; }
 

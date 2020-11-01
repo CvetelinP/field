@@ -28,6 +28,14 @@
 
         public DbSet<Promoter> Promoters { get; set; }
 
+        public DbSet<Training> Trainings { get; set; }
+
+        public DbSet<Project> Projects { get; set; }
+
+        public DbSet<Group> Groups { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
