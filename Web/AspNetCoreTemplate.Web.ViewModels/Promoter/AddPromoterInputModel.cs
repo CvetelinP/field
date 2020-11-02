@@ -1,16 +1,14 @@
 ﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public class AddPromoterInputModel
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string Description { get; set; }
 
-        public string Ability { get; set; } // TODO:
+        public string Skills { get; set; } // TODO:
 
         public string ImageUrl { get; set; }
 
@@ -23,5 +21,8 @@
         public string Language { get; set; }
 
         public string Email { get; set; }
+
+        public string City { get; set; }
+
     }
 }

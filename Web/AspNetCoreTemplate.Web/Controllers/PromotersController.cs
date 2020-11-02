@@ -1,10 +1,14 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
+    using System.Linq;
 
     using AspNetCoreTemplate.Data;
+    using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
+    using AspNetCoreTemplate.Services.Mapping;
+    using AspNetCoreTemplate.Web.ViewModels;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -12,11 +16,12 @@
     public class PromotersController : Controller
     {
         private readonly ApplicationDbContext db;
+        private readonly IDeletableEntityRepository<Promoter> promoteRepository;
 
-        public PromotersController(ApplicationDbContext db)
+        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository)
         {
-          
             this.db = db;
+            this.promoteRepository = promoteRepository;
         }
 
         public ApplicationDbContext Db { get; }
@@ -34,20 +39,40 @@
             var genderEnum = Enum.Parse<Gender>(model.Gender);
             var promoter = new Promoter
             {
-                Name = model.Name,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 Description = model.Description,
                 Email = model.Email,
                 Gender = genderEnum,
-                Ability = model.Ability,
+                Skills = model.Skills,
                 Mobile = model.Mobile,
                 Age = model.Age,
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
+                City = model.City,
 
             };
             this.db.Promoters.Add(promoter);
             this.db.SaveChanges();
-            return this.Redirect("/");
+            return this.Redirect("/Promoters/All");
+        }
+
+        public IActionResult All()
+        {
+            var viewModel = new IndexViewModel();
+
+            var promoters = this.promoteRepository.All()
+                .To<IndexPromoterViewModel>().ToList();
+
+            viewModel.Promoters = promoters;
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult Profiles()
+        {
+            return this.View();
         }
     }
 }

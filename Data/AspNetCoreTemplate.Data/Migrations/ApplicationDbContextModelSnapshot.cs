@@ -139,6 +139,35 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -222,6 +251,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PromoterId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
@@ -230,6 +262,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PromoterId");
 
                     b.ToTable("Projects");
                 });
@@ -241,10 +275,13 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Ability")
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
@@ -259,7 +296,13 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
@@ -271,18 +314,30 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Mobile")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Skills")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("TrainingId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("GroupId");
+
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("TrainingId");
 
                     b.ToTable("Promoters");
                 });
@@ -331,6 +386,9 @@ namespace AspNetCoreTemplate.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -464,6 +522,25 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", null)
+                        .WithMany("Projects")
+                        .HasForeignKey("PromoterId");
+                });
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Promoter", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.City", null)
+                        .WithMany("Promoters")
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Group", null)
+                        .WithMany("Promoters")
+                        .HasForeignKey("GroupId");
+
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Training", null)
+                        .WithMany("Promoters")
+                        .HasForeignKey("TrainingId");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Training", b =>

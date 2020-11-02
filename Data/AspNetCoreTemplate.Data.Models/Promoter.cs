@@ -1,20 +1,26 @@
 ﻿namespace AspNetCoreTemplate.Data.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
-
     using AspNetCoreTemplate.Data.Common.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
 
     public class Promoter : BaseDeletableModel<int>
     {
-        public string Name { get; set; }
+        public Promoter()
+        {
+            this.Projects = new HashSet<Project>();
+
+        }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string Description { get; set; }
 
-        public string Ability { get; set; } 
-        // TODO:
+        public string Skills { get; set; }
+
+        public string City { get; set; }
 
         public string ImageUrl { get; set; }
 
@@ -27,6 +33,8 @@
         public string Language { get; set; }
 
         public string Email { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
 
     }
 }

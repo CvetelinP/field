@@ -1,42 +1,53 @@
-﻿<section class="py-5">
+﻿
+<section class="py-3">
     <div class="container">
-        <h1 style="margin: 2%; text-align: center;">Add Promoter</h1>
-        <div style="padding: 5%;">
+        <h1 style="margin: 1%; text-align: center;">Add Promoter</h1>
+        <div style="padding: 3%;">
             <form method="post">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="First name ,Last name">
+                <div class="form-group w-50">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" size="30" id="firstName" name="firstName" placeholder="First name">
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" size="30" id="lastName" name="lastName" placeholder="Last name">
+                </div>
+                <div class="form-group w-50">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email Adreess">
                 </div>
-                <div class="form-group">
+
+                <div class="form-group w-50">
+                    <label for="city"></label>
+                    <input class="form-control" id="city" name="city" placeholder="City">
+                </div>
+
+                <div class="form-group w-50">
                     <label for="language">Language</label>
                     <input type="text" class="form-control" id="language" name="language" placeholder="language">
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label for="imageurl">ImageUrl</label>
                     <input type="text" class="form-control" id="imageurl" name="imageurl" placeholder="https://...">
                 </div>
-                <div class="form-group">
-                    <label for="ability">Ability</label>
-                    <input type="text" class="form-control" id="ability" name="ability" placeholder="Abilities">
+                <div class="form-group w-50">
+                    <label for="skills">Skills</label>
+                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label for="gender">Gender</label>
                     <input type="text" class="form-control" id="gender" name="gender" placeholder="Male or Female">
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label for="mobile"> Mobile</label>
                     <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+359">
                 </div>
-                <div class="form-group">
+                <div class="form-group w-50">
                     <label for="age">Age</label>
                     <input min="18" max="99" type="number" class="form-control" id="age" name="age" placeholder="Age">
                 </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
+                <div class="form-group w-50">
+                    <label for="description w-50">Description</label>
                     <input type="text" class="form-control" id="description" name="description" placeholder="...">
                 </div>
                 <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
