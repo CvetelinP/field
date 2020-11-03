@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using AspNetCoreTemplate.Services.Data;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Linq;
@@ -17,11 +19,13 @@
     {
         private readonly ApplicationDbContext db;
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+        private readonly IPromotersService promotersService;
 
-        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository)
+        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository,IPromotersService promotersService)
         {
             this.db = db;
             this.promoteRepository = promoteRepository;
+            this.promotersService = promotersService;
         }
 
         public ApplicationDbContext Db { get; }
@@ -70,9 +74,10 @@
         }
 
         [Authorize]
-        public IActionResult Profiles()
+        public IActionResult Profiles(int id)
         {
-            return this.View();
+            var viewModel = this.promotersService.GetById<PromoterProfileViewModel>(id);
+            return this.View(viewModel);
         }
     }
 }

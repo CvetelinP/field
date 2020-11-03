@@ -1,4 +1,6 @@
-﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+﻿@using Microsoft.EntityFrameworkCore.Infrastructure
+@model AspNetCoreTemplate.Web.ViewModels.PromoterProfileViewModel
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -8,7 +10,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                    <img src="@Model.ImageUrl" alt="" />
                     <div class="file btn btn-lg btn-primary">
                         Change Photo
                         <input type="file" name="file" />
@@ -18,10 +20,10 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        Kshiti Ghelani
+                        @Model.FirstName @Model.LastName
                     </h5>
                     <h6>
-                        Web Developer and Designer
+                       Age: @Model.Age / City: @Model.City
                     </h6>
                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -50,7 +52,7 @@
                     <a href="">Web Developer</a><br />
                     <a href="">WordPress</a><br />
                     <a href="">WooCommerce</a><br />
-                    <a href="">PHP, .Net</a><br />
+                    <a href="">@Model.Skills</a><br />
                 </div>
             </div>
             <div class="col-md-8">
@@ -61,7 +63,7 @@
                                 <label>User Id</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Kshiti123</p>
+                                <p>@Model.Id</p>
                             </div>
                         </div>
                         <div class="row">
@@ -69,7 +71,7 @@
                                 <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Kshiti Ghelani</p>
+                                <p>@Model.FirstName @Model.LastName</p>
                             </div>
                         </div>
                         <div class="row">
@@ -77,7 +79,7 @@
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>kshitighelani@gmail.com</p>
+                                <p>@Model.Email</p>
                             </div>
                         </div>
                         <div class="row">
@@ -85,15 +87,23 @@
                                 <label>Phone</label>
                             </div>
                             <div class="col-md-6">
-                                <p>123 456 7890</p>
+                                <p>@Model.Mobile</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Profession</label>
+                                <label>Gender</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Web Developer and Designer</p>
+                                <p>@Model.Gender</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Language</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@Model.Language</p>
                             </div>
                         </div>
                     </div>
