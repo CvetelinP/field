@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm border-bottom box-shadow bg-white mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,10 +31,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Promoters" asp-action="Add">Promoters</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Promoters" asp-action="All">Promoters</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="Add">Group</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="All">Group</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Projects" asp-action="Add">Project</a>
@@ -52,7 +52,7 @@
         </main>
     </div>
     
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted ">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

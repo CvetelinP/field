@@ -79,5 +79,15 @@ namespace AspNetCoreTemplate.Web.Controllers
             var viewModel = this.promotersService.GetById<PromoterProfileViewModel>(id);
             return this.View(viewModel);
         }
+
+        public IActionResult Remove(int id)
+        {
+            var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == id);
+
+            this.db.Promoters.Remove(promoter);
+            this.db.SaveChanges();
+
+            return this.Redirect("/Promoters/All");
+        }
     }
 }

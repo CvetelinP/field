@@ -3,12 +3,19 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
+          
+            <form action="/Promoters/Add" class="">
+                <button type="float-left submit-button">Add Promoter</button>
+            </form>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                
             <div class="main-box clearfix">
                 <div class="table-responsive">
                     <table class="table user-list">
                         <thead>
                             <tr>
-                                
+
                                 <th><span>Name</span></th>
                                 <th><span>Id</span></th>
                                 <th><span>Gender</span></th>
@@ -27,7 +34,7 @@
                                     </td>
 
                                     <td>
-                                       @item.Id
+                                        @item.Id
                                     </td>
                                     <td class="text-center">
                                         <span class="label label-default">@item.Gender</span>
@@ -46,13 +53,8 @@
                                             </span>
 
                                         </a>
-                                        <a href="#" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="table-link danger">
+                                       
+                                        <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -60,7 +62,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                             }
+                            }
 
                         </tbody>
                     </table>
