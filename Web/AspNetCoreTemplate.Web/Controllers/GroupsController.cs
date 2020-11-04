@@ -25,7 +25,7 @@ namespace AspNetCoreTemplate.Web.Controllers
         {
             return this.View();
         }
-
+     
         [HttpPost]
         public IActionResult Add(IndexGroupViewModel model)
         {
