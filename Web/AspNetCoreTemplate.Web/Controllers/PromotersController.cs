@@ -61,6 +61,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.Redirect("/Promoters/All");
         }
 
+        [Authorize]
         public IActionResult All()
         {
             var viewModel = new IndexViewModel();
