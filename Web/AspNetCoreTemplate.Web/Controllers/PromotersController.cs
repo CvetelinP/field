@@ -21,7 +21,7 @@ namespace AspNetCoreTemplate.Web.Controllers
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly IPromotersService promotersService;
 
-        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository,IPromotersService promotersService)
+        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService)
         {
             this.db = db;
             this.promoteRepository = promoteRepository;
@@ -40,6 +40,12 @@ namespace AspNetCoreTemplate.Web.Controllers
         [HttpPost]
         public IActionResult Add(AddPromoterInputModel model)
         {
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
+
             var genderEnum = Enum.Parse<Gender>(model.Gender);
             var promoter = new Promoter
             {
@@ -81,6 +87,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.View(viewModel);
         }
 
+        [Authorize]
         public IActionResult Remove(int id)
         {
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == id);

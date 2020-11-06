@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels
+﻿using AspNetCoreTemplate.Data.Models;
+
+namespace AspNetCoreTemplate.Web.ViewModels
 {
     using AspNetCoreTemplate.Services.Mapping;
 
@@ -27,5 +29,7 @@
         public string Language { get; set; }
 
         public string Email { get; set; }
+
+        public Group Group { get; set; }
     }
 }

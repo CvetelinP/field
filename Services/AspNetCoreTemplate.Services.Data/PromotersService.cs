@@ -1,6 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System.Linq;
+    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Mapping;
@@ -8,10 +9,12 @@
     public class PromotersService : IPromotersService
     {
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+        private readonly ApplicationDbContext db;
 
-        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository)
+        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository, ApplicationDbContext db)
         {
             this.promoteRepository = promoteRepository;
+            this.db = db;
         }
 
         public T GetById<T>(int id)

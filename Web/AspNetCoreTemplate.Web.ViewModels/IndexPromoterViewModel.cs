@@ -2,7 +2,7 @@
 {
     using AspNetCoreTemplate.Services.Mapping;
 
-    public class IndexPromoterViewModel:IMapFrom<Data.Models.Promoter>
+    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>
     {
         public int Id { get; set; }
 

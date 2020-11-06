@@ -38,6 +38,10 @@
 
         public DbSet<City> Cities { get; set; }
 
+        public DbSet<PromoterGroup> PromotersGroups { get; set; }
+
+
+
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -85,7 +89,16 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<PromoterGroup>().HasKey(x => new
+            {
+                x.GroupId,
+                x.PromoterId,
+            });
+
         }
+
+
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
             where T : class, IDeletableEntity

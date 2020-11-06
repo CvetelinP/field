@@ -1,6 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Data.Models
 {
     using System.Collections.Generic;
+
     using AspNetCoreTemplate.Data.Common.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
 
@@ -9,7 +10,7 @@
         public Promoter()
         {
             this.Projects = new HashSet<Project>();
-
+            this.Groups = new HashSet<PromoterGroup>();
         }
 
         public string FirstName { get; set; }
@@ -35,6 +36,8 @@
         public string Email { get; set; }
 
         public ICollection<Project> Projects { get; set; }
+
+        public ICollection<PromoterGroup> Groups { get; set; }
 
     }
 }

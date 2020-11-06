@@ -47,7 +47,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true)
+                    DeletedOn = table.Column<DateTime>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -98,7 +98,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -131,7 +131,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    ClaimValue = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -252,7 +252,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     Email = table.Column<string>(nullable: true),
                     CityId = table.Column<int>(nullable: true),
                     GroupId = table.Column<int>(nullable: true),
-                    TrainingId = table.Column<int>(nullable: true)
+                    TrainingId = table.Column<int>(nullable: true),
                 },
                 constraints: table =>
                 {

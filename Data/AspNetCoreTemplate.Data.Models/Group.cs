@@ -8,12 +8,12 @@
     {
         public Group()
         {
-            this.Promoters = new HashSet<Promoter>();
+            this.Promoters = new List<PromoterGroup>();
         }
 
         public string Name { get; set; }
 
-        public ICollection<Promoter> Promoters { get; set; }
+        public ICollection<PromoterGroup> Promoters { get; set; }
 
     }
 }
