@@ -1,8 +1,11 @@
-﻿
+﻿@model AspNetCoreTemplate.Web.ViewModels.Group.IndexGroupViewModel
 <form method="Post">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group w-50">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Group name">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" id="name" name="name" placeholder="Group name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+
     </div>
     <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
 </form>

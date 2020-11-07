@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using AspNetCoreTemplate.Data.Models.Enum;
+
     public class AddPromoterInputModel
     {
         [Required]
@@ -20,9 +22,7 @@
         public string Description { get; set; }
 
         [Required]
-        [MinLength(3)]
-        [MaxLength(15)]
-        public string Skills { get; set; } // TODO:
+        public Skills Skills { get; set; } 
 
         [Required]
         public string ImageUrl { get; set; }
@@ -31,7 +31,6 @@
         public string Gender { get; set; }
 
         [Required]
-        [Phone]
         public int Mobile { get; set; }
 
         [Required]

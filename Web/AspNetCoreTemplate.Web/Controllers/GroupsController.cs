@@ -3,8 +3,10 @@ using System.Linq;
 using AspNetCoreTemplate.Data;
 using AspNetCoreTemplate.Data.Common.Repositories;
 using AspNetCoreTemplate.Data.Models;
+using AspNetCoreTemplate.Services.Data;
 using AspNetCoreTemplate.Services.Mapping;
 using AspNetCoreTemplate.Web.ViewModels;
+using AspNetCoreTemplate.Web.ViewModels.Group;
 
 namespace AspNetCoreTemplate.Web.Controllers
 {
@@ -13,23 +15,27 @@ namespace AspNetCoreTemplate.Web.Controllers
     public class GroupsController : Controller
     {
         private readonly ApplicationDbContext db;
-        private readonly IDeletableEntityRepository<Group> groupRepository;
+        private readonly IGroupService groupService;
 
-        public GroupsController(ApplicationDbContext db, IDeletableEntityRepository<Group> groupRepository)
+
+        public GroupsController(ApplicationDbContext db, IGroupService groupService)
         {
             this.db = db;
-            this.groupRepository = groupRepository;
+            this.groupService = groupService;
         }
 
         public IActionResult Add()
         {
             return this.View();
         }
-     
+
         [HttpPost]
         public IActionResult Add(IndexGroupViewModel model)
         {
-
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
             var group = new Group
             {
                 Name = model.Name,
@@ -42,15 +48,24 @@ namespace AspNetCoreTemplate.Web.Controllers
 
         public IActionResult All()
         {
+           
             var viewModel = new GroupViewModel();
 
-            var group = this.groupRepository.All()
-                .To<IndexGroupViewModel>().ToList();
+            var group = this.groupService.GetAll<IndexGroupViewModel>();
 
             viewModel.Groups = group;
             return this.View(viewModel);
         }
 
+        public IActionResult Remove(int id)
+        {
+            var group = this.db.Groups.FirstOrDefault(x => x.Id == id);
+
+            this.db.Groups.Remove(group);
+            this.db.SaveChanges();
+
+            return this.Redirect("/Groups/All");
+        }
 
     }
 }

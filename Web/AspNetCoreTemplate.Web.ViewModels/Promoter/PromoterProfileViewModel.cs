@@ -1,11 +1,13 @@
-﻿using AspNetCoreTemplate.Data.Models;
+﻿using System.Collections.Generic;
+using AspNetCoreTemplate.Web.ViewModels.Group;
 
-namespace AspNetCoreTemplate.Web.ViewModels
+namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using AspNetCoreTemplate.Services.Mapping;
 
     public class PromoterProfileViewModel : IMapFrom<Data.Models.Promoter>
     {
+
         public int Id { get; set; }
 
         public string FirstName { get; set; }
@@ -30,6 +32,9 @@ namespace AspNetCoreTemplate.Web.ViewModels
 
         public string Email { get; set; }
 
-        public Group Group { get; set; }
+        public int GroupId { get; set; }
+
+        //public IEnumerable<GroupDropDownViewModel> Groups { get; set; }
+
     }
 }

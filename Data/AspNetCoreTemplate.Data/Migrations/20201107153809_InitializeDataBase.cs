@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class UpdateDatabase : Migration
+    public partial class InitializeDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    DeletedOn = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -98,7 +98,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -131,7 +131,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -242,7 +242,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Skills = table.Column<string>(nullable: true),
+                    Skills = table.Column<int>(nullable: false),
                     City = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     Gender = table.Column<int>(nullable: false),
@@ -251,8 +251,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     Language = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     CityId = table.Column<int>(nullable: true),
-                    GroupId = table.Column<int>(nullable: true),
-                    TrainingId = table.Column<int>(nullable: true),
+                    TrainingId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -261,12 +260,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                         name: "FK_Promoters_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Promoters_Groups_GroupId",
-                        column: x => x.GroupId,
-                        principalTable: "Groups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -297,6 +290,30 @@ namespace AspNetCoreTemplate.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Projects_Promoters_PromoterId",
+                        column: x => x.PromoterId,
+                        principalTable: "Promoters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PromotersGroups",
+                columns: table => new
+                {
+                    PromoterId = table.Column<int>(nullable: false),
+                    GroupId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PromotersGroups", x => new { x.GroupId, x.PromoterId });
+                    table.ForeignKey(
+                        name: "FK_PromotersGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PromotersGroups_Promoters_PromoterId",
                         column: x => x.PromoterId,
                         principalTable: "Promoters",
                         principalColumn: "Id",
@@ -413,11 +430,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Promoters_GroupId",
-                table: "Promoters",
-                column: "GroupId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Promoters_IsDeleted",
                 table: "Promoters",
                 column: "IsDeleted");
@@ -426,6 +438,11 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "IX_Promoters_TrainingId",
                 table: "Promoters",
                 column: "TrainingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PromotersGroups_PromoterId",
+                table: "PromotersGroups",
+                column: "PromoterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
@@ -477,6 +494,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PromotersGroups");
+
+            migrationBuilder.DropTable(
                 name: "Settings");
 
             migrationBuilder.DropTable(
@@ -486,6 +506,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Groups");
+
+            migrationBuilder.DropTable(
                 name: "Clients");
 
             migrationBuilder.DropTable(
@@ -493,9 +516,6 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Trainings");

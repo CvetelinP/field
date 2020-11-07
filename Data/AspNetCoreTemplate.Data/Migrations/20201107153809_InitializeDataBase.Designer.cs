@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201106215709_ceci")]
-    partial class ceci
+    [Migration("20201107153809_InitializeDataBase")]
+    partial class InitializeDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -322,8 +322,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Skills")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Skills")
+                        .HasColumnType("int");
 
                     b.Property<int?>("TrainingId")
                         .HasColumnType("int");

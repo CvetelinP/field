@@ -320,8 +320,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Skills")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Skills")
+                        .HasColumnType("int");
 
                     b.Property<int?>("TrainingId")
                         .HasColumnType("int");

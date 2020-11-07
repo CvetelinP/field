@@ -1,4 +1,6 @@
-﻿using AspNetCoreTemplate.Services.Data;
+﻿using System.Threading.Tasks;
+using AspNetCoreTemplate.Services.Data;
+using AspNetCoreTemplate.Web.ViewModels.Group;
 
 namespace AspNetCoreTemplate.Web.Controllers
 {
@@ -20,12 +22,15 @@ namespace AspNetCoreTemplate.Web.Controllers
         private readonly ApplicationDbContext db;
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly IPromotersService promotersService;
+        private readonly IGroupService groupService;
+
 
         public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService)
         {
             this.db = db;
             this.promoteRepository = promoteRepository;
             this.promotersService = promotersService;
+
         }
 
         public ApplicationDbContext Db { get; }
@@ -38,32 +43,15 @@ namespace AspNetCoreTemplate.Web.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add(AddPromoterInputModel model)
+        public async Task<IActionResult> Add(AddPromoterInputModel model)
         {
-
             if (!this.ModelState.IsValid)
             {
                 return this.View();
             }
 
-            var genderEnum = Enum.Parse<Gender>(model.Gender);
-            var promoter = new Promoter
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Description = model.Description,
-                Email = model.Email,
-                Gender = genderEnum,
-                Skills = model.Skills,
-                Mobile = model.Mobile,
-                Age = model.Age,
-                Language = model.Language,
-                ImageUrl = model.ImageUrl,
-                City = model.City,
+            await this.promotersService.CreateAsync(model);
 
-            };
-            this.db.Promoters.Add(promoter);
-            this.db.SaveChanges();
             return this.Redirect("/Promoters/All");
         }
 
@@ -83,6 +71,7 @@ namespace AspNetCoreTemplate.Web.Controllers
         [Authorize]
         public IActionResult Profiles(int id)
         {
+            //var groups = this.groupService.GetAll<GroupDropDownViewModel>();
             var viewModel = this.promotersService.GetById<PromoterProfileViewModel>(id);
             return this.View(viewModel);
         }
@@ -91,11 +80,17 @@ namespace AspNetCoreTemplate.Web.Controllers
         public IActionResult Remove(int id)
         {
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == id);
+            if (promoter == null)
+            {
+                id = 0;
+            }
 
             this.db.Promoters.Remove(promoter);
             this.db.SaveChanges();
 
             return this.Redirect("/Promoters/All");
         }
+
+     
     }
 }

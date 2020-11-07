@@ -1,4 +1,5 @@
-﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.AddPromoterInputModel
+﻿@using AspNetCoreTemplate.Data.Models.Enum
+@model AspNetCoreTemplate.Web.ViewModels.Promoter.AddPromoterInputModel
 <section class="py-3">
     <div class="container">
         <h1 style="margin: 1%; text-align: center;">Add Promoter</h1>
@@ -40,7 +41,9 @@
                 </div>
                 <div class="form-group w-50">
                     <label asp-for="Skills">Skills</label>
-                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
+                    <select asp-for="Skills" class="form-control" 
+                            asp-items="@Html.GetEnumSelectList<Skills>()">
+                            </select>
                     <span asp-validation-for="Skills" class="text-danger"></span>
                 </div>
                 <div class="form-group w-50">

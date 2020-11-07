@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels
+﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using System.Collections.Generic;
 

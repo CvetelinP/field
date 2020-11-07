@@ -1,9 +1,12 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using AspNetCoreTemplate.Services.Mapping;
 
     public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>
     {
+        [Key]
         public int Id { get; set; }
 
         public string ImageUrl { get; set; }

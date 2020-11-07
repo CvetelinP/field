@@ -19,7 +19,7 @@
 
         public string Description { get; set; }
 
-        public string Skills { get; set; }
+        public Skills Skills { get; set; }
 
         public string City { get; set; }
 
