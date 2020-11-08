@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
+    using System.ComponentModel.DataAnnotations;
+
     using AspNetCoreTemplate.Services.Mapping;
 
     public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>

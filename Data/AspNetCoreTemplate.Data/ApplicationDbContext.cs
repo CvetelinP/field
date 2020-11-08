@@ -38,7 +38,7 @@
 
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<PromoterGroup> PromotersGroups { get; set; }
+       
 
 
 
@@ -89,12 +89,6 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
-            builder.Entity<PromoterGroup>().HasKey(x => new
-            {
-                x.GroupId,
-                x.PromoterId,
-            });
 
         }
 

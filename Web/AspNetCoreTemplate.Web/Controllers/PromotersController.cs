@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using AspNetCoreTemplate.Services.Data;
-using AspNetCoreTemplate.Web.ViewModels.Group;
 
 namespace AspNetCoreTemplate.Web.Controllers
 {
@@ -11,8 +9,10 @@ namespace AspNetCoreTemplate.Web.Controllers
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
+    using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels;
+    using AspNetCoreTemplate.Web.ViewModels.Group;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,6 @@ namespace AspNetCoreTemplate.Web.Controllers
         private readonly IPromotersService promotersService;
         private readonly IGroupService groupService;
 
-
         public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService)
         {
             this.db = db;
@@ -33,7 +32,7 @@ namespace AspNetCoreTemplate.Web.Controllers
 
         }
 
-        public ApplicationDbContext Db { get; }
+
 
         [Authorize]
         public IActionResult Add()
@@ -71,26 +70,20 @@ namespace AspNetCoreTemplate.Web.Controllers
         [Authorize]
         public IActionResult Profiles(int id)
         {
-            //var groups = this.groupService.GetAll<GroupDropDownViewModel>();
             var viewModel = this.promotersService.GetById<PromoterProfileViewModel>(id);
             return this.View(viewModel);
         }
+
 
         [Authorize]
         public IActionResult Remove(int id)
         {
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == id);
-            if (promoter == null)
-            {
-                id = 0;
-            }
 
-            this.db.Promoters.Remove(promoter);
+            this.db.Promoters.Remove(promoter!);
             this.db.SaveChanges();
 
             return this.Redirect("/Promoters/All");
         }
-
-     
     }
 }

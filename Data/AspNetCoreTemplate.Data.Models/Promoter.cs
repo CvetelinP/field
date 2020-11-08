@@ -7,12 +7,6 @@
 
     public class Promoter : BaseDeletableModel<int>
     {
-        public Promoter()
-        {
-            this.Projects = new HashSet<Project>();
-            this.Groups = new HashSet<PromoterGroup>();
-        }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -35,9 +29,9 @@
 
         public string Email { get; set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public int ProjectId { get; set; }
 
-        public ICollection<PromoterGroup> Groups { get; set; }
+        public Project Project { get; set; }
 
     }
 }

@@ -152,6 +152,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -233,9 +236,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -251,19 +251,12 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PromoterId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PromoterId");
 
                     b.ToTable("Projects");
                 });
@@ -280,9 +273,6 @@ namespace AspNetCoreTemplate.Data.Migrations
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CityId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -320,36 +310,19 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Skills")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TrainingId")
+                    b.Property<int>("Skills")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
-
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("TrainingId");
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Promoters");
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
-                {
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PromoterId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GroupId", "PromoterId");
-
-                    b.HasIndex("PromoterId");
-
-                    b.ToTable("PromotersGroups");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Setting", b =>
@@ -409,14 +382,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Trainings");
                 });
@@ -525,49 +493,10 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Project", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Client", "Client")
-                        .WithMany("Projects")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("PromoterId");
-                });
-
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Promoter", b =>
                 {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.City", null)
-                        .WithMany("Promoters")
-                        .HasForeignKey("CityId");
-
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Training", null)
-                        .WithMany("Promoters")
-                        .HasForeignKey("TrainingId");
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Group", "Group")
-                        .WithMany("Promoters")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
-                        .WithMany("Groups")
-                        .HasForeignKey("PromoterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Training", b =>
-                {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
-                        .WithMany()
+                        .WithMany("Promoters")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

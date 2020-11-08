@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class InitializeDataBase : Migration
+    public partial class nEWbEGGINNG : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,7 +64,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    District = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,6 +107,24 @@ namespace AspNetCoreTemplate.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Settings",
                 columns: table => new
                 {
@@ -121,6 +140,24 @@ namespace AspNetCoreTemplate.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Settings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trainings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    File = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trainings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,95 +287,13 @@ namespace AspNetCoreTemplate.Data.Migrations
                     Age = table.Column<int>(nullable: false),
                     Language = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    CityId = table.Column<int>(nullable: true),
-                    TrainingId = table.Column<int>(nullable: true)
+                    ProjectId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Promoters", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Promoters_Cities_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Year = table.Column<int>(nullable: false),
-                    ClientId = table.Column<int>(nullable: false),
-                    PromoterId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Projects_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Projects_Promoters_PromoterId",
-                        column: x => x.PromoterId,
-                        principalTable: "Promoters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PromotersGroups",
-                columns: table => new
-                {
-                    PromoterId = table.Column<int>(nullable: false),
-                    GroupId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PromotersGroups", x => new { x.GroupId, x.PromoterId });
-                    table.ForeignKey(
-                        name: "FK_PromotersGroups_Groups_GroupId",
-                        column: x => x.GroupId,
-                        principalTable: "Groups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_PromotersGroups_Promoters_PromoterId",
-                        column: x => x.PromoterId,
-                        principalTable: "Promoters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Trainings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    File = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Trainings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Trainings_Projects_ProjectId",
+                        name: "FK_Promoters_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
@@ -410,24 +365,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_ClientId",
-                table: "Projects",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Projects_IsDeleted",
                 table: "Projects",
                 column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_PromoterId",
-                table: "Projects",
-                column: "PromoterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Promoters_CityId",
-                table: "Promoters",
-                column: "CityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Promoters_IsDeleted",
@@ -435,14 +375,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Promoters_TrainingId",
+                name: "IX_Promoters_ProjectId",
                 table: "Promoters",
-                column: "TrainingId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PromotersGroups_PromoterId",
-                table: "PromotersGroups",
-                column: "PromoterId");
+                column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
@@ -453,31 +388,10 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "IX_Trainings_IsDeleted",
                 table: "Trainings",
                 column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Trainings_ProjectId",
-                table: "Trainings",
-                column: "ProjectId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Promoters_Trainings_TrainingId",
-                table: "Promoters",
-                column: "TrainingId",
-                principalTable: "Trainings",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Clients_ClientId",
-                table: "Projects");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Projects_Promoters_PromoterId",
-                table: "Projects");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -494,31 +408,28 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "PromotersGroups");
+                name: "Cities");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Promoters");
 
             migrationBuilder.DropTable(
                 name: "Settings");
+
+            migrationBuilder.DropTable(
+                name: "Trainings");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Groups");
-
-            migrationBuilder.DropTable(
-                name: "Clients");
-
-            migrationBuilder.DropTable(
-                name: "Promoters");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Trainings");
 
             migrationBuilder.DropTable(
                 name: "Projects");

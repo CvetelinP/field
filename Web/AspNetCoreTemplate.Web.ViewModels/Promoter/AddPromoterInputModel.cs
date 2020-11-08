@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -6,6 +8,9 @@
 
     public class AddPromoterInputModel
     {
+
+        public int Id { get; set; }
+
         [Required]
         [MinLength(3)]
         [MaxLength(12)]
@@ -50,6 +55,8 @@
         [MinLength(3)]
         [MaxLength(20)]
         public string City { get; set; }
+
+        public int ProjectId { get; set; }
 
     }
 }

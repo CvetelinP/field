@@ -26,6 +26,7 @@
             var genderEnum = Enum.Parse<Gender>(model.Gender);
             var promoter = new Promoter
             {
+                ProjectId = model.ProjectId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Description = model.Description,

@@ -6,14 +6,8 @@
 
     public class Group : BaseDeletableModel<int>
     {
-        public Group()
-        {
-            this.Promoters = new List<PromoterGroup>();
-        }
 
         public string Name { get; set; }
-
-        public ICollection<PromoterGroup> Promoters { get; set; }
 
     }
 }
