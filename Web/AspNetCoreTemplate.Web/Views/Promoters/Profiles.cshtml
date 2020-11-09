@@ -1,4 +1,4 @@
-﻿
+﻿s
 @model AspNetCoreTemplate.Web.ViewModels.Promoter.PromoterProfileViewModel
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -16,20 +16,24 @@
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                    <h5>
+                    <h5 >
                         @Model.FirstName @Model.LastName
                     </h5>
                     <h6>
                         Age: @Model.Age / City: @Model.City
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <i class="fa fa-thumbs-up" style="color:chartreuse"></i>
+                    <i class="fa fa-thumbs-down" style="color: crimson"></i>
+                    <div class="text-muted small ml-3">
+                        <i class="fa fa-thumbs-up"></i>
+                        <i class="fa fa-thumbs-down"></i>
+                    </div>
+                   
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -53,6 +57,7 @@
                     <a href="">WooCommerce</a><br />
                     <a href="">@Model.Skills</a><br />
                 </div>
+
             </div>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">

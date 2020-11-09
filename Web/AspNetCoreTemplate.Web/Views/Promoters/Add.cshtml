@@ -15,7 +15,7 @@
                         <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="LastName"style="color: chocolate" >Last Name</label>
+                        <label asp-for="LastName" style="color: chocolate">Last Name</label>
                         <input type="text" class="form-control" size="30" id="lastName" name="lastName" placeholder="Last name">
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Language" style="color: chocolate"s>Language</label>
+                        <label asp-for="Language" style="color: chocolate" s>Language</label>
                         <input type="text" class="form-control" id="language" name="language" placeholder="language">
                         <span asp-validation-for="Language" class="text-danger"></span>
                     </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Skills"style="color: chocolate">Skills</label>
+                        <label asp-for="Skills" style="color: chocolate">Skills</label>
                         <select asp-for="Skills" class="form-control"
                                 asp-items="@Html.GetEnumSelectList<Skills>()">
                         </select>
@@ -54,29 +54,31 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label as="gender"style="color: chocolate">Gender</label>
+                        <label as="gender" style="color: chocolate">Gender</label>
                         <input type="text" class="form-control" id="gender" name="gender" placeholder="Male or Female">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label asp-for="Mobile"style="color: chocolate"> Mobile</label>
+                        <label asp-for="Mobile" style="color: chocolate"> Mobile</label>
                         <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+359">
                         <span asp-validation-for="Mobile" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
-                        <label asp-for="Age"style="color: chocolate"s>Age</label>
+                        <label asp-for="Age" style="color: chocolate" s>Age</label>
                         <input min="18" max="99" type="number" class="form-control" id="age" name="age" placeholder="Age">
                         <span asp-validation-for="Age" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group w-45">
-                    <label asp-for="Description"style="color: chocolate">Description</label>
+                    <label asp-for="Description" style="color: chocolate">Description</label>
                     <textarea rows="4" class="form-control" id="description" name="description" placeholder="..."></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
-                <input asp-for="ProjectId" placeholder="Projects">
-                <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+                <h2 style="color:chocolate">Projects</h2>
+                <select  asp-for="ProjectId"  asp-items="Model.Projects.Select(x=>new SelectListItem(x.Name,x.Id.ToString()))" class="form-control col-md-6"></select><br />
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+                <button type="submit"  class="btn btn-primary text-uppercase">Submit</button>
             </form>
         </div>
     </div>

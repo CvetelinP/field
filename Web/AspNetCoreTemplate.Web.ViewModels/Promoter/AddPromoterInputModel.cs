@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AspNetCoreTemplate.Data.Models.Enum;
+    using AspNetCoreTemplate.Web.ViewModels.Project;
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
     public class AddPromoterInputModel
     {
-
         public int Id { get; set; }
 
         [Required]
@@ -27,7 +27,7 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
         public string Description { get; set; }
 
         [Required]
-        public Skills Skills { get; set; } 
+        public Skills Skills { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }
@@ -56,7 +56,10 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
         [MaxLength(20)]
         public string City { get; set; }
 
+        [Display(Name = "Projects")]
+        [Range(1,int.MaxValue)]
         public int ProjectId { get; set; }
 
+        public IEnumerable<IndexDropDownProjectViewModel> Projects { get; set; }
     }
 }

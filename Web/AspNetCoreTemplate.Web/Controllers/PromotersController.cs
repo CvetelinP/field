@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using AspNetCoreTemplate.Web.ViewModels.Project;
 
 namespace AspNetCoreTemplate.Web.Controllers
 {
@@ -22,14 +23,15 @@ namespace AspNetCoreTemplate.Web.Controllers
         private readonly ApplicationDbContext db;
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly IPromotersService promotersService;
+        private readonly IProjectService projectService;
         private readonly IGroupService groupService;
 
-        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService)
+        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService, IProjectService projectService)
         {
             this.db = db;
             this.promoteRepository = promoteRepository;
             this.promotersService = promotersService;
-
+            this.projectService = projectService;
         }
 
 
@@ -37,7 +39,19 @@ namespace AspNetCoreTemplate.Web.Controllers
         [Authorize]
         public IActionResult Add()
         {
-            return this.View();
+            if (!ModelState.IsValid)
+            {
+                return this.View();
+            }
+
+            var projects = this.projectService.GetAll<IndexDropDownProjectViewModel>();
+
+            var viewModel = new AddPromoterInputModel
+            {
+                Projects = projects,
+            };
+
+            return this.View(viewModel);
         }
 
         [Authorize]
@@ -71,6 +85,11 @@ namespace AspNetCoreTemplate.Web.Controllers
         public IActionResult Profiles(int id)
         {
             var viewModel = this.promotersService.GetById<PromoterProfileViewModel>(id);
+            if (viewModel == null)
+            {
+                this.NotFound();
+            }
+
             return this.View(viewModel);
         }
 

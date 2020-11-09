@@ -25,12 +25,11 @@
             {
                 Name = model.Name,
                 Year = model.Year,
-
             };
             this.db.Projects.Add(project);
             this.db.SaveChanges();
 
-            return this.Redirect("/");
+            return this.View();
         }
     }
 }

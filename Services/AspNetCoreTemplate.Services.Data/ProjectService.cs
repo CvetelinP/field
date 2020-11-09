@@ -1,26 +1,24 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Mapping;
 
-    public class GroupService : IGroupService
+    public class ProjectService : IProjectService
     {
-        private readonly IDeletableEntityRepository<Group> groupRepository;
+        private readonly IDeletableEntityRepository<Project> projectEntityRepository;
 
-        public GroupService(IDeletableEntityRepository<Group> groupRepository)
+        public ProjectService(IDeletableEntityRepository<Project> projectEntityRepository)
         {
-            this.groupRepository = groupRepository;
+            this.projectEntityRepository = projectEntityRepository;
         }
 
         public IEnumerable<T> GetAll<T>(int? count = null)
         {
-            IQueryable<Group> query = this.groupRepository.All().OrderBy(x => x.Name);
+            IQueryable<Project> query = this.projectEntityRepository.All().OrderBy(x => x.Name);
 
             if (count.HasValue)
             {

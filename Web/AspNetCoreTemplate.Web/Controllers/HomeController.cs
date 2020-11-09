@@ -1,4 +1,10 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using System.Linq;
+using AspNetCoreTemplate.Data.Common.Repositories;
+using AspNetCoreTemplate.Data.Models;
+using AspNetCoreTemplate.Services.Mapping;
+using AspNetCoreTemplate.Web.ViewModels.Promoter;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System.Diagnostics;
 
@@ -8,8 +14,22 @@
 
     public class HomeController : BaseController
     {
+        private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+
+        public HomeController(IDeletableEntityRepository<Promoter> promoteRepository)
+        {
+            this.promoteRepository = promoteRepository;
+        }
         public IActionResult Index()
         {
+            var viewModel = new IndexViewModel();
+
+            var promoters = this.promoteRepository.All()
+                .To<IndexPromoterViewModel>().ToList();
+
+            viewModel.Promoters = promoters;
+
+            return this.View(viewModel);
             return this.View();
         }
 
