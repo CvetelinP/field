@@ -7,6 +7,11 @@
 
     public class Promoter : BaseDeletableModel<int>
     {
+        public Promoter()
+        {
+            this.Votes = new HashSet<Vote>();
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -32,6 +37,8 @@
         public int ProjectId { get; set; }
 
         public Project Project { get; set; }
+
+        public ICollection<Vote> Votes { get; set; }
 
     }
 }

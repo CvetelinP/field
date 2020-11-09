@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace AspNetCoreTemplate.Services.Data
 {
+    using System.Threading.Tasks;
+
     public interface IVoteService
     {
-        Task VoteAsync(int postId, string userId, bool isUpVote);
+        Task VoteAsync(int promoterId, string userId, bool isUpVote);
+
+        int GetVotes(int promoterId);
     }
 }

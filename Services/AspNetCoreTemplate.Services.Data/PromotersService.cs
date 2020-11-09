@@ -48,7 +48,6 @@
         {
             var promoter = this.promoteRepository.All()
                  .Where(x => x.Id == id).To<T>().FirstOrDefault();
-           
             return promoter;
         }
     }

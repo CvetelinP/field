@@ -11,51 +11,60 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="@Model.ImageUrl" alt="" />
-                    
+
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head">
-                    <h5 >
+                    <h5 style="color: chocolate">
                         @Model.FirstName @Model.LastName
                     </h5>
                     <h6>
                         Age: @Model.Age / City: @Model.City
                     </h6>
-                    <i class="fa fa-thumbs-up" style="color:chartreuse"></i>
-                    <i class="fa fa-thumbs-down" style="color: crimson"></i>
+                    <div class="text-muted small ml-3">
+                       <h2 style="color: chocolate"> Rating</h2>
+                        <form id="votesForm" method="post"></form>
+                        <div>
+
+                            <a href="#" onclick="sendVote(@Model.Id, true)">
+                                <i class="fas fa-hand-point-up"></i>
+                            </a>
+                        </div>
+                        <div id="votesCount" style="color: darkolivegreen">@Model.VotesCount</div>
+                        <div>
+                            <a href="#" onclick="sendVote(@Model.Id, false)">
+                                <i class="fas fa-hand-point-down"></i>
+                            </a>
+                        </div>
+                    </div>
                     <div class="text-muted small ml-3">
                         <i class="fa fa-thumbs-up"></i>
                         <i class="fa fa-thumbs-down"></i>
                     </div>
-                   
+
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
-                  
+
             <div class="col-md-2">
                 <input type="submit" class="btn btn-block btn-primary" name="btnAddMore" value="Edit" />
-               
+
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-work">
-                    <p>WORK LINK</p>
-                    <a href="">Website Link</a><br />
-                    <a href="">Bootsnipp Profile</a><br />
-                    <a href="">Bootply Profile</a>
-                    <p>SKILLS</p>
-                    <a href="">Web Designer</a><br />
-                    <a href="">Web Developer</a><br />
-                    <a href="">WordPress</a><br />
-                    <a href="">WooCommerce</a><br />
-                    <a href="">@Model.Skills</a><br />
+                    <p>Description</p>
+                    <a href="">@Model.Description</a><br />
+
+                    <p>Images</p>
+
                 </div>
 
             </div>
@@ -111,56 +120,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Experience</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Hourly Rate</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>10$/hr</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label></label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>230</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>English Level</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Expert</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Availability</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>6 months</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br />
-                                <p>Your detail description</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+@section Scripts {
+    <script>
+
+
+        function sendVote(promoterId, isUpVote) {
+            var token = $("#votesForm input[name=__RequestVerificationToken]").val();
+            var json = { promoterId: promoterId, isUpVote: isUpVote };
+            console.log(json);
+            $.ajax({
+                url: "/api/votes",
+                type: "POST",
+                data: JSON.stringify(json),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#votesCount").html(data.votesCount);
+                }
+            });
+        }
+    </script>
+}
