@@ -1,15 +1,14 @@
-﻿using AspNetCoreTemplate.Services.Mapping;
-
-namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using AspNetCoreTemplate.Data.Models.Enum;
+    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Project;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-    public class AddPromoterInputModel:IMapFrom<Data.Models.Promoter>
+    public class AddPromoterInputModel : IMapFrom<Data.Models.Promoter>
     {
         public int Id { get; set; }
 
@@ -58,10 +57,10 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
         [MaxLength(20)]
         public string City { get; set; }
 
-        [Display(Name = "Projects")]
-        [Range(1,int.MaxValue)]
+        [Display(Name ="Projects")]
+        [Range(1, int.MaxValue)]
         public int ProjectId { get; set; }
 
-        public IEnumerable<IndexDropDownProjectViewModel> Projects { get; set; }
+        public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
     }
 }

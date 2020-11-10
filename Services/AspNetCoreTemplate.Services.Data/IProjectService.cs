@@ -5,5 +5,6 @@ namespace AspNetCoreTemplate.Services.Data
     public interface IProjectService
     {
         IEnumerable<T> GetAll<T>(int? count = null);
+        IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePair();
     }
 }

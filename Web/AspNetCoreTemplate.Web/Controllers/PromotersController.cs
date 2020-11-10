@@ -1,18 +1,13 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Data.Models.Enum;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels;
-    using AspNetCoreTemplate.Web.ViewModels.Group;
-    using AspNetCoreTemplate.Web.ViewModels.Project;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -23,7 +18,7 @@
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly IPromotersService promotersService;
         private readonly IProjectService projectService;
-        private readonly IGroupService groupService;
+        
 
         public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService, IProjectService projectService)
         {
@@ -38,18 +33,8 @@
         [Authorize]
         public IActionResult Add()
         {
-            //if (!ModelState.IsValid)
-            //{
-                //return this.View();
-            //}
-
-            var projects = this.projectService.GetAll<IndexDropDownProjectViewModel>();
-
-            var viewModel = new AddPromoterInputModel
-            {
-                Projects = projects,
-            };
-
+            var viewModel = new AddPromoterInputModel();
+            viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             return this.View(viewModel);
         }
 
@@ -59,7 +44,8 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View();
+                model.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
+                return this.View(model);
             }
 
             await this.promotersService.CreateAsync(model);

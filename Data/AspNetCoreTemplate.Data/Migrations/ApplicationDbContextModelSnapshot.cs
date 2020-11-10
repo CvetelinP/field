@@ -540,7 +540,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Client", "Client")
                         .WithMany("Projects")
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -549,7 +549,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
                         .WithMany("Promoters")
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -558,7 +558,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
                         .WithMany("Votes")
                         .HasForeignKey("PromoterId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", "User")
@@ -571,7 +571,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -598,7 +598,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", null)
@@ -613,7 +613,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

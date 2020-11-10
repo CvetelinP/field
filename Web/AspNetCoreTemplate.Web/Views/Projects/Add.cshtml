@@ -1,28 +1,34 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Project.IndexProjectsInputModel
-<form method="Post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+@{
+    var clientsItems = this.Model.ClientsItems.Select(x => new SelectListItem(x.Value, x.Key));
+}
+<section class="py-3">
+    <div class="container">
+        <form method="Post">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="form-group w-50">
-        <label asp-for="Name" style="color: chocolate"></label>
-        <input asp-for="Name" class="form-control" id="name"  name="name" placeholder="Project name">
-        <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="form-group w-50">
+                <label asp-for="Name" style="color: chocolate"></label>
+                <input asp-for="Name" class="form-control" id="name" name="name" placeholder="Project name">
+                <span asp-validation-for="Name" class="text-danger"></span>
 
+            </div>
+            <div class="form-group w-50">
+                <label asp-for="Year" style="color: chocolate"></label>
+                <input asp-for="Year" class="form-control" id="name" name="year" placeholder="Year">
+                <span asp-validation-for="Year" class="text-danger"></span>
+
+            </div>
+            <div class="form-group w-50">
+                <label asp-for="Description" style="color: chocolate"></label>
+                <input asp-for="Description" class="form-control" id="name" name="description" placeholder=".....">
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+            <h2 style="color: chocolate">Projects</h2>
+            <select asp-for="ClientId" asp-items="clientsItems" class="form-control col-md-6"></select>
+            <span asp-validation-for="ClientId" class="text-danger"></span>
+            <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+        </form>
     </div>
-    <div class="form-group w-50">
-        <label asp-for="Year" style="color: chocolate"></label>
-        <input asp-for="Year" class="form-control" id="name" name="year" placeholder="Year">
-        <span asp-validation-for="Year" class="text-danger"></span>
-
-    </div>
-    <div class="form-group w-50">
-        <label asp-for="Description" style="color: chocolate"></label>
-        <input asp-for="Description" class="form-control" id="name" name="description" placeholder=".....">
-        <span asp-validation-for="Description" class="text-danger"></span>
-
-    </div>
-    <div class="form-group w-50">
-        <select asp-for="ClientId" asp-items="Model.Clients.Select(x=> new SelectListItem(x.Name,x.Id.ToString()))"></select>
-        <span asp-validation-for="ClientId" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
-</form>
+</section>

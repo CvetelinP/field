@@ -1,6 +1,7 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -50,5 +51,7 @@
                  .Where(x => x.Id == id).To<T>().FirstOrDefault();
             return promoter;
         }
+
+      
     }
 }

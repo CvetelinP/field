@@ -25,28 +25,19 @@ namespace AspNetCoreTemplate.Web.Controllers
         [Authorize]
         public IActionResult Add()
         {
-            if (!ModelState.IsValid)
-            {
-                return this.View();
-            }
-
-            var clients = this.clientsService.GetAll<IndexClientDropDownInputModel>();
-
-            var viewModel = new IndexProjectsInputModel()
-            {
-                Clients = clients,
-            };
-
+            var viewModel = new IndexProjectsInputModel();
+            viewModel.ClientsItems = this.clientsService.GetAllAsKeyValuePair();
             return this.View(viewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Add(IndexProjectsInputModel model)
         {
-
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                return this.View();
+                model.ClientsItems = this.clientsService.GetAllAsKeyValuePair();
+                return this.View(model);
             }
 
             var project = new Data.Models.Project()

@@ -42,5 +42,15 @@ namespace AspNetCoreTemplate.Services.Data
 
             return query.To<T>().ToList();
         }
+
+        public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePair()
+        {
+            return this.clientRepository.All().Select(x => new
+            {
+                x.Id,
+                x.Name,
+
+            }).ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
+        }
     }
 }

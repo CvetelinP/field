@@ -1,5 +1,8 @@
 ﻿@using AspNetCoreTemplate.Data.Models.Enum
 @model AspNetCoreTemplate.Web.ViewModels.Promoter.AddPromoterInputModel
+@{
+    var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
+}   
 <section class="py-3">
     <div class="container">
         <h1 style="margin: 1%; text-align: center; color: aliceblue">Add Promoter</h1>
@@ -76,7 +79,7 @@
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <h2 style="color:chocolate">Projects</h2>
-                <select  asp-for="ProjectId"  asp-items="Model.Projects.Select(x=>new SelectListItem(x.Name,x.Id.ToString()))" class="form-control col-md-6"></select>
+                <select  asp-for="ProjectId"  asp-items="projectsItems" class="form-control col-md-6"></select>
                 <span asp-validation-for="ProjectId" class="text-danger"></span>
                 <button type="submit"  class="btn btn-primary text-uppercase">Submit</button>
             </form>
