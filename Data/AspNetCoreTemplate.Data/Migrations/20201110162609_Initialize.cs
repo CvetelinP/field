@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class nEWbEGGINNG : Migration
+    public partial class Initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,7 +82,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,24 +105,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Year = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -267,6 +250,32 @@ namespace AspNetCoreTemplate.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    ClientId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Promoters",
                 columns: table => new
                 {
@@ -280,14 +289,14 @@ namespace AspNetCoreTemplate.Data.Migrations
                     LastName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Skills = table.Column<int>(nullable: false),
-                    City = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     Gender = table.Column<int>(nullable: false),
                     Mobile = table.Column<int>(nullable: false),
                     Age = table.Column<int>(nullable: false),
                     Language = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<int>(nullable: false)
+                    ProjectId = table.Column<int>(nullable: false),
+                    City = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -296,6 +305,35 @@ namespace AspNetCoreTemplate.Data.Migrations
                         name: "FK_Promoters_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Votes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    PromoterId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Votes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Votes_Promoters_PromoterId",
+                        column: x => x.PromoterId,
+                        principalTable: "Promoters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Votes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -365,6 +403,11 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projects_ClientId",
+                table: "Projects",
+                column: "ClientId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projects_IsDeleted",
                 table: "Projects",
                 column: "IsDeleted");
@@ -388,6 +431,16 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "IX_Trainings_IsDeleted",
                 table: "Trainings",
                 column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Votes_PromoterId",
+                table: "Votes",
+                column: "PromoterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Votes_UserId",
+                table: "Votes",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -411,13 +464,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Clients");
-
-            migrationBuilder.DropTable(
                 name: "Groups");
-
-            migrationBuilder.DropTable(
-                name: "Promoters");
 
             migrationBuilder.DropTable(
                 name: "Settings");
@@ -426,13 +473,22 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "Trainings");
 
             migrationBuilder.DropTable(
+                name: "Votes");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Promoters");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Projects");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
         }
     }
 }

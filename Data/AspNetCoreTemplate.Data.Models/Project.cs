@@ -15,6 +15,12 @@
 
         public int Year { get; set; }
 
+        public string Description { get; set; }
+
+        public int ClientId { get; set; }
+
+        public Client Client { get; set; }
+
         public ICollection<Promoter> Promoters { get; set; }
 
     }

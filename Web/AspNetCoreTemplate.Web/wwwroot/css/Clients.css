@@ -1,0 +1,24 @@
+﻿#testimonials .card {
+    border: 0;
+}
+
+.card {
+    text-align: center;
+}
+
+.card img {
+    border-radius: 50%;
+    width: 100%;
+    max-width: 9rem;
+    max-height: 9rem;
+    margin: 0 auto;
+}
+
+._tm-user-role {
+    font-weight: bold;
+}
+
+._tm-header {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+}

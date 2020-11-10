@@ -20,8 +20,6 @@
 
         public Skills Skills { get; set; }
 
-        public string City { get; set; }
-
         public string ImageUrl { get; set; }
 
         public Gender Gender { get; set; }
@@ -37,6 +35,9 @@
         public int ProjectId { get; set; }
 
         public Project Project { get; set; }
+
+        public string City { get; set; }
+
 
         public ICollection<Vote> Votes { get; set; }
 

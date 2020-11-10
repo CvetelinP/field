@@ -1,0 +1,32 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Project.IndexProjectViewModel
+<form action="/Projects/Add" class="">
+    <button type="float-left submit-button">Add Project</button> <hr />
+    
+</form>
+<form action="/Clients/All" class="">
+    <button type="float-left submit-button">Clients</button> <hr />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Year</th>
+            <th scope="col">Description</th>
+            <th scope="col">Promoters</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Projects)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Year</td>
+            <td>@item.Description</td>
+            <td>@item</td>
+        </tr>
+        }
+
+    </tbody>
+</table>

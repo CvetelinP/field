@@ -17,7 +17,17 @@ html {
         font-size: 16px;
     }
 }
+.card-image {
+    transition: transform .3s;
+}
+.card-image:hover {
+    z-index: 1;
+    transform: scale(2);
+}
 
+.card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .border-top {
     border-top: 1px solid #e5e5e5;
 }

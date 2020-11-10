@@ -184,6 +184,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -236,11 +239,17 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -255,6 +264,8 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("IsDeleted");
 
@@ -524,6 +535,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Project", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Client", "Client")
+                        .WithMany("Projects")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Promoter", b =>
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
@@ -536,7 +556,7 @@ namespace AspNetCoreTemplate.Data.Migrations
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Vote", b =>
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
-                        .WithMany()
+                        .WithMany("Votes")
                         .HasForeignKey("PromoterId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

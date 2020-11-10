@@ -1,0 +1,15 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Client.IndexClientsInputModel
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="col-md-6">
+        <label asp-for="Name" style="color: chocolate">Client name</label>
+        <input type="text" class="form-control" size="30" id="name" name="name" placeholder="Client name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label for="imageurl" style="color: chocolate">ImageUrl</label>
+        <input type="text" class="form-control" id="imageurl" name="imageurl" placeholder="https://..."><hr>
+        <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+    </div>
+
+</form>

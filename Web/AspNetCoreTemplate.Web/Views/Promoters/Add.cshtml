@@ -76,7 +76,7 @@
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <h2 style="color:chocolate">Projects</h2>
-                <select  asp-for="ProjectId"  asp-items="Model.Projects.Select(x=>new SelectListItem(x.Name,x.Id.ToString()))" class="form-control col-md-6"></select><br />
+                <select  asp-for="ProjectId"  asp-items="Model.Projects.Select(x=>new SelectListItem(x.Name,x.Id.ToString()))" class="form-control col-md-6"></select>
                 <span asp-validation-for="ProjectId" class="text-danger"></span>
                 <button type="submit"  class="btn btn-primary text-uppercase">Submit</button>
             </form>

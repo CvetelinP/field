@@ -6,8 +6,8 @@ namespace AspNetCoreTemplate.Web.ViewModels.Project
 
     public class IndexDropDownProjectViewModel : IMapFrom<Data.Models.Project>
     {
-        
         public int Id { get; set; }
+
         [Required]
         [MinLength(3)]
         [MaxLength(10)]

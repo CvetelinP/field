@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿using AspNetCoreTemplate.Services.Mapping;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +9,7 @@
     using AspNetCoreTemplate.Web.ViewModels.Project;
     using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-    public class AddPromoterInputModel
+    public class AddPromoterInputModel:IMapFrom<Data.Models.Promoter>
     {
         public int Id { get; set; }
 

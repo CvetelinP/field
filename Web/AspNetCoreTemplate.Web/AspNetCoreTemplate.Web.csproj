@@ -17,6 +17,7 @@
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
     <None Include="Views\Promoters\All.cshtml" />
   </ItemGroup>
 

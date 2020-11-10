@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using AspNetCoreTemplate.Web.ViewModels.Project;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
@@ -14,6 +12,7 @@ namespace AspNetCoreTemplate.Web.Controllers
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels;
     using AspNetCoreTemplate.Web.ViewModels.Group;
+    using AspNetCoreTemplate.Web.ViewModels.Project;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -39,10 +38,10 @@ namespace AspNetCoreTemplate.Web.Controllers
         [Authorize]
         public IActionResult Add()
         {
-            if (!ModelState.IsValid)
-            {
-                return this.View();
-            }
+            //if (!ModelState.IsValid)
+            //{
+                //return this.View();
+            //}
 
             var projects = this.projectService.GetAll<IndexDropDownProjectViewModel>();
 
