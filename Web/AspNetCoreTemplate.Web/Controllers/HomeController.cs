@@ -1,15 +1,13 @@
-﻿using System.Linq;
-using AspNetCoreTemplate.Data.Common.Repositories;
-using AspNetCoreTemplate.Data.Models;
-using AspNetCoreTemplate.Services.Mapping;
-using AspNetCoreTemplate.Web.ViewModels.Promoter;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Linq;
 
+    using AspNetCoreTemplate.Data.Common.Repositories;
+    using AspNetCoreTemplate.Data.Models;
+    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels;
-
+    using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController

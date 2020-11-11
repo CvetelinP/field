@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Threading.Tasks;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Mapping;
+    using AspNetCoreTemplate.Web.ViewModels.Project;
 
     public class ProjectService : IProjectService
     {
@@ -14,6 +15,19 @@
         public ProjectService(IDeletableEntityRepository<Project> projectEntityRepository)
         {
             this.projectEntityRepository = projectEntityRepository;
+        }
+
+        public async Task CreateAsync(IndexProjectsInputModel model)
+        {
+            var project = new Project
+            {
+                ClientId = model.ClientId,
+                Name = model.Name,
+                Year = model.Year,
+                Description = model.Description,
+            };
+            await this.projectEntityRepository.AddAsync(project);
+            await this.projectEntityRepository.SaveChangesAsync();
         }
 
         public IEnumerable<T> GetAll<T>(int? count = null)

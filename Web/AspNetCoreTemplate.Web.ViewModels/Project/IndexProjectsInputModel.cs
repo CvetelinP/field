@@ -9,11 +9,11 @@
 
     public class IndexProjectsInputModel : IMapFrom<Data.Models.Project>
     {
-        [Key]
+       
         public int Id { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z]+[0-9]{3}-[0-9]{2}", ErrorMessage = "Invalid Group,Example:BF020-20")]
+        [RegularExpression("[A-Z]+[0-9]{3}-[0-9]{2}", ErrorMessage = "Invalid Project,Example:BF020-20")]
         public string Name { get; set; }
 
         [Required]

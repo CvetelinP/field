@@ -1,23 +1,20 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Client;
     using AspNetCoreTemplate.Web.ViewModels.Project;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.CodeAnalysis.CSharp.Syntax;
 
     public class ProjectsController : Controller
     {
-        private readonly ApplicationDbContext db;
         private readonly IProjectService projectsService;
         private readonly IClientsService clientsService;
 
-        public ProjectsController(ApplicationDbContext db, IProjectService projectsService, IClientsService clientsService)
+        public ProjectsController(IProjectService projectsService, IClientsService clientsService)
         {
-            this.db = db;
             this.projectsService = projectsService;
             this.clientsService = clientsService;
         }
@@ -40,19 +37,10 @@ namespace AspNetCoreTemplate.Web.Controllers
                 return this.View(model);
             }
 
-            var project = new Data.Models.Project()
-            {
+            this.projectsService.CreateAsync(model);
 
-                Name = model.Name,
-                Year = model.Year,
-                Description = model.Description,
-                ClientId = model.ClientId,
+            return this.Redirect("/Projects/All");
 
-            };
-            this.db.Projects.Add(project);
-            this.db.SaveChanges();
-
-            return this.View();
         }
 
         public IActionResult All()
