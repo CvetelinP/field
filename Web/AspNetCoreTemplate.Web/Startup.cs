@@ -62,6 +62,8 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
+            services.AddTransient<IEmailSender>(
+                serviceProvider => new SendGridEmailSender(this.configuration["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"]));
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPromotersService, PromotersService>();
