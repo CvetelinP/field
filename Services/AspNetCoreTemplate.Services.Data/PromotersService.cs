@@ -39,6 +39,7 @@
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
                 City = model.City,
+                
             };
 
             await this.promoteRepository.AddAsync(promoter);

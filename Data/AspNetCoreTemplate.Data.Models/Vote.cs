@@ -1,8 +1,8 @@
-﻿using AspNetCoreTemplate.Data.Common.Models;
-using AspNetCoreTemplate.Data.Models.Enum;
-
-namespace AspNetCoreTemplate.Data.Models
+﻿namespace AspNetCoreTemplate.Data.Models
 {
+    using AspNetCoreTemplate.Data.Common.Models;
+    using AspNetCoreTemplate.Data.Models.Enum;
+
     public class Vote : BaseModel<int>
     {
         public int PromoterId { get; set; }
@@ -12,7 +12,6 @@ namespace AspNetCoreTemplate.Data.Models
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
-
 
         public VoteType Type { get; set; }
     }

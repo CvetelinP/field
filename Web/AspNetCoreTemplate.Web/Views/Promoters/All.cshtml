@@ -18,53 +18,57 @@
                         <thead>
                             <tr>
 
-                                <th><span>Name</span></th>
-                                <th><span>Id</span></th>
-                                <th><span>Gender</span></th>
-                                <th><span>City</span></th>
-                                <th><span>Email</span></th>
+                                <th><span><b>Name/Image</b></span></th>
+                                <th><span><b>Id</b></span></th>
+                                <th><span><b>Gender</b></span></th>
+                                <th><span><b>City</b></span></th>
+                                <th><span><b>Email</b></span></th>
+                                <th><span><b>Rating</b></span></th>
                                 <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.Promoters)
                             {
-                                <tr>
-                                    <td>
-                                        <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
-                                             class="card-img-top img-fluid card-image">
-                                        @item.FirstName @item.LastName
-                                  </td>
+                            <tr>
+                                <td>
+                                    <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
+                                         class="card-img-top img-fluid card-image">
+                                    @item.FirstName @item.LastName
+                                </td>
 
-                                    <td>
-                                        @item.Id
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="label label-default">@item.Gender</span>
-                                    </td>
-                                    <td>
-                                        <a href="#">@item.City</a>
-                                    </td>
-                                    <td>
-                                        <a href="#">@item.Email</a>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td class="text-center">
+                                    <span class="label label-default">@item.Gender</span>
+                                </td>
+                                <td>
+                                    <a href="#">@item.City</a>
+                                </td>
+                                <td>
+                                    <a href="#">@item.Email</a>
+                                </td>
+                                <td class="text-center" style="color: crimson">
+                                    <span class="label label-default">@item.VotesType</span>
+                                </td>
+                                <td style="width: 20%;">
+                                    <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
 
-                                        <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                        </a>
+                                    <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
                              }
 
                         </tbody>

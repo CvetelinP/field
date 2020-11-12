@@ -1,10 +1,14 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 {
     using System.ComponentModel.DataAnnotations;
 
     using AspNetCoreTemplate.Services.Mapping;
 
-    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>
+    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>,IHaveCustomMappings
     {
         [Key]
         public int Id { get; set; }
@@ -21,7 +25,14 @@
 
         public string Email { get; set; }
 
-       
-
+        public int VotesType { get; set; }
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Data.Models.Promoter, IndexPromoterViewModel>()
+                .ForMember(x => x.VotesType, options =>
+                {
+                    options.MapFrom(p => p.Votes.Sum(v => (int)v.Type));
+                });
+        }
     }
 }

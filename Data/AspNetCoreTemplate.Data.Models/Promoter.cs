@@ -38,8 +38,6 @@
 
         public string City { get; set; }
 
-
         public ICollection<Vote> Votes { get; set; }
-
     }
 }

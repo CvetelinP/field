@@ -20,7 +20,7 @@
     <div class="wrrp">
 
         <div class="avatars">
-            @foreach (var item in Model.Promoters.Take(6).OrderByDescending(x => x.Id))
+            @foreach (var item in Model.Promoters.Take(6).OrderByDescending(x => x.VotesType))
             {
                 <div class="avatar">
                     <div class="thumb"><img width="100" height="100" style="border-radius:50%" src="@item.ImageUrl"/></div>
