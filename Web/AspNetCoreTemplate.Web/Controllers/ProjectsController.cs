@@ -6,7 +6,7 @@
     using AspNetCoreTemplate.Web.ViewModels.Project;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.CodeAnalysis.CSharp.Syntax;
+    using System.Threading.Tasks;
 
     public class ProjectsController : Controller
     {
@@ -29,7 +29,7 @@
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add(IndexProjectsInputModel model)
+        public async Task <IActionResult> Add(IndexProjectsInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -37,7 +37,7 @@
                 return this.View(model);
             }
 
-            this.projectsService.CreateAsync(model);
+           await this.projectsService.CreateAsync(model);
 
             return this.Redirect("/Projects/All");
 
