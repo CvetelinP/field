@@ -16,6 +16,5 @@
         public string ImageUrl { get; set; }
 
         public ICollection<Project> Projects { get; set; }
-
     }
 }
