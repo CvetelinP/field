@@ -1,4 +1,7 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿using System.Data;
+using AspNetCoreTemplate.Data;
+
+namespace AspNetCoreTemplate.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -11,10 +14,14 @@
     public class ProjectService : IProjectService
     {
         private readonly IDeletableEntityRepository<Project> projectEntityRepository;
+        private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+        private readonly ApplicationDbContext db;
 
-        public ProjectService(IDeletableEntityRepository<Project> projectEntityRepository)
+        public ProjectService(IDeletableEntityRepository<Project> projectEntityRepository, IDeletableEntityRepository<Promoter> promoteRepository, ApplicationDbContext db)
         {
             this.projectEntityRepository = projectEntityRepository;
+            this.promoteRepository = promoteRepository;
+            this.db = db;
         }
 
         public async Task CreateAsync(IndexProjectsInputModel model)
@@ -29,6 +36,7 @@
             await this.projectEntityRepository.AddAsync(project);
             await this.projectEntityRepository.SaveChangesAsync();
         }
+
 
         public IEnumerable<T> GetAll<T>(int? count = null)
         {
@@ -51,5 +59,7 @@
 
             }).ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
+
+
     }
 }

@@ -5,5 +5,6 @@
     public class IndexProjectViewModel
     {
         public IEnumerable<IndexProjectsInputModel> Projects { get; set; }
+ 
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201112182236_dasda")]
-    partial class dasda
+    [Migration("20201113195406_dsdas")]
+    partial class dsdas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

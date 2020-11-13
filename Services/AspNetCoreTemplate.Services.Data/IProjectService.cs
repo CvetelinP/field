@@ -11,5 +11,7 @@ namespace AspNetCoreTemplate.Services.Data
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePair();
 
         Task CreateAsync(IndexProjectsInputModel model);
+
+       
     }
 }

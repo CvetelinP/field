@@ -13,7 +13,8 @@
             <th scope="col">Project Name</th>
             <th scope="col">Year</th>
             <th scope="col">Description</th>
-            @*<th scope="col">Promoters</th>*@
+            <th scope="col">Promoters</th>
+        
         </tr>
     </thead>
     <tbody>
@@ -24,9 +25,11 @@
             <td>@item.Name</td>
             <td>@item.Year</td>
             <td>@item.Description</td>
-            @*<td>@item</td>*@
+            <td>
+                <a href="/Projects/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
+            </td>
         </tr>
         }
-
+ 
     </tbody>
 </table>
