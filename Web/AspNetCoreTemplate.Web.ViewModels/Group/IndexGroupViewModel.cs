@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Group
+﻿using System.Collections.Generic;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Group
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -9,7 +11,9 @@
         public int Id { get; set; }
 
         [Required]
-        [RegularExpression("[A-Z]+[0-9]{3}-[0-9]{2}", ErrorMessage = "Invalid Group,Example:BF020-20")]
+        [MaxLength(15)]
         public string Name { get; set; }
+
+        public int PromotersCount { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201113195406_dsdas")]
-    partial class dsdas
+    [Migration("20201114191955_dsadas")]
+    partial class dsadas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -371,6 +371,28 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("Promoters");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PromoterId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("PromoterId");
+
+                    b.ToTable("PromotersGroups");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -584,6 +606,21 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
                         .WithMany("Promoters")
                         .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Group", "Group")
+                        .WithMany("Promoters")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
+                        .WithMany("Groups")
+                        .HasForeignKey("PromoterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

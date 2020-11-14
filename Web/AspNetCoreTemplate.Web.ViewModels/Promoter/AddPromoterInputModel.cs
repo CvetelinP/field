@@ -61,7 +61,7 @@
         [Range(1, int.MaxValue)]
         public int ProjectId { get; set; }
 
-       
+        public IEnumerable<PromoterGroupInputModel> Groups { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
     }

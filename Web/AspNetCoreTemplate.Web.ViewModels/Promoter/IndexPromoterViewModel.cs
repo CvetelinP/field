@@ -8,7 +8,7 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 
     using AspNetCoreTemplate.Services.Mapping;
 
-    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>,IHaveCustomMappings
+    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>, IHaveCustomMappings
     {
         [Key]
         public int Id { get; set; }
@@ -23,7 +23,11 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
 
         public string City { get; set; }
 
+        public int Age { get; set; }
+
         public string Email { get; set; }
+
+        public string Description { get; set; }
 
         public int VotesType { get; set; }
         public void CreateMappings(IProfileExpression configuration)
@@ -33,6 +37,7 @@ namespace AspNetCoreTemplate.Web.ViewModels.Promoter
                 {
                     options.MapFrom(p => p.Votes.Sum(v => (int)v.Type));
                 });
+
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
-    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
@@ -15,11 +12,12 @@
     public class PromotersService : IPromotersService
     {
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+        private readonly IDeletableEntityRepository<Group> groupRepository;
 
-        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository)
+        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository, IDeletableEntityRepository<Group> groupRepository)
         {
             this.promoteRepository = promoteRepository;
-
+            this.groupRepository = groupRepository;
         }
 
         public async Task CreateAsync(AddPromoterInputModel model)
@@ -39,8 +37,22 @@
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
                 City = model.City,
-                
             };
+            foreach (var item in model.Groups)
+            {
+                var group = this.groupRepository.All().FirstOrDefault(x => x.Name == item.Name);
+
+                if (group == null)
+                {
+                    group = new Group { Name = item.Name };
+                }
+
+                promoter.Groups.Add(new PromoterGroup
+                {
+                    Group = group,
+
+                });
+            }
 
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
@@ -53,6 +65,6 @@
             return promoter;
         }
 
-      
+
     }
 }

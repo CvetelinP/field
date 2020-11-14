@@ -1,20 +1,17 @@
-﻿using System.Data;
-using System.Linq;
-using AspNetCoreTemplate.Data.Common.Repositories;
-using AspNetCoreTemplate.Data.Models;
-using AspNetCoreTemplate.Services.Mapping;
-using Microsoft.EntityFrameworkCore;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
     using AspNetCoreTemplate.Data;
+    using AspNetCoreTemplate.Data.Common.Repositories;
+    using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Client;
+    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Project;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class ProjectsController : Controller
     {

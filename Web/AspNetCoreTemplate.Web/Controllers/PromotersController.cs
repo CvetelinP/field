@@ -89,5 +89,11 @@
 
             return this.Redirect("/Promoters/All");
         }
-    }
+
+        [Authorize]
+        public IActionResult AddToGroup()
+        {
+            return this.View();
+        }
+    } 
 }

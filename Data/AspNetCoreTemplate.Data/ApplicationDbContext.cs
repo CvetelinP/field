@@ -40,6 +40,8 @@
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<PromoterGroup> PromotersGroups { get; set; }
+
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

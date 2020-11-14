@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class dsdas : Migration
+    public partial class dsadas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -329,6 +329,32 @@ namespace AspNetCoreTemplate.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PromotersGroups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PromoterId = table.Column<int>(nullable: false),
+                    GroupId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PromotersGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PromotersGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PromotersGroups_Promoters_PromoterId",
+                        column: x => x.PromoterId,
+                        principalTable: "Promoters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Votes",
                 columns: table => new
                 {
@@ -442,6 +468,16 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PromotersGroups_GroupId",
+                table: "PromotersGroups",
+                column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PromotersGroups_PromoterId",
+                table: "PromotersGroups",
+                column: "PromoterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
                 table: "Settings",
                 column: "IsDeleted");
@@ -486,7 +522,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "ContactFormEntries");
 
             migrationBuilder.DropTable(
-                name: "Groups");
+                name: "PromotersGroups");
 
             migrationBuilder.DropTable(
                 name: "Settings");
@@ -499,6 +535,9 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Promoters");

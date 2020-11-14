@@ -1,0 +1,58 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexViewModel
+
+<link href="~/css/GetPromoterOnGroup.css" rel="stylesheet" asp-append-version="true" />
+<section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1"></h5>
+        <div class="row">
+
+            @foreach (var item in Model.Promoters)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip">
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" src="@item.ImageUrl" alt="card image"></p>
+                                        <h4 class="card-title">@item.FirstName @item.LastName</h4>
+                                        <p class="card-text">City: @item.City</p>
+                                        <p class="card-text">Age: @item.Age</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">@item.FirstName @item.LastName</h4>
+                                        <p class="card-text">@item.Description</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://twitter.com/">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.google.com/">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+

@@ -6,8 +6,14 @@
 
     public class Group : BaseDeletableModel<int>
     {
+        public Group()
+        {
+            this.Promoters = new HashSet<PromoterGroup>();
+        }
 
         public string Name { get; set; }
 
+
+        public ICollection<PromoterGroup> Promoters { get; set; }
     }
 }

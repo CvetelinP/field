@@ -5,5 +5,7 @@
     public class IndexViewModel
     {
         public IEnumerable<IndexPromoterViewModel> Promoters { get; set; }
+
+       
     }
 }

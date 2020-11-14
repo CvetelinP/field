@@ -1,81 +1,84 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexViewModel
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="~/css/PromotersAll.css" rel="stylesheet" asp-append-version="true" />
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
 
-            <form action="/Promoters/Add" class="">
-                <button type="float-left submit-button">Add Promoter</button>
-            </form>
-            <br />
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 
-            <div class="main-box clearfix">
-                <div class="table-responsive">
-                    <table class="table user-list">
-                        <thead>
-                            <tr>
 
-                                <th><span><b>Name/Image</b></span></th>
-                                <th><span><b>Id</b></span></th>
-                                <th><span><b>Gender</b></span></th>
-                                <th><span><b>City</b></span></th>
-                                <th><span><b>Email</b></span></th>
-                                <th><span><b>Rating</b></span></th>
-                                <th>&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Promoters)
-                            {
-                            <tr>
-                                <td>
-                                    <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
-                                         class="card-img-top img-fluid card-image">
-                                    @item.FirstName @item.LastName
-                                </td>
 
-                                <td>
-                                    @item.Id
-                                </td>
-                                <td class="text-center">
-                                    <span class="label label-default">@item.Gender</span>
-                                </td>
-                                <td>
-                                    <a href="#">@item.City</a>
-                                </td>
-                                <td>
-                                    <a href="#">@item.Email</a>
-                                </td>
-                                <td class="text-center" style="color: crimson">
-                                    <span class="label label-default">@item.VotesType</span>
-                                </td>
-                                <td style="width: 20%;">
-                                    <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
+<form action="/Promoters/Add" class="">
+    <button type="float-left submit-button">Add Promoter</button>
+</form>
+<br />
+<input class="form-control mr-sm-2" type="text" placeholder="Search">
+<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 
-                                    <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
-                                        <span class="fa-stack">
-                                            <i class="fa fa-square fa-stack-2x"></i>
-                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
+<div class="main-box clearfix">
+    <div class="table-responsive">
+        <table class="table user-list">
+            <thead>
+                <tr>
 
-                                </td>
-                            </tr>
-                             }
+                    <th><span><b>Name/Image</b></span></th>
+                    <th><span><b>Id</b></span></th>
+                    <th><span><b>Gender</b></span></th>
+                    <th><span><b>City</b></span></th>
+                    <th><span><b>Email</b></span></th>
+                    <th><span><b>Rating</b></span></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Promoters)
+                {
+                    <tr>
+                        <td>
+                            <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
+                                 class="card-img-top img-fluid card-image">
+                            @item.FirstName @item.LastName
+                        </td>
 
-                        </tbody>
-                    </table>
-                </div>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td class="text-center">
+                            <span class="label label-default">@item.Gender</span>
+                        </td>
+                        <td>
+                            <a href="#">@item.City</a>
+                        </td>
+                        <td>
+                            <a href="#">@item.Email</a>
+                        </td>
+                        <td class="text-center" style="color: crimson">
+                            <span class="label label-default">@item.VotesType</span>
+                        </td>
+                        <td style="width: 20%;">
+                            <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
+                                <span class="fa-stack">
+                                    <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
 
-            </div>
-        </div>
+                            <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            <a href="Promoters/AddToGroup" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fas fa-user-plus"></i>
+
+                                </span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
     </div>
+
 </div>
