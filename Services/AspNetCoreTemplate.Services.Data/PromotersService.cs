@@ -1,8 +1,10 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
@@ -37,6 +39,7 @@
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
                 City = model.City,
+                District = model.District,
             };
             foreach (var item in model.Groups)
             {
@@ -65,6 +68,12 @@
             return promoter;
         }
 
+        public IEnumerable<T> GetAll<T>()
+        {
+            var query = this.promoteRepository.All();
 
+
+            return query.To<T>().ToList();
+        }
     }
 }

@@ -1,35 +1,48 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Project.IndexProjectViewModel
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <form action="/Projects/Add" class="">
-    <button type="float-left submit-button">Add Project</button> <hr />
-    
+    <button type="submit" class="btn btn-primary text-uppercase ">Add Project</button>
+
 </form>
+<br/>
 <form action="/Clients/All" class="">
-    <button type="float-left submit-button">Clients</button> <hr />
-</form>
+    <button type="submit" class="btn btn-success text-uppercase ">Add Client</button>
+</form><br />
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
-            <th scope="col"class="text-center">Id</th>
-            <th scope="col"class="text-center">Project Name</th>
-            <th scope="col"class="text-center">Year</th>
-            <th scope="col"class="text-center">Description</th>
+            <th scope="col" class="text-center">Id</th>
+            <th scope="col" class="text-center">Project Name</th>
+            <th scope="col" class="text-center">Year</th>
+            <th scope="col" class="text-center">Description</th>
             <th scope="col" class="text-center">Promoters</th>
-        
+            <th>&nbsp;</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Projects)
         {
-        <tr>
-            <th scope="row" class="text-center">@item.Id</th>
-            <td class="text-center">@item.Name</td>
-            <td class="text-center">@item.Year</td>
-            <td class="text-center">@item.Description</td>
-            <th class="text-center">
-                <a href="/Projects/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
-            </th>
-        </tr>
+            <tr>
+                <th scope="row" class="text-center">@item.Id</th>
+                <td class="text-center">@item.Name</td>
+                <td class="text-center">@item.Year</td>
+                <td class="text-center">@item.Description</td>
+                <td class="text-center row-cols-6">
+                    <a href="/Projects/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
+                </td>
+                <td>
+                    <a href="/Projects/Remove?Id=@item.Id" class="table-link danger">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </td>
+
+            </tr>
+
         }
- 
+
     </tbody>
 </table>

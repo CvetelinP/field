@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -15,19 +17,18 @@
     public class PromotersController : Controller
     {
         private readonly ApplicationDbContext db;
-        private readonly IDeletableEntityRepository<Promoter> promoteRepository;
+
         private readonly IPromotersService promotersService;
         private readonly IProjectService projectService;
-        
 
-        public PromotersController(ApplicationDbContext db, IDeletableEntityRepository<Promoter> promoteRepository, IPromotersService promotersService, IProjectService projectService)
+
+        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService)
         {
             this.db = db;
-            this.promoteRepository = promoteRepository;
+
             this.promotersService = promotersService;
             this.projectService = projectService;
         }
-
 
 
         [Authorize]
@@ -54,15 +55,25 @@
         }
 
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(string searchStringFirstName, string searchStringLastName)
         {
+            this.ViewData["CurrentFilter"] = searchStringFirstName;
+            this.ViewData["CurrentFilter1"] = searchStringLastName;
             var viewModel = new IndexViewModel();
 
-            var promoters = this.promoteRepository.All()
-                .To<IndexPromoterViewModel>().ToList();
+            var promoters = this.promotersService.GetAll<IndexPromoterViewModel>();
+
+            //TODO:Make Search work properly;
+
+            if (!string.IsNullOrEmpty(searchStringFirstName))
+            {
+                viewModel.Promoters = promoters.Where(x =>
+                        x.FirstName.Contains(searchStringFirstName) || x.LastName.Contains(searchStringLastName));
+
+                return this.View(viewModel);
+            }
 
             viewModel.Promoters = promoters;
-
             return this.View(viewModel);
         }
 
@@ -78,7 +89,6 @@
             return this.View(viewModel);
         }
 
-
         [Authorize]
         public IActionResult Remove(int id)
         {
@@ -89,11 +99,5 @@
 
             return this.Redirect("/Promoters/All");
         }
-
-        [Authorize]
-        public IActionResult AddToGroup()
-        {
-            return this.View();
-        }
-    } 
+    }
 }

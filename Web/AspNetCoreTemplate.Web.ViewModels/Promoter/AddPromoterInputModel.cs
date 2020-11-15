@@ -57,6 +57,8 @@
         [MaxLength(20)]
         public string City { get; set; }
 
+        public string District { get; set; }
+
         [Display(Name ="Projects")]
         [Range(1, int.MaxValue)]
         public int ProjectId { get; set; }

@@ -1,12 +1,12 @@
-﻿using System.Threading.Tasks;
-using AspNetCoreTemplate.Data.Models;
-using AspNetCoreTemplate.Web.ViewModels.Vote;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
+    using AspNetCoreTemplate.Web.ViewModels.Vote;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]

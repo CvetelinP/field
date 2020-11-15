@@ -1,17 +1,12 @@
-﻿using AspNetCoreTemplate.Web.ViewModels.Promoter;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
-    using System.ComponentModel;
     using System.Linq;
 
     using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels;
     using AspNetCoreTemplate.Web.ViewModels.Group;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class GroupsController : Controller
@@ -31,6 +26,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Add(IndexGroupViewModel model)
         {
@@ -38,6 +34,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             {
                 return this.View();
             }
+
             var group = new Group
             {
                 Name = model.Name,
@@ -48,9 +45,9 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.Redirect("/Groups/All");
         }
 
+        [Authorize]
         public IActionResult All()
         {
-
             var viewModel = new GroupViewModel();
 
             var group = this.groupService.GetAll<IndexGroupViewModel>();
@@ -72,8 +69,9 @@ namespace AspNetCoreTemplate.Web.Controllers
         public IActionResult GetPromoters(int id)
         {
             //TODO:get all promoters with GroupId;
-            return this.View();
-        }
 
+            return this.Ok();
+
+        }
     }
 }

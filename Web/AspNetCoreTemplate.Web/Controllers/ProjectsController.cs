@@ -72,5 +72,16 @@
 
             return this.View(viewModel);
         }
+
+        [Authorize]
+        public IActionResult Remove(int id)
+        {
+            var project = this.db.Projects.FirstOrDefault(x => x.Id == id);
+
+            this.db.Projects.Remove(project);
+            this.db.SaveChanges();
+
+            return this.Redirect("/Projects/All");
+        }
     }
 }

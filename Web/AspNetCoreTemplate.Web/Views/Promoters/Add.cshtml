@@ -3,7 +3,7 @@
 @{
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-
+<br />
 <form method="post">
 
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -19,17 +19,18 @@
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-6">
-            <label asp-for="Email" style="color: chocolate">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Email Adreess">
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
 
         <div class="col-md-6">
             <label asp-for="City" style="color: chocolate"></label>
             <input class="form-control" id="city" name="city" placeholder="City">
             <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="District" style="color: chocolate"></label>
+            <input class="form-control" id="distict" name="district" placeholder="District">
+            <span asp-validation-for="District" class="text-danger"></span>
         </div>
     </div>
     <div class="row">
@@ -69,30 +70,38 @@
             <span asp-validation-for="Age" class="text-danger"></span>
         </div>
     </div>
-    <div class="form-group w-45">
-        <label asp-for="Description" style="color: chocolate">Description</label>
-        <textarea rows="4" class="form-control" id="description" name="description" placeholder="..."></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Email" style="color: chocolate">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email Adreess">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Description" style="color: chocolate">Description</label>
+            <textarea rows="4" class="form-control" id="description" name="description" placeholder="..."></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
     </div>
-    <h2 style="color:chocolate">Projects</h2>
+
+    <label asp-for="ProjectId" style="color: chocolate">Projects</label>
     <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"></select>
-    <span asp-validation-for="ProjectId" class="text-danger"></span><br />
+    <span asp-validation-for="ProjectId" class="text-danger"></span>
+
+
     <div id="GroupsContainer">
         <label asp-for="Groups"></label>
         <a class="btn btn-success" onclick="AddGroups()">+</a>
-    </div><br />
+    </div>
+
     <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
 </form>
 
-
-
 @section Scripts {
     <script>
-
         var groupIndex = 0;
         function AddGroups() {
-            
-            $("#GroupsContainer").append("<div class='form-control'> Name: <input type='text' name='Groups["+groupIndex+"].Name' /></div>");
+
+            $("#GroupsContainer").append("<div class='form-control'> Name: <input type='text' name='Groups[" + groupIndex + "].Name' /></div>");
             groupIndex++;
         }
     </script>

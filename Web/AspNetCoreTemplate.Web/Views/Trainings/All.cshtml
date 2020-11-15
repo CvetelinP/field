@@ -1,0 +1,46 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Training.IndexTrainingViewModel
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<h1>Courses</h1>
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<br />
+<form action="/Trainings/Add" class="">
+    <button type="submit" class="btn btn-primary text-uppercase ">Add Course</button>
+ 
+</form>
+
+<hr>
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="text-center">Id</th>
+            <th scope="col" class="text-center">Course Name</th>
+            <th>&nbsp;</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Trainings)
+        {
+            <tr>
+                <th scope="row" class="text-center">@item.Id</th>
+                <td class="text-center">@item.Name</td>
+               
+                <td>
+                    <a href="/Projects/Remove?Id=@item.Id" class="table-link danger">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

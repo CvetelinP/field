@@ -40,6 +40,10 @@
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Answer> Answers { get; set; }
+
         public DbSet<PromoterGroup> PromotersGroups { get; set; }
 
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }

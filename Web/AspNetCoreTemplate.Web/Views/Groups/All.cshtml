@@ -1,16 +1,17 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Group.GroupViewModel
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-    <table class="table table-hover">
+    <table class="table">
         <form action="/Groups/Add">
-            <button type="float-left submit-button">Add Group</button>
+            <button type="submit" class="btn btn-dark text-uppercase ">Add Group</button>
         </form>
+        <br/>
 
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">Group Id</th>
                 <th scope="col">Group Name</th>
-                <th scope="col">Count Of Promoters</th>
+                <th scope="col">Promoters</th>
                 <th>&nbsp;</th>
 
             </tr>
@@ -18,13 +19,13 @@
         <tbody>
             @foreach (var item in Model.Groups)
             {
-                <tr class="table-primary">
-                    <th scope="row">@item.Id</th>
-                    <th scope="row">@item.Name</th>
+                <tr>
+                    <th scope="row" class="text-center">@item.Id</th>
+                    <th scope="row"class="text-center">@item.Name</th>
                     <th class="text-center">
                         <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
                     </th>
-                   
+
                     <td style="width: 20%;">
                         <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
                             <span class="fa-stack">

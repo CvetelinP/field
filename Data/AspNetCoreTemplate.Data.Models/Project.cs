@@ -9,6 +9,7 @@
         public Project()
         {
             this.Promoters = new HashSet<Promoter>();
+            this.Trainings = new HashSet<Training>();
         }
 
         public string Name { get; set; }
@@ -22,6 +23,8 @@
         public Client Client { get; set; }
 
         public ICollection<Promoter> Promoters { get; set; }
+
+        public ICollection<Training> Trainings { get; set; }
 
     }
 

@@ -1,0 +1,39 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Training.IndexTrainingInputModel
+@{
+    var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
+}
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="col-md-6">
+        <label asp-for="Name" style="color: chocolate">Course name</label>
+        <input type="text" class="form-control" size="30" id="name" name="name" placeholder="Course name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <label asp-for="ProjectId" style="color: chocolate">Projects</label>
+    <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"></select>
+    <span asp-validation-for="ProjectId" class="text-danger"></span><br />
+    <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+
+</form>
+<hr>
+
+<div id="QuestionContainer">
+    <label asp-for="Questions"></label>
+    <a class="btn btn-primary" onclick="AddQuestion()">+</a>
+</div>
+
+
+@section Scripts {
+    <script>
+
+        
+        var groupIndex = 1;
+        function AddQuestion() {
+
+            $("#QuestionContainer").append("<div class='form-control form-control-lg'> Question: <input type='text' name='Questions["+ groupIndex +"].Name' /></div>");
+            groupIndex++;
+        }
+    </script>
+}
+
+

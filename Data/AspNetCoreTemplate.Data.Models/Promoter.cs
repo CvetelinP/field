@@ -39,6 +39,8 @@
 
         public string City { get; set; }
 
+        public string District { get; set; }
+
         public ICollection<PromoterGroup> Groups { get; set; }
 
         public ICollection<Vote> Votes { get; set; }
