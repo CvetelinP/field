@@ -10,7 +10,6 @@
         public Promoter()
         {
             this.Votes = new HashSet<Vote>();
-            this.Groups = new HashSet<PromoterGroup>();
         }
 
         public string FirstName { get; set; }
@@ -33,7 +32,11 @@
 
         public string Email { get; set; }
 
-        public int ProjectId { get; set; }
+
+        public int? GroupId { get; set; }
+        public Group Group { get; set; }
+
+        public int? ProjectId { get; set; }
 
         public Project Project { get; set; }
 
@@ -41,10 +44,7 @@
 
         public string District { get; set; }
 
-        public ICollection<PromoterGroup> Groups { get; set; }
-
         public ICollection<Vote> Votes { get; set; }
-
 
     }
 }

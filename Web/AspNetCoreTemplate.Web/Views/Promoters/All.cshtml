@@ -13,7 +13,7 @@
         </p>
     </div>
 </form>
-<br/>
+<br />
 <form action="/Promoters/Add" class="text-center">
     <button type="submit" class="btn btn-primary text-uppercase ">Add Promoter</button>
 </form>
@@ -26,14 +26,14 @@
     <div class="table-responsive">
         <table class="table user-list">
             <thead>
-                <tr>
+                <tr class="table-success">
 
-                    <th><span class="text-center"><b>Name/Image</b></span></th>
-                    <th><span class="text-center"><b>Id</b></span></th>
-                    <th><span class="text-center"><b>Gender</b></span></th>
-                    <th><span class="text-center"><b>City</b></span></th>
-                    <th><span class="text-center"><b>Email</b></span></th>
-                    <th><span class="text-center"><b>Rating</b></span></th>
+                    <th class="text-center"style="width: 30%;"><b>Name/Image</b></th>
+                    <th class="text-center"><b>Id</b></th>
+                    <th class="text-center"><b>Gender</b></th>
+                    <th class="text-center"><b>City</b></th>
+                    <th class="text-center"><b>Email</b></th>
+                    <th class="text-center"><b>Rating</b></th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -56,20 +56,20 @@
                         <td>
                             @item.City
                         </td>
-                        <td>
+                        <td class="text-center">
                             @item.Email
                         </td>
                         <td class="text-center" style="color: crimson">
                             <span class="label label-default">@item.VotesType</span>
                         </td>
-                        <td style="width: 20%;">
+                        <td style="width: 25%;">
                             <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
                                 <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
                                     <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
-
+                            
                             <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
                                 <span class="fa-stack">
                                     <i class="fa fa-square fa-stack-2x"></i>
@@ -78,8 +78,18 @@
                             </a>
                             <a href="Promoters/AddToGroup" class="table-link danger">
                                 <span class="fa-stack">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="fas fa-user-plus" onclick="AddGroups()"></i>
 
+                                </span>
+                            </a>
+                            <a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fas fa-user-plus" style="color: green"></i>
+                                </span>
+                            </a>
+                            <a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fas fa-pencil-alt"></i>
                                 </span>
                             </a>
 
@@ -91,3 +101,14 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <script>
+        var groupIndex = 0;
+        function AddGroups() {
+
+            $("#GroupsContainer").append("<div class='form-control'> Name: <input type='text' name='Groups[" + groupIndex + "].Name' /></div>");
+            groupIndex++;
+        }
+    </script>
+}

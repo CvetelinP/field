@@ -61,10 +61,14 @@
 
         [Display(Name ="Projects")]
         [Range(1, int.MaxValue)]
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
 
-        public IEnumerable<PromoterGroupInputModel> Groups { get; set; }
+        [Display(Name = "Groups")]
+        [Range(1, int.MaxValue)]
+        public int? GroupId { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> GroupsItems { get; set; }
     }
 }

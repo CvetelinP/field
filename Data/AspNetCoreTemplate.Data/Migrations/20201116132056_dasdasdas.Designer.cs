@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201115094455_fffff")]
-    partial class fffff
+    [Migration("20201116132056_dasdasdas")]
+    partial class dasdasdas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,40 @@ namespace AspNetCoreTemplate.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Answer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
+                });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.ApplicationRole", b =>
                 {
@@ -341,6 +375,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -359,13 +396,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Skills")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("IsDeleted");
 
@@ -374,26 +413,38 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("Promoters");
                 });
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("PromoterId")
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TrainingId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupId");
+                    b.HasIndex("IsDeleted");
 
-                    b.HasIndex("PromoterId");
+                    b.HasIndex("TrainingId");
 
-                    b.ToTable("PromotersGroups");
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Setting", b =>
@@ -441,9 +492,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("File")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -453,9 +501,14 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Trainings");
                 });
@@ -595,6 +648,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Answer", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Project", b =>
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Client", "Client")
@@ -606,24 +668,29 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Promoter", b =>
                 {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Group", "Group")
+                        .WithMany("Promoters")
+                        .HasForeignKey("GroupId");
+
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
                         .WithMany("Promoters")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Training", "Training")
+                        .WithMany("Questions")
+                        .HasForeignKey("TrainingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Training", b =>
                 {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Group", "Group")
-                        .WithMany("Promoters")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
-                        .WithMany("Groups")
-                        .HasForeignKey("PromoterId")
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
+                        .WithMany("Trainings")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

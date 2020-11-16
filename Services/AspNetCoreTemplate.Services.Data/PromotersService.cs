@@ -27,6 +27,7 @@
             var genderEnum = Enum.Parse<Gender>(model.Gender);
             var promoter = new Promoter
             {
+                GroupId = model.GroupId,
                 ProjectId = model.ProjectId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
@@ -41,21 +42,21 @@
                 City = model.City,
                 District = model.District,
             };
-            foreach (var item in model.Groups)
-            {
-                var group = this.groupRepository.All().FirstOrDefault(x => x.Name == item.Name);
+            //foreach (var item in model.Groups)
+            //{
+            //    var group = this.groupRepository.All().FirstOrDefault(x => x.Name == item.Name);
 
-                if (group == null)
-                {
-                    group = new Group { Name = item.Name };
-                }
+            //    if (group == null)
+            //    {
+            //        group = new Group { Name = item.Name };
+            //    }
 
-                promoter.Groups.Add(new PromoterGroup
-                {
-                    Group = group,
+            //    promoter.Groups.Add(new PromoterGroup
+            //    {
+            //        Group = group,
 
-                });
-            }
+            //    });
+            //}
 
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();

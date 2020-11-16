@@ -31,7 +31,6 @@
 
         public int VotesType { get; set; }
 
-
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Data.Models.Promoter, IndexPromoterViewModel>()

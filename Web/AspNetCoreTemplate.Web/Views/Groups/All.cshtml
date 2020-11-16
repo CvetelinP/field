@@ -5,14 +5,14 @@
         <form action="/Groups/Add">
             <button type="submit" class="btn btn-dark text-uppercase ">Add Group</button>
         </form>
-        <br/>
+        <hr />
 
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Group Id</th>
                 <th scope="col">Group Name</th>
                 <th scope="col">Promoters</th>
-                <th>&nbsp;</th>
+                <th class="border-primary">&nbsp;</th>
 
             </tr>
         </thead>
@@ -26,22 +26,20 @@
                         <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
                     </th>
 
-                    <td style="width: 20%;">
-                        <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                            </span>
-
-                        </a>
-
+                    <td style="width: 10%;">
                         <a href="/Groups/Remove?Id=@item.Id" class="table-link danger">
                             <span class="fa-stack">
                                 <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                             </span>
                         </a>
+                        <a href="#" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </a>
                     </td>
+ 
                 </tr>
             }
         </tbody>

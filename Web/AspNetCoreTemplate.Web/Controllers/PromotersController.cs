@@ -1,15 +1,10 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -20,14 +15,15 @@ namespace AspNetCoreTemplate.Web.Controllers
 
         private readonly IPromotersService promotersService;
         private readonly IProjectService projectService;
+        private readonly IGroupService groupService;
 
-
-        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService)
+        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService,IGroupService groupService)
         {
             this.db = db;
 
             this.promotersService = promotersService;
             this.projectService = projectService;
+            this.groupService = groupService;
         }
 
 
@@ -36,6 +32,7 @@ namespace AspNetCoreTemplate.Web.Controllers
         {
             var viewModel = new AddPromoterInputModel();
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
+            viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
             return this.View(viewModel);
         }
 
@@ -46,6 +43,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             if (!this.ModelState.IsValid)
             {
                 model.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
+                model.GroupsItems = this.groupService.GetAllAsKeyValuePair();
                 return this.View(model);
             }
 

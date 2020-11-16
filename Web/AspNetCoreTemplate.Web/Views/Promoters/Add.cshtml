@@ -2,6 +2,7 @@
 @model AspNetCoreTemplate.Web.ViewModels.Promoter.AddPromoterInputModel
 @{
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 <br />
 <form method="post">
@@ -82,27 +83,16 @@
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
     </div>
+    <hr style="color: orangered">
+    <div class="row-cols-6">
+        <label asp-for="ProjectId" style="color: blue">Projects</label>
+        <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option></option></select>
 
-    <label asp-for="ProjectId" style="color: chocolate">Projects</label>
-    <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"></select>
-    <span asp-validation-for="ProjectId" class="text-danger"></span>
-
-
-    <div id="GroupsContainer">
-        <label asp-for="Groups"></label>
-        <a class="btn btn-success" onclick="AddGroups()">+</a>
+        <label asp-for="GroupId" style="color: blue">Groups</label>
+        <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4" > <option></option></select>
     </div>
+    <br/>
 
     <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
 </form>
 
-@section Scripts {
-    <script>
-        var groupIndex = 0;
-        function AddGroups() {
-
-            $("#GroupsContainer").append("<div class='form-control'> Name: <input type='text' name='Groups[" + groupIndex + "].Name' /></div>");
-            groupIndex++;
-        }
-    </script>
-} 

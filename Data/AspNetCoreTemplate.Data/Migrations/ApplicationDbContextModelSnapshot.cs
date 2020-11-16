@@ -373,6 +373,9 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -391,7 +394,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<int>("Skills")
@@ -399,33 +402,13 @@ namespace AspNetCoreTemplate.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GroupId");
+
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Promoters");
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PromoterId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("PromoterId");
-
-                    b.ToTable("PromotersGroups");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
@@ -683,26 +666,13 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Promoter", b =>
                 {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
-                        .WithMany("Promoters")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGroup", b =>
-                {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Group", "Group")
                         .WithMany("Promoters")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GroupId");
 
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
-                        .WithMany("Groups")
-                        .HasForeignKey("PromoterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
+                        .WithMany("Promoters")
+                        .HasForeignKey("ProjectId");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
