@@ -1,6 +1,7 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexViewModel
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="~/css/PromotersAll.css" rel="stylesheet" asp-append-version="true" />
+<link href="~/css/modal.css" rel="stylesheet" asp-append-version="true" />
 <br />
 <br />
 <form asp-action="All" method="get">
@@ -28,7 +29,7 @@
             <thead>
                 <tr class="table-success">
 
-                    <th class="text-center"style="width: 30%;"><b>Name/Image</b></th>
+                    <th class="text-center" style="width: 30%;"><b>Name/Image</b></th>
                     <th class="text-center"><b>Id</b></th>
                     <th class="text-center"><b>Gender</b></th>
                     <th class="text-center"><b>City</b></th>
@@ -40,69 +41,99 @@
             <tbody>
                 @foreach (var item in Model.Promoters)
                 {
-                    <tr>
-                        <td>
-                            <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
-                                 class="card-img-top img-fluid card-image" s>
-                            <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
-                        </td>
+                <tr>
+                    <td>
+                        <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
+                             class="card-img-top img-fluid card-image" s>
+                        <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
+                    </td>
 
-                        <td>
-                            @item.Id
-                        </td>
-                        <td class="text-center">
-                            <span class="label label-default">@item.Gender</span>
-                        </td>
-                        <td>
-                            @item.City
-                        </td>
-                        <td class="text-center">
-                            @item.Email
-                        </td>
-                        <td class="text-center" style="color: crimson">
-                            <span class="label label-default">@item.VotesType</span>
-                        </td>
-                        <td style="width: 25%;">
-                            <a href="/Promoters/Profiles?Id=@item.Id" class="table-link">
-                                <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            
-                            <a href="/Promoters/Remove?Id=@item.Id" class="table-link danger">
-                                <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="Promoters/AddToGroup" class="table-link danger">
-                                <span class="fa-stack">
-                                    <i class="fas fa-user-plus" onclick="AddGroups()"></i>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td class="text-center">
+                        <span class="label label-default">@item.Gender</span>
+                    </td>
+                    <td>
+                        @item.City
+                    </td>
+                    <td class="text-center">
+                        @item.Email
+                    </td>
+                   
+                    <td class="text-center" style="color: crimson">
+                        <span class="label label-default">@item.VotesType</span>
+                    </td>
+                    <td style="width: 25%;">
+                        <a href="/Promoters/Profiles/@item.Id" class="table-link">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
 
-                                </span>
-                            </a>
-                            <a href="#" class="table-link danger">
-                                <span class="fa-stack">
-                                    <i class="fas fa-user-plus" style="color: green"></i>
-                                </span>
-                            </a>
-                            <a href="#" class="table-link danger">
-                                <span class="fa-stack">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </span>
-                            </a>
+                        <a href="/Promoters/Remove/@item.Id" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fas fa-user-plus" onclick="AddGroups()"></i>
 
-                        </td>
-                    </tr>
+                            </span>
+                        </a>
+
+
+                        <a href="#" onclick="openModal()" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fas fa-user-plus" style="color: green"></i>
+                            </span>
+                        </a>
+
+
+
+
+                        <a href="#" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
+
+        <div style="display: none" class="modal-body">
+            <div class="modal-content">
+                <select>
+                    <option></option>
+                </select>
+                <button type="submit" class="btn btn-primary text-uppercase">SAVE</button>
+            </div>
+            <button onclick="closeModal() "type="submit" class="close-btn">X</button>
+
+        </div>
+
     </div>
-
 </div>
-
-@section Scripts {
+<script>
+    var modalDisplayStyle = document.querySelector(".modal-body")
+    function openModal() {
+        if (modalDisplayStyle.style.display === "none") {
+            modalDisplayStyle.style.display = "block"
+        } else {
+            modalDisplayStyle.style.display = "none"
+        }
+    }
+    function closeModal() {
+        modalDisplayStyle.style.display = "none"
+    }
+</script>
+@*@section Scripts {
     <script>
         var groupIndex = 0;
         function AddGroups() {
@@ -111,4 +142,4 @@
             groupIndex++;
         }
     </script>
-}
+}*@

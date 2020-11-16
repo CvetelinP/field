@@ -1,0 +1,96 @@
+﻿@using AspNetCoreTemplate.Data.Models.Enum
+@model AspNetCoreTemplate.Web.ViewModels.Promoter.EditPromoterViewModel
+
+<br />
+<form method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="FirstName" style="color: chocolate">First Name</label>
+            <input type="text" class="form-control" size="30" id="firstName" name="firstName" placeholder="First name">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="LastName" style="color: chocolate">Last Name</label>
+            <input type="text" class="form-control" size="30" id="lastName" name="lastName" placeholder="Last name">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <label asp-for="City" style="color: chocolate"></label>
+            <input class="form-control" id="city" name="city" placeholder="City">
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="District" style="color: chocolate"></label>
+            <input class="form-control" id="distict" name="district" placeholder="District">
+            <span asp-validation-for="District" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Language" style="color: chocolate" s>Language</label>
+            <input type="text" class="form-control" id="language" name="language" placeholder="language">
+            <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label for="imageurl" style="color: chocolate">ImageUrl</label>
+            <input type="text" class="form-control" id="imageurl" name="imageurl" placeholder="https://...">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Skills" style="color: chocolate">Skills</label>
+            <select asp-for="Skills" class="form-control"
+                    asp-items="@Html.GetEnumSelectList<Skills>()">
+            </select>
+            <span asp-validation-for="Skills" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label as="gender" style="color: chocolate">Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" placeholder="Male or Female">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Mobile" style="color: chocolate"> Mobile</label>
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+359">
+            <span asp-validation-for="Mobile" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Age" style="color: chocolate" s>Age</label>
+            <input min="18" max="99" type="number" class="form-control" id="age" name="age" placeholder="Age">
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Email" style="color: chocolate">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email Adreess">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Description" style="color: chocolate">Description</label>
+            <textarea rows="4" class="form-control" id="description" name="description" placeholder="..."></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <hr style="color: orangered">
+    @*<div class="row-cols-6">
+        <label asp-for="ProjectId" style="color: blue">Projects</label>
+        <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option></option></select>
+
+        <label asp-for="GroupId" style="color: blue">Groups</label>
+        <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option></option></select>
+    </div>*@
+    <br />
+
+    <button type="submit" class="btn btn-primary text-uppercase">Edit</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AspNetCoreTemplate.Web.ViewModels.Group
+﻿namespace AspNetCoreTemplate.Web.ViewModels.Group
 {
     using System.ComponentModel.DataAnnotations;
 

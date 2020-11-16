@@ -1,22 +1,22 @@
-﻿.wrrp {
-    /*min-height: 100vh;*/
+﻿* {
+    padding: 0px;
+    margin: 0px;
 }
-
+/* logo positioning */
 .rounded-circle {
-    position: absolute;
+    position: fixed;
+    height: 160px;
+    width: 160px;
     border-radius: 50%;
-    left: calc(50% - 90px);
-    top: calc(50% - 90px);
+    left: calc(50% - 80px);
+    top: calc(50% - 80px);
 }
 
+/* rotate all elements 360deg */
 .avatars {
+    position: absolute;
     top: 50%;
     left: 50%;
-    position: absolute;
-    /* border: 2px solid green; */
-    height: 0px;
-    width: 0px;
-    /* border-radius: 50%; */
     animation: spinAvatars 30s linear infinite;
 }
 
@@ -26,28 +26,14 @@
     }
 }
 
+/* .thumb img containers */
 .avatar {
     position: absolute;
     left: calc(50% - 50px);
     top: calc(50% - 50px);
-    height: 100px;
-    width: 100px;
-    /* border: 2px solid bisque; */
-    border-radius: 50%;
-    text-align: center;
 }
 
-.thumb {
-    position: absolute;
-    left: calc(50% - 50px);
-    top: calc(50% - 50px);
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    background-image: url("../../assets/city-lights-night-traffic-highway-roads-1609975.jpg");
-    background-size: cover;
-}
-
+/* turning thumbs backwards to appear straight always */
 .one {
     animation: backward 30s linear infinite;
 }
@@ -113,34 +99,9 @@
     }
 }
 
-.avatar:nth-child(1) {
-    transform: translateY(-150px);
-    background: darkslategrey;
-    background-size: cover;
-}
-
-.avatar:nth-child(2) {
-    transform-origin: center;
-    transform: rotate(-60deg) translateY(-150px);
-    background: goldenrod;
-}
-
-.avatar:nth-child(3) {
-    transform: rotate(-120deg) translateY(-150px);
-    background: springgreen;
-}
-
-.avatar:nth-child(4) {
-    transform: rotate(180deg) translateY(-150px);
-    background: crimson;
-}
-
-.avatar:nth-child(5) {
-    transform: rotate(120deg) translateY(-150px);
-    background: whitesmoke;
-}
-
-.avatar:nth-child(6) {
-    transform: rotate(60deg) translateY(-150px);
-    background: darkolivegreen;
+/* process images to fit without losing ratio and animate zoom in/out*/
+img {
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    object-fit: cover;
 }

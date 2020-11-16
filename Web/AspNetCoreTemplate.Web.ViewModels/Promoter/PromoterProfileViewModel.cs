@@ -35,6 +35,10 @@
 
         public int VotesCount { get; set; }
 
+        public int? ProjectId { get; set; }
+
+        public int? GroupId { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Data.Models.Promoter, PromoterProfileViewModel>()
