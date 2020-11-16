@@ -22,7 +22,7 @@
             this.groupRepository = groupRepository;
         }
 
-        public async Task CreateAsync(AddPromoterInputModel model)
+        public async Task CreateAsync(IndexPromoterViewModel model)
         {
             var genderEnum = Enum.Parse<Gender>(model.Gender);
             var promoter = new Promoter

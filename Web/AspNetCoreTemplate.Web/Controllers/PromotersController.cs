@@ -32,7 +32,7 @@
         [Authorize]
         public IActionResult Add()
         {
-            var viewModel = new AddPromoterInputModel();
+            var viewModel = new IndexPromoterViewModel();
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
             return this.View(viewModel);
@@ -40,7 +40,7 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add(AddPromoterInputModel model)
+        public async Task<IActionResult> Add(IndexPromoterViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -102,34 +102,28 @@
             return this.Redirect("/Promoters/All");
         }
 
-        public IActionResult Edit()
-        {
-            var viewModel = new EditPromoterViewModel();
-            viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
-            viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
-            return this.View(viewModel);
-        }
 
-        [HttpPost]
         public IActionResult Edit(int id)
         {
-            var model = this.promotersService.GetById<AddPromoterInputModel>(id);          
+            var model = this.promotersService.GetById<PromoterProfileViewModel>(id);
+
             var viewModel = new EditPromoterViewModel
             {
-                GroupId = model.GroupId,
-                ProjectId = model.ProjectId,
+
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Description = model.Description,
                 Email = model.Email,
                 Gender = model.Gender,
-                Skills = model.Skills,
-                Mobile = model.Mobile,
                 Age = model.Age,
-                Language = model.Language,
-                ExistingPhotoPath = model.ImageUrl,
+                ImageUrl = model.ImageUrl,
                 City = model.City,
                 District = model.District,
+                Mobile = model.Mobile,
+                GroupId = model.GroupId,
+                ProjectId = model.ProjectId,
+                Language = model.Language,
+                Skills = model.Skills,
             };
 
             return this.View(viewModel);

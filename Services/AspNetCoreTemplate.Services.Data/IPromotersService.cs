@@ -9,7 +9,7 @@
     public interface IPromotersService
     {
 
-        Task CreateAsync(AddPromoterInputModel model);
+        Task CreateAsync(IndexPromoterViewModel model);
 
         T GetById<T>(int id);
 

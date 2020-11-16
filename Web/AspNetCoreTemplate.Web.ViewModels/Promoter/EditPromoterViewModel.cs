@@ -4,11 +4,9 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class EditPromoterViewModel : AddPromoterInputModel
+    public class EditPromoterViewModel : IndexPromoterViewModel
     {
 
-        public string ExistingPhotoPath { get; set; }
 
-       
     }
 }
