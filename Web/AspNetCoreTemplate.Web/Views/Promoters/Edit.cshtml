@@ -1,111 +1,102 @@
-﻿@using AspNetCoreTemplate.Data.Models.Enum
-@model AspNetCoreTemplate.Web.ViewModels.Promoter.EditPromoterViewModel
+﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexPromoterViewModel
 
-<br />
-<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Edit"
-      method="post" class="mt-3">
-
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <input hidden asp-for="Id"/>
-    <input hidden asp-for="ImageUrl"/>
-    <div class="row">
-        <div class="col-md-6">
-            <label asp-for="FirstName" style="color: chocolate">First Name</label>
-            <input type="text" class="form-control" size="30" id="firstName" name="firstName" placeholder="First name">
-            <span asp-validation-for="FirstName" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="LastName" style="color: chocolate">Last Name</label>
-            <input type="text" class="form-control" size="30" id="lastName" name="lastName" placeholder="Last name">
-            <span asp-validation-for="LastName" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-6">
-            <label asp-for="City" style="color: chocolate"></label>
-            <input class="form-control" id="city" name="city" placeholder="City">
-            <span asp-validation-for="City" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="District" style="color: chocolate"></label>
-            <input class="form-control" id="distict" name="district" placeholder="District">
-            <span asp-validation-for="District" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label asp-for="Language" style="color: chocolate" s>Language</label>
-            <input type="text" class="form-control" id="language" name="language" placeholder="language">
-            <span asp-validation-for="Language" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label for="imageurl" style="color: chocolate">ImageUrl</label>
-            <input type="text" class="form-control" id="imageurl" name="imageurl" placeholder="https://...">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label asp-for="Skills" style="color: chocolate">Skills</label>
-            <select asp-for="Skills" class="form-control"
-                    asp-items="@Html.GetEnumSelectList<Skills>()">
-            </select>
-            <span asp-validation-for="Skills" class="text-danger"></span>
-        </div>
-
-        <div class="col-md-6">
-            <label as="gender" style="color: chocolate">Gender</label>
-            <input type="text" class="form-control" id="gender" name="gender" placeholder="Male or Female">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label asp-for="Mobile" style="color: chocolate"> Mobile</label>
-            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+359">
-            <span asp-validation-for="Mobile" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="Age" style="color: chocolate" s>Age</label>
-            <input min="18" max="99" type="number" class="form-control" id="age" name="age" placeholder="Age">
-            <span asp-validation-for="Age" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <label asp-for="Email" style="color: chocolate">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Email Adreess">
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div class="col-md-6">
-            <label asp-for="Description" style="color: chocolate">Description</label>
-            <textarea rows="4" class="form-control" id="description" name="description" placeholder="..."></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-    </div>
-    <hr style="color: orangered">
-    @*<div class="row-cols-6">
-        <label asp-for="ProjectId" style="color: blue">Projects</label>
-        <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option></option></select>
-
-        <label asp-for="GroupId" style="color: blue">Groups</label>
-        <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option></option></select>
-    </div>*@
-    <br />
-
-    <button type="submit" class="btn btn-primary text-uppercase">Edit</button>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
-</form>
-
-
-@section Scripts{
-    
-    <script>
-        $('.custom-file-input').on("change",
-            function() {
-                var file = $(this).val().split("\\").pop();
-                $(this).next('.custom-file-label').html(filename);
-            });
-    </script>
+@{
+    ViewData["Title"] = "Edit";
+    var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
+
+<h1>Edit</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Language" class="control-label"></label>
+                <input asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Skills" class="control-label"></label>
+                <input asp-for="Skills" class="form-control" />
+                <span asp-validation-for="Skills" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VotesType" class="control-label"></label>
+                <input asp-for="VotesType" class="form-control" />
+                <span asp-validation-for="VotesType" class="text-danger"></span>
+            </div>
+            <div class="row-cols-6">
+                <label asp-for="ProjectId" style="color: blue">Projects</label>
+                <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option></option></select>
+
+                <label asp-for="GroupId" style="color: blue">Groups</label>
+                <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4" > <option></option></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,11 +1,9 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Models.Enum;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
@@ -102,31 +100,15 @@
             return this.Redirect("/Promoters/All");
         }
 
-
+        [HttpGet]
         public IActionResult Edit(int id)
         {
-            var model = this.promotersService.GetById<PromoterProfileViewModel>(id);
-
-            var viewModel = new EditPromoterViewModel
-            {
-
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Description = model.Description,
-                Email = model.Email,
-                Gender = model.Gender,
-                Age = model.Age,
-                ImageUrl = model.ImageUrl,
-                City = model.City,
-                District = model.District,
-                Mobile = model.Mobile,
-                GroupId = model.GroupId,
-                ProjectId = model.ProjectId,
-                Language = model.Language,
-                Skills = model.Skills,
-            };
-
+            var viewModel = this.promotersService.GetById<IndexPromoterViewModel>(id);
+            viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
+            viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
+            
             return this.View(viewModel);
+
         }
     }
 }
