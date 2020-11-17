@@ -5,14 +5,8 @@
 <br />
 <br />
 <form asp-action="All" method="get">
-    <div class="form-actions no-color">
-        <p>
-            Find by First name: <input type="text" name="searchStringFirstName" value="@ViewData["CurrentFilter"]" />
-            Find by Last name: <input type="text" name="searchStringLastName" value="@ViewData["CurrentFilter1"]" />
-            <input type="submit" value="Search" class="btn btn-success" /> |
-            <a asp-action="All">Back to Full List</a>
-        </p>
-    </div>
+   
+    <partial name="_ButtonSearch"/>
 </form>
 <br />
 <form action="/Promoters/Add" class="text-center">
@@ -92,8 +86,6 @@
                             </span>
                         </a>
 
-
-
                         <a asp-action="Edit" asp-controller="Promoters" asp-route-id="@item.Id">
                             <span class="fa-stack">
                                 <i class="fas fa-pencil-alt"></i>
@@ -120,25 +112,15 @@
     </div>
 </div>
 <script>
-    var modalDisplayStyle = document.querySelector(".modal-body")
+    var modalDisplayStyle = document.querySelector(".modal-body");
     function openModal() {
         if (modalDisplayStyle.style.display === "none") {
-            modalDisplayStyle.style.display = "block"
+            modalDisplayStyle.style.display = "block";
         } else {
-            modalDisplayStyle.style.display = "none"
+            modalDisplayStyle.style.display = "none";
         }
     }
     function closeModal() {
-        modalDisplayStyle.style.display = "none"
+        modalDisplayStyle.style.display = "none";
     }
 </script>
-@*@section Scripts {
-    <script>
-        var groupIndex = 0;
-        function AddGroups() {
-
-            $("#GroupsContainer").append("<div class='form-control'> Name: <input type='text' name='Groups[" + groupIndex + "].Name' /></div>");
-            groupIndex++;
-        }
-    </script>
-}*@

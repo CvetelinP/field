@@ -9,7 +9,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(15)]
+        [MaxLength(20)]
         public string Name { get; set; }
 
         public int PromotersCount { get; set; }

@@ -6,16 +6,19 @@
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
-
 <h1>Edit</h1>
 
-
+<h4>IndexPromoterViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="ImageUrl" class="control-label"></label>
                 <input asp-for="ImageUrl" class="form-control" />
@@ -81,12 +84,15 @@
                 <input asp-for="VotesType" class="form-control" />
                 <span asp-validation-for="VotesType" class="text-danger"></span>
             </div>
-            <div class="row-cols-6">
-                <label asp-for="ProjectId" style="color: blue">Projects</label>
-                <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option></option></select>
-
-                <label asp-for="GroupId" style="color: blue">Groups</label>
-                <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4" > <option></option></select>
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <input asp-for="ProjectId" class="form-control" />
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupId" class="control-label"></label>
+                <input asp-for="GroupId" class="form-control" />
+                <span asp-validation-for="GroupId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -95,7 +101,9 @@
     </div>
 </div>
 
-
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

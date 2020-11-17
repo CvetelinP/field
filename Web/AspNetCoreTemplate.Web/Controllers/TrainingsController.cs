@@ -1,7 +1,9 @@
 ﻿namespace AspNetCoreTemplate.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Training;
     using Microsoft.AspNetCore.Authorization;
@@ -11,12 +13,13 @@
     {
         private readonly IProjectService projectService;
         private readonly ITrainingService trainingService;
+        private readonly ApplicationDbContext db;
 
-
-        public TrainingsController(IProjectService projectService, ITrainingService trainingService)
+        public TrainingsController(IProjectService projectService, ITrainingService trainingService,ApplicationDbContext db)
         {
             this.projectService = projectService;
             this.trainingService = trainingService;
+            this.db = db;
         }
 
         [Authorize]
@@ -42,14 +45,33 @@
 
             return this.Redirect("/Trainings/All");
         }
-
-        public IActionResult All()
+        [Authorize]
+        public IActionResult All(string searchStringFirstName)
         {
-            var viewModel = new IndexTrainingViewModel();
+            this.ViewData["CurrentFilter"] = searchStringFirstName;
 
+            var viewModel = new IndexTrainingViewModel();
             var trainings = this.trainingService.GetAll<IndexTrainingInputModel>();
+            if (!string.IsNullOrEmpty(searchStringFirstName))
+            {
+                viewModel.Trainings = trainings.Where(x =>
+                    x.Name.Contains(searchStringFirstName));
+
+                return this.View(viewModel);
+            }
             viewModel.Trainings = trainings;
             return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult Remove(int id)
+        {
+            var training = this.db.Projects.FirstOrDefault(x => x.Id == id);
+
+            this.db.Projects.Remove(training);
+            this.db.SaveChanges();
+
+            return this.Redirect("/Trainings/All");
         }
     }
 }

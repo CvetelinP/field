@@ -42,21 +42,6 @@
                 City = model.City,
                 District = model.District,
             };
-            //foreach (var item in model.Groups)
-            //{
-            //    var group = this.groupRepository.All().FirstOrDefault(x => x.Name == item.Name);
-
-            //    if (group == null)
-            //    {
-            //        group = new Group { Name = item.Name };
-            //    }
-
-            //    promoter.Groups.Add(new PromoterGroup
-            //    {
-            //        Group = group,
-
-            //    });
-            //}
 
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
@@ -72,7 +57,6 @@
         public IEnumerable<T> GetAll<T>()
         {
             var query = this.promoteRepository.All();
-
 
             return query.To<T>().ToList();
         }

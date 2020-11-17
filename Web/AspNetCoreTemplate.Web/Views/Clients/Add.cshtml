@@ -1,5 +1,5 @@
 ﻿@model AspNetCoreTemplate.Web.ViewModels.Client.IndexClientsInputModel
-@*<form method="post">
+<form method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="col-md-6">
             <label asp-for="Name" style="color: chocolate">Client name</label>
@@ -12,31 +12,4 @@
             <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
         </div>
 
-    </form>*@
-<link href="~/css/modal.css" rel="stylesheet" asp-append-version="true" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<a href="#" onclick="openModal()" class="table-link danger">
-    <span class="fa-stack">
-        <i class="fas fa-user-plus" style="color: green"></i>
-    </span>
-</a>
-<div style="display: none" class="modal-body">
-    <div class="modal-content">
-    <h5>Popover in a modal</h5>
-    <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
-    <hr>
-    <h5>Tooltips in a modal</h5>
-    <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
-    </div>
-</div>
-<script>
-    function openModal() {
-        var modalDisplayStyle = document.querySelector(".modal-body")
-
-        if (modalDisplayStyle.style.display === "none") {
-            modalDisplayStyle.style.display = "block"
-        } else {
-            modalDisplayStyle.style.display = "none"
-        }
-    }
-</script>
+    </form>

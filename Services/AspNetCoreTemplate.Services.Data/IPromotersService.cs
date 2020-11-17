@@ -1,6 +1,5 @@
 ﻿namespace AspNetCoreTemplate.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -14,5 +13,7 @@
         T GetById<T>(int id);
 
         IEnumerable<T> GetAll<T>();
+
+        
     }
 }

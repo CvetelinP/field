@@ -35,6 +35,7 @@ namespace AspNetCoreTemplate.Services.Data
             };
             await this.projectEntityRepository.AddAsync(project);
             await this.projectEntityRepository.SaveChangesAsync();
+            
         }
 
 
