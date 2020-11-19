@@ -2,12 +2,12 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
-
     using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
 
     public class PromotersController : Controller
     {
@@ -51,12 +51,12 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName)
+        public IActionResult All(string searchStringFirstName, int pageNumber = 1, int pageSize = 10)
         {
-
+            int records = (pageSize * pageNumber) - pageSize;
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             var viewModel = new IndexViewModel();
- 
+
             var promoters = this.promotersService.GetAll<IndexPromoterViewModel>();
 
             if (!string.IsNullOrEmpty(searchStringFirstName))
@@ -67,7 +67,7 @@
                 return this.View(viewModel);
             }
 
-            viewModel.Promoters = promoters;
+            viewModel.Promoters = promoters.Skip(records).Take(pageSize);
             return this.View(viewModel);
         }
 
@@ -123,11 +123,6 @@
             await this.db.SaveChangesAsync();
             return this.Redirect("/Promoters/All");
         }
-
-       
-
-     
-
 
     }
 }

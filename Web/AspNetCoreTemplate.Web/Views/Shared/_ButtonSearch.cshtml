@@ -1,15 +1,7 @@
-﻿<nav class="navbar navbar-light bg-light">
+﻿<nav class="navbar navbar-light bg-light ">
     <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" name="searchStringFirstName" value="@ViewData["CurrentFilter"]" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2"  type="text" name="searchStringFirstName" value="@ViewData["CurrentFilter"]" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
 
-@*<div class="form-actions no-color">
-        <p>
-            Find by First name: <input type="text" name="searchStringFirstName" value="@ViewData["CurrentFilter"]" />
-            
-            <input type="submit" value="Search" class="btn btn-success" /> |
-            <a asp-action="All">Back to Full List</a>
-        </p>
-    </div>*@

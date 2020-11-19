@@ -52,13 +52,14 @@
 
         }
 
-        public IActionResult All()
+        public IActionResult All(int pageNumber = 1, int pageSize = 10)
         {
+            int records = (pageSize * pageNumber) - pageSize;
             var viewModel = new IndexProjectViewModel();
 
             var projects = this.projectsService.GetAll<IndexProjectsInputModel>();
 
-            viewModel.Projects = projects;
+            viewModel.Projects = projects.Skip(records).Take(pageSize);
             return this.View(viewModel);
         }
 

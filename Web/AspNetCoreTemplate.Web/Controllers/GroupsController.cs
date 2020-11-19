@@ -49,13 +49,14 @@
         }
 
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(int pageNumber = 1, int pageSize = 10)
         {
+            int records = (pageSize * pageNumber) - pageSize;
             var viewModel = new GroupViewModel();
 
             var group = this.groupService.GetAll<IndexGroupViewModel>();
 
-            viewModel.Groups = group;
+            viewModel.Groups = group.Skip(records).Take(pageSize);
             return this.View(viewModel);
         }
 

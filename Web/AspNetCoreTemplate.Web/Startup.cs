@@ -72,6 +72,7 @@
             services.AddTransient<IVoteService, VoteService>();
             services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<ITrainingService, TrainingService>();
+            services.AddCloudscribePagination();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
