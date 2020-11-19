@@ -21,7 +21,7 @@
             this.voteService = voteService;
             this.userManager = userManager;
         }
-
+        [IgnoreAntiforgeryToken]
         [Authorize]
         [HttpPost]
         public async Task<ActionResult<VoteResponseModel>> Post(VoteInputModel input)

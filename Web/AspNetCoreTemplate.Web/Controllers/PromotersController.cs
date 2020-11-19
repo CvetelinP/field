@@ -51,11 +51,12 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, string searchStringLastName)
+        public IActionResult All(string searchStringFirstName)
         {
+
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             var viewModel = new IndexViewModel();
-
+ 
             var promoters = this.promotersService.GetAll<IndexPromoterViewModel>();
 
             if (!string.IsNullOrEmpty(searchStringFirstName))
@@ -122,5 +123,11 @@
             await this.db.SaveChangesAsync();
             return this.Redirect("/Promoters/All");
         }
+
+       
+
+     
+
+
     }
 }
