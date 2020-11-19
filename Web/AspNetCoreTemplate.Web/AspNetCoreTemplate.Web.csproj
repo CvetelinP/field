@@ -51,4 +51,9 @@
     <ProjectReference Include="..\AspNetCoreTemplate.Web.Infrastructure\AspNetCoreTemplate.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\AspNetCoreTemplate.Web.ViewModels\AspNetCoreTemplate.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\trainings\" />
+    <Folder Include="wwwroot\trainings\pdf\" />
+  </ItemGroup>
 </Project>

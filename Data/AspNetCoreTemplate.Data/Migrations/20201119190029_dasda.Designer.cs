@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201116211325_dasdsad")]
-    partial class dasdsad
+    [Migration("20201119190029_dasda")]
+    partial class dasda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -503,6 +503,9 @@ namespace AspNetCoreTemplate.Data.Migrations
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
+
+                    b.Property<string>("TrainingPdfUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

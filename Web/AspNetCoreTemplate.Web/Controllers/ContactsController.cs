@@ -11,7 +11,6 @@ namespace AspNetCoreTemplate.Web.Controllers
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Web.ViewModels.Contacts;
-   
     using Microsoft.AspNetCore.Mvc;
 
     public class ContactsController : Controller

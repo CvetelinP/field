@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using AspNetCoreTemplate.Services.Mapping;
+    using Microsoft.AspNetCore.Http;
 
     public class IndexTrainingInputModel : IMapFrom<Data.Models.Training>
     {
@@ -15,6 +16,12 @@
         public string Name { get; set; }
 
         public int ProjectId { get; set; }
+
+        [Display(Name = "Upload your Presentation in pdf format")]
+        [Required]
+        public IFormFile TrainingPdf { get; set; }
+
+        public string TrainingPdfUrl { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
 

@@ -63,7 +63,7 @@
 
             // Application services
             services.AddTransient<IEmailSender>(
-                serviceProvider => new SendGridEmailSender(this.configuration["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"]));
+                serviceProvider => new SendGridEmailSender(this.configuration["SendGrid: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"]));
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPromotersService, PromotersService>();

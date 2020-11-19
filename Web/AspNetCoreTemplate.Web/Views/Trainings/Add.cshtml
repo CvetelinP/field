@@ -2,7 +2,8 @@
 @{
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-<form method="post">
+<style type="text/css">.control-label { }</style>
+<form method="post" enctype="multipart/form-data" asp-action="Add" asp-controller="Trainings">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="col-md-6">
         <label asp-for="Name" style="color: chocolate">Course name</label>
@@ -12,6 +13,15 @@
     <label asp-for="ProjectId" style="color: chocolate">Projects</label>
     <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"></select>
     <span asp-validation-for="ProjectId" class="text-danger"></span><br />
+    <div class="form-group">
+        <label asp-for="TrainingPdf" class="control-label"></label>
+        <div class="custom-file">
+            <input asp-for="TrainingPdf" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <span asp-validation-for="TrainingPdf" class="text-danger"></span>
+
+    </div>
     <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
 
 </form>
@@ -25,9 +35,7 @@
 
 @section Scripts {
     <script>
-
-        
-        
+    
         function AddQuestion() {
 
             $("#QuestionContainer").append("<div class='form-control form-control-lg'> Question: <input type='text' name='Questions["+ groupIndex +"].Name' /></div>");

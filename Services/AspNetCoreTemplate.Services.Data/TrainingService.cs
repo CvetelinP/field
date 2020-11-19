@@ -1,15 +1,14 @@
-﻿using System.Linq;
-using AspNetCoreTemplate.Services.Mapping;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
+    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Training;
 
     public class TrainingService : ITrainingService
@@ -27,6 +26,7 @@ namespace AspNetCoreTemplate.Services.Data
             {
                 ProjectId = model.ProjectId,
                 Name = model.Name,
+                TrainingPdfUrl = model.TrainingPdfUrl,
             };
             await this.trainingRepository.AddAsync(training);
             await this.trainingRepository.SaveChangesAsync();

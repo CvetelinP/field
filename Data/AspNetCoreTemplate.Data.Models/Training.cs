@@ -17,7 +17,9 @@
 
         public Project Project { get; set; }
 
-        //TODO: FILE>?
+        public string TrainingPdfUrl { get; set; }
+
+
 
 
         public ICollection<Question> Questions { get; set; }
