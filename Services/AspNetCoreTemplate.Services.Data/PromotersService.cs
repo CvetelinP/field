@@ -25,6 +25,8 @@
         public async Task CreateAsync(IndexPromoterViewModel model)
         {
             var genderEnum = Enum.Parse<Gender>(model.Gender);
+            var cityAsEnum = Enum.Parse<City>(model.City);
+            var languageAsEnum = Enum.Parse<Language>(model.Language);
             var promoter = new Promoter
             {
                 GroupId = model.GroupId,
@@ -37,9 +39,9 @@
                 Skills = model.Skills,
                 Mobile = model.Mobile,
                 Age = model.Age,
-                Language = model.Language,
+                Language = languageAsEnum,
                 ImageUrl = model.ImageUrl,
-                City = model.City,
+                City = cityAsEnum,
                 District = model.District,
             };
 

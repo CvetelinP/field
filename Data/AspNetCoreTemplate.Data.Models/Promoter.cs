@@ -28,19 +28,19 @@
 
         public int Age { get; set; }
 
-        public string Language { get; set; }
+        public Language Language { get; set; }
 
         public string Email { get; set; }
 
-
         public int? GroupId { get; set; }
+
         public Group Group { get; set; }
 
         public int? ProjectId { get; set; }
 
         public Project Project { get; set; }
 
-        public string City { get; set; }
+        public City City { get; set; }
 
         public string District { get; set; }
 

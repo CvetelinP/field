@@ -19,9 +19,6 @@
 
         public string TrainingPdfUrl { get; set; }
 
-
-
-
         public ICollection<Question> Questions { get; set; }
 
     }

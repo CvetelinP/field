@@ -11,20 +11,7 @@
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext.Cities.Any())
-            {
-                return;
-
-            }
-
-            var cities = new List<string> { "Sofia", "Plovdiv", "Varna", "Burgas", "Stara Zagora", "Veliko Tarnovo", "Pleven", "Ruse" };
-            foreach (var city in cities)
-            {
-                await dbContext.Cities.AddAsync(new City
-                {
-                    Name = city,
-                });
-            }
+            
         }
     }
 }

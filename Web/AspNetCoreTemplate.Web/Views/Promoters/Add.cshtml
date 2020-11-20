@@ -5,7 +5,7 @@
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 <br />
-<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post" class="mt-3">>
+<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post" class="mt-3">
     
     <div asp-validation-summary="All" class="text-danger"></div>
    
@@ -26,7 +26,7 @@
 
         <div class="col-md-6">
             <label asp-for="City" style="color: chocolate"></label>
-            <input class="form-control" id="city" name="city" placeholder="City">
+            <select asp-for="City" class="form-control" asp-items="@Html.GetEnumSelectList<City>()"><option value="">Please choose City</option></select>
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
         <div class="col-md-6">
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-6">
             <label asp-for="Language" style="color: chocolate" s>Language</label>
-            <input type="text" class="form-control" id="language" name="language" placeholder="language">
+            <select asp-for="Language" class="form-control" asp-items="@Html.GetEnumSelectList<Language>()"><option value="">Please choose Language</option></select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         <div class="col-md-6">
@@ -50,14 +50,13 @@
         <div class="col-md-6">
             <label asp-for="Skills" style="color: chocolate">Skills</label>
             <select asp-for="Skills" class="form-control"
-                    asp-items="@Html.GetEnumSelectList<Skills>()">
-            </select>
+                    asp-items="@Html.GetEnumSelectList<Skills>()"><option value="">Please choose a Skills</option></select>
             <span asp-validation-for="Skills" class="text-danger"></span>
         </div>
 
         <div class="col-md-6">
-            <label as="gender" style="color: chocolate">Gender</label>
-            <input type="text" class="form-control" id="gender" name="gender" placeholder="Male or Female">
+            <label asp-for="Gender" style="color: chocolate">Gender</label>
+            <select asp-for="Gender" class="form-control" asp-items="@Html.GetEnumSelectList<Gender>()"><option value="">Please choose a Gender</option></select>
         </div>
     </div>
     <div class="row">

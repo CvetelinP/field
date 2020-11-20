@@ -13,9 +13,13 @@
         [RegularExpression("[A-Z]+[0-9]{3}-[0-9]{2}", ErrorMessage = "Invalid Project,Example:BF020-20")]
         public string Name { get; set; }
 
-        [Required] [Range(2000, 2099)] public int Year { get; set; }
+        [Required] 
+        [Range(2000, 2099)] 
+        public int Year { get; set; }
 
-        [Required] [MaxLength(100)] public string Description { get; set; }
+        [Required] 
+        [MaxLength(200)]
+        public string Description { get; set; }
 
         [Display(Name = "Clients")]
         [Range(1, int.MaxValue)]

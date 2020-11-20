@@ -17,25 +17,26 @@
 
         [MinLength(3)]
         [MaxLength(15)]
+        [Required]
         public string FirstName { get; set; }
 
         [MinLength(3)]
         [MaxLength(15)]
+        [Required]
         public string LastName { get; set; }
 
         [Required]
-        [MinLength(3)]
-        [MaxLength(8)]
+        [MaxLength(15)]
         public string Language { get; set; }
 
+        [Required]
         public string Gender { get; set; }
 
-       
         [Required]
         public int Mobile { get; set; }
 
-        [MaxLength(15)]
-        [MinLength(3)]
+        [Required]
+        [MaxLength(20)]
         public string City { get; set; }
 
         [MinLength(1)]
@@ -49,8 +50,10 @@
         public int Age { get; set; }
 
         [EmailAddress]
+        [Required]
         public string Email { get; set; }
 
+        [Required]
         [MinLength(3)]
         [MaxLength(200)]
         public string Description { get; set; }

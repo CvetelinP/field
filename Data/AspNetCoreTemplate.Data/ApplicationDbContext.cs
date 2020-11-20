@@ -36,7 +36,7 @@
 
         public DbSet<Client> Clients { get; set; }
 
-        public DbSet<City> Cities { get; set; }
+
 
         public DbSet<Vote> Votes { get; set; }
 
@@ -44,7 +44,7 @@
 
         public DbSet<Answer> Answers { get; set; }
 
-        
+
 
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }
 

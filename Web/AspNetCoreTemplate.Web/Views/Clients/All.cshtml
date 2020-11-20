@@ -6,8 +6,8 @@
 
 <link href="~/css/Clients.css" rel="stylesheet" asp-append-version="true" />
 <div id="testimonials">
-    <form action=" /Clients/Add" class="">
-        <button type="float-left submit-button">Add Client</button>
+    <form action="/Clients/Add">
+        <button type="submit" class="btn btn-primary text-uppercase">Add Client</button>
     </form>
     <div class="container _tm-header">
         <h1 class="text-center">Clients</h1>
@@ -21,7 +21,6 @@
                         <img class="card-img-top img-fluid card-image" src="@item.ImageUrl" alt="Card image cap">
                         <div class="card-body">
                             <p class="text-center">@item.Name</p>
-
                         </div>
                     </div>
                 </div>
