@@ -379,6 +379,35 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("Promoters");
                 });
 
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PromoterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PromoterId");
+
+                    b.ToTable("PromoterGalleries");
+                });
+
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
                 {
                     b.Property<int>("Id")
@@ -644,6 +673,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Project", "Project")
                         .WithMany("Promoters")
                         .HasForeignKey("ProjectId");
+                });
+
+            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.PromoterGallery", b =>
+                {
+                    b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
+                        .WithMany("PromoterGalleries")
+                        .HasForeignKey("PromoterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>

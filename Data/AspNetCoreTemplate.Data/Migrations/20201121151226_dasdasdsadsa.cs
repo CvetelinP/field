@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class dasdsadasda : Migration
+    public partial class dasdasdsadsa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -276,7 +276,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     Gender = table.Column<int>(nullable: false),
                     Mobile = table.Column<int>(nullable: false),
                     Age = table.Column<int>(nullable: false),
-                    Language = table.Column<string>(nullable: true),
+                    Language = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     GroupId = table.Column<int>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true),
@@ -321,6 +321,29 @@ namespace AspNetCoreTemplate.Data.Migrations
                         name: "FK_Trainings_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PromoterGalleries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    PromoterId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Url = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PromoterGalleries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PromoterGalleries_Promoters_PromoterId",
+                        column: x => x.PromoterId,
+                        principalTable: "Promoters",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -482,6 +505,11 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PromoterGalleries_PromoterId",
+                table: "PromoterGalleries",
+                column: "PromoterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Promoters_GroupId",
                 table: "Promoters",
                 column: "GroupId");
@@ -554,6 +582,9 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ContactFormEntries");
+
+            migrationBuilder.DropTable(
+                name: "PromoterGalleries");
 
             migrationBuilder.DropTable(
                 name: "Settings");

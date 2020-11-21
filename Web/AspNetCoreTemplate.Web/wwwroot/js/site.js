@@ -4,7 +4,7 @@
 //Write your JavaScript code.
 // add classes to thumb in order to apply first .thumb, then .one, .two, three....etc.
 var classes = ["one", "two", "three", "four", "five", "six"];
-let a = document.querySelectorAll('.thumb').forEach((el, index) => {
+var a = document.querySelectorAll('.thumb').forEach((el, index) => {
     el.classList.add(`${classes[index]}`);
 })
 

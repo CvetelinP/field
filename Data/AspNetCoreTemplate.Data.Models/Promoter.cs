@@ -4,12 +4,14 @@
 
     using AspNetCoreTemplate.Data.Common.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
+    using Microsoft.AspNetCore.Http;
 
     public class Promoter : BaseDeletableModel<int>
     {
         public Promoter()
         {
             this.Votes = new HashSet<Vote>();
+            this.PromoterGalleries=new HashSet<PromoterGallery>();
         }
 
         public string FirstName { get; set; }
@@ -22,6 +24,7 @@
 
         public string ImageUrl { get; set; }
 
+      
         public Gender Gender { get; set; }
 
         public int Mobile { get; set; }
@@ -45,6 +48,8 @@
         public string District { get; set; }
 
         public ICollection<Vote> Votes { get; set; }
+
+        public ICollection<PromoterGallery> PromoterGalleries { get; set; }
 
     }
 }

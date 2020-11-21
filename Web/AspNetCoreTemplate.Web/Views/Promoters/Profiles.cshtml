@@ -1,136 +1,153 @@
-﻿
-@model AspNetCoreTemplate.Web.ViewModels.Promoter.PromoterProfileViewModel
+﻿@using AspNetCoreTemplate.Data.Models
+@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexPromoterViewModel
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="~/css/BootStrapProfile.css" rel="stylesheet" asp-append-version="true" />
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile">
-    <form method="post">
+<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
+<form method="Get" enctype="multipart/form-data">
+    <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <img src="@Model.ImageUrl" alt="" />
+            <div class="col-12">
+                <div class="card">
 
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="profile-head">
-                    <h5 style="color: chocolate">
-                        @Model.FirstName @Model.LastName
-                    </h5>
-                    <h6>
-                        Age: @Model.Age / City: @Model.City
-                    </h6>
-                    <div class="text-muted small ml-3">
-                        <h2 style="color: chocolate"> Rating</h2>
-                        <form id="votesForm" method="post"></form>
-                        <div>
+                    <div class="card-body">
+                        <div class="card-title mb-4">
+                            <div class="d-flex justify-content-start">
+                                <div class="image-container">
+                                    <img src="@Model.ImageUrl"  style="width: 200px; height: 200px" class="img-thumbnail" />
 
-                            <a href="#" onclick="sendVote(@Model.Id, true)">
-                                <i class="fas fa-hand-point-up"></i>
-                            </a>
+                                </div>
+                                <div class="text-muted small ml-3">
+
+                                    <form id="votesForm" method="post"></form>
+                                    <div>
+
+                                        <a href="#" onclick="sendVote(@Model.Id, true)">
+                                            <i class="fas fa-hand-point-up"></i>
+                                        </a>
+                                    </div>
+                                    <div id="votesCount" style="color: darkolivegreen">@Model.VotesCount</div>
+                                    <div>
+                                        <a href="#" onclick="sendVote(@Model.Id, false)">
+                                            <i class="fas fa-hand-point-down"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="userData ml-3">
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">@Model.FirstName @Model.LastName</h2>
+                                    <hr>
+                                    <h3 class="d-block" style="font-size: 1.1rem; font-weight: bold">Age: @Model.Age</h3>
+                                    <h3 class="d-block" style="font-size: 1.0rem; font-weight: bold">City: @Model.City / @Model.District</h3>
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div id="votesCount" style="color: darkolivegreen">@Model.VotesCount</div>
-                        <div>
-                            <a href="#" onclick="sendVote(@Model.Id, false)">
-                                <i class="fas fa-hand-point-down"></i>
-                            </a>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Images</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Full Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.FirstName @Model.LastName
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Birth Date</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                March 22, 1994.
+                                            </div>
+                                        </div>
+                                        <hr />
+
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Email Address</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.Email
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Skills</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.Skills
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Language</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.Language
+                                            </div>
+                                        </div>
+
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Description</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.Description
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Gender</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                @Model.Gender
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+
+                                        <img src="@Model.ImageUrl" id="imgProfile" style="width: 200px; height: 200px" class="img-thumbnail" />
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-
-                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>Description</p>
-                    <a href="">@Model.Description</a><br />
+    </div>
 
-                    <p>Images</p>
-
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>User Id</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Id</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.FirstName @Model.LastName</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Email</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Mobile</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>District</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.District</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Gender</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Gender</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Language</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@Model.Language</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
+</form>
 @section Scripts {
     <script>
-
         function sendVote(promoterId, isUpVote) {
             var token = $("#votesForm input[name=__RequestVerificationToken]").val();
             var json = { promoterId: promoterId, isUpVote: isUpVote };
@@ -146,5 +163,6 @@
                 }
             });
         }
+
     </script>
 }

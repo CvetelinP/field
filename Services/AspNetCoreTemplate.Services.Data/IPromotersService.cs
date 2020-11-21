@@ -7,13 +7,9 @@
 
     public interface IPromotersService
     {
-
         Task CreateAsync(IndexPromoterViewModel model);
 
         T GetById<T>(int id);
-
         IEnumerable<T> GetAll<T>();
-
-        
     }
 }

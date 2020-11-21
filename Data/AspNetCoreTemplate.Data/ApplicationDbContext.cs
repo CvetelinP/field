@@ -36,7 +36,7 @@
 
         public DbSet<Client> Clients { get; set; }
 
-
+        public DbSet<PromoterGallery> PromoterGalleries { get; set; }
 
         public DbSet<Vote> Votes { get; set; }
 

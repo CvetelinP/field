@@ -1,4 +1,7 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿using AspNetCoreTemplate.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace AspNetCoreTemplate.Services.Data
 {
     using System;
     using System.Collections.Generic;
@@ -15,18 +18,18 @@
     {
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly IDeletableEntityRepository<Group> groupRepository;
+        private readonly ApplicationDbContext db;
 
-        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository, IDeletableEntityRepository<Group> groupRepository)
+        public PromotersService(IDeletableEntityRepository<Promoter> promoteRepository,
+            IDeletableEntityRepository<Group> groupRepository, ApplicationDbContext db)
         {
             this.promoteRepository = promoteRepository;
             this.groupRepository = groupRepository;
+            this.db = db;
         }
 
         public async Task CreateAsync(IndexPromoterViewModel model)
         {
-            var genderEnum = Enum.Parse<Gender>(model.Gender);
-            var cityAsEnum = Enum.Parse<City>(model.City);
-            var languageAsEnum = Enum.Parse<Language>(model.Language);
             var promoter = new Promoter
             {
                 GroupId = model.GroupId,
@@ -35,25 +38,27 @@
                 LastName = model.LastName,
                 Description = model.Description,
                 Email = model.Email,
-                Gender = genderEnum,
+                Gender = model.Gender,
                 Skills = model.Skills,
                 Mobile = model.Mobile,
                 Age = model.Age,
-                Language = languageAsEnum,
+                Language = model.Language,
                 ImageUrl = model.ImageUrl,
-                City = cityAsEnum,
+                City = model.City,
                 District = model.District,
+
             };
+            foreach (var file in model.Gallery)
+            {
+                promoter.PromoterGalleries.Add(new PromoterGallery
+                {
+                    Name = file.Name,
+                    Url = file.Url,
+                });
+            }
 
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
-        }
-
-        public T GetById<T>(int id)
-        {
-            var promoter = this.promoteRepository.All()
-                 .Where(x => x.Id == id).To<T>().FirstOrDefault();
-            return promoter;
         }
 
         public IEnumerable<T> GetAll<T>()
@@ -61,6 +66,13 @@
             var query = this.promoteRepository.All();
 
             return query.To<T>().ToList();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var promoter = this.promoteRepository.All()
+                .Where(x => x.Id == id).To<T>().FirstOrDefault();
+            return promoter;
         }
     }
 }

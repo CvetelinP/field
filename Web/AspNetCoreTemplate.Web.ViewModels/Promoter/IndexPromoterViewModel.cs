@@ -4,11 +4,13 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
+    using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
     using AspNetCoreTemplate.Services.Mapping;
     using AutoMapper;
+    using Microsoft.AspNetCore.Http;
 
-    public class IndexPromoterViewModel : IMapFrom<Data.Models.Promoter>, IHaveCustomMappings
+    public class IndexPromoterViewModel : IMapFrom<Promoter>, IHaveCustomMappings
     {
         [Key]
         public int Id { get; set; }
@@ -20,24 +22,31 @@
         [Required]
         public string FirstName { get; set; }
 
+        public int VotesCount { get; set; }
+
+        public IFormFile ImagePhoto { get; set; }
+
+        public IFormFileCollection GalleryFiles { get; set; }
+
+        public IList<GalleryPromoterViewModel> Gallery { get; set; }
+
         [MinLength(3)]
         [MaxLength(15)]
         [Required]
         public string LastName { get; set; }
 
         [Required]
-        [MaxLength(15)]
-        public string Language { get; set; }
+        public Language Language { get; set; }
 
         [Required]
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         [Required]
         public int Mobile { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        public string City { get; set; }
+        
+        public City City { get; set; }
 
         [MinLength(1)]
         [MaxLength(40)]
