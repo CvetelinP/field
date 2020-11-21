@@ -1,4 +1,4 @@
-﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexPromoterViewModel
+﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.EditPromoterViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -8,7 +8,7 @@
 
 <h1>Edit</h1>
 
-<h4>IndexPromoterViewModel</h4>
+<h4>EditPromoterViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,6 +28,11 @@
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VotesCount" class="control-label"></label>
+                <input asp-for="VotesCount" class="form-control" />
+                <span asp-validation-for="VotesCount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
@@ -84,6 +89,7 @@
                 <input asp-for="VotesType" class="form-control" />
                 <span asp-validation-for="VotesType" class="text-danger"></span>
             </div>
+            <hr style="color: orangered">
             <div class="row-cols-6">
                 <label asp-for="ProjectId" style="color: blue">Projects</label>
                 <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option value="">Please choose Project</option></select>
@@ -91,7 +97,11 @@
                 <label asp-for="GroupId" style="color: blue">Groups</label>
                 <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option value="">Please choose Group</option></select>
             </div>
-            
+            <label asp-for="GalleryFiles" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="GalleryFiles" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -100,7 +110,7 @@
 </div>
 
 <div>
-    <a asp-action="All">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

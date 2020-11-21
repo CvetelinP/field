@@ -41,10 +41,9 @@
 
         public int GetVotes(int promoterId)
         {
-            var votes = this.voteRepository.All().Where(x => x.PromoterId == promoterId).Sum(x => (int)x.Type);
+            var votes = this.voteRepository.All().Where(x => x.PromoterId == promoterId).Sum(x => (int) x.Type);
 
             return votes;
         }
     }
 }
-

@@ -91,7 +91,7 @@
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
                 viewModel.Promoters = promoters.Where(x =>
-                        x.FirstName.Contains(searchStringFirstName) || x.LastName.Contains(searchStringFirstName));
+                    x.FirstName.Contains(searchStringFirstName) || x.LastName.Contains(searchStringFirstName));
 
                 return this.View(viewModel);
             }
@@ -99,17 +99,44 @@
             viewModel.Promoters = promoters.Skip(records).Take(pageSize);
             return this.View(viewModel);
         }
-        [Authorize]
-        public async Task<ActionResult> Profiles(int id)
-        {
-            var viewModel = this.promotersService.GetById<IndexPromoterViewModel>(id);
 
-            if (viewModel == null)
+        [Authorize]
+        [IgnoreAntiforgeryToken]
+        public ActionResult Profiles(int id)
+        {
+            var promoter = db.Promoters.Where(x => x.Id == id)
+                .Select(model => new IndexPromoterViewModel
+                {
+                    Id = model.Id,
+                    GroupId = model.GroupId,
+                    ProjectId = model.ProjectId,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Description = model.Description,
+                    Email = model.Email,
+                    Gender = model.Gender,
+                    Skills = model.Skills,
+                    Mobile = model.Mobile,
+                    Age = model.Age,
+                    Language = model.Language,
+                    ImageUrl = model.ImageUrl,
+                    City = model.City,
+                    District = model.District,
+                    Gallery = model.PromoterGalleries.Select(g => new GalleryPromoterViewModel
+                    {
+                        Id = g.Id,
+                        Name = g.Name,
+                        Url = g.Url,
+
+                    }).ToList(),
+                }).FirstOrDefault();
+
+            if (promoter == null)
             {
                 this.NotFound();
             }
 
-            return this.View(viewModel);
+            return this.View(promoter);
         }
 
         [Authorize]

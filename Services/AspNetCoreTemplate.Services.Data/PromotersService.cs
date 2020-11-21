@@ -46,7 +46,7 @@ namespace AspNetCoreTemplate.Services.Data
                 ImageUrl = model.ImageUrl,
                 City = model.City,
                 District = model.District,
-
+               
             };
             foreach (var file in model.Gallery)
             {
@@ -56,7 +56,7 @@ namespace AspNetCoreTemplate.Services.Data
                     Url = file.Url,
                 });
             }
-
+            
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
         }
@@ -72,6 +72,7 @@ namespace AspNetCoreTemplate.Services.Data
         {
             var promoter = this.promoteRepository.All()
                 .Where(x => x.Id == id).To<T>().FirstOrDefault();
+  
             return promoter;
         }
     }

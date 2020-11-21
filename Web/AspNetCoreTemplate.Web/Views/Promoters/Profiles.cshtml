@@ -17,7 +17,7 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src="@Model.ImageUrl"  style="width: 200px; height: 200px" class="img-thumbnail" />
+                                    <img src="@Model.ImageUrl" style="width: 200px; height: 200px" class="img-thumbnail" />
 
                                 </div>
                                 <div class="text-muted small ml-3">
@@ -41,7 +41,8 @@
                                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">@Model.FirstName @Model.LastName</h2>
                                     <hr>
                                     <h3 class="d-block" style="font-size: 1.1rem; font-weight: bold">Age: @Model.Age</h3>
-                                    <h3 class="d-block" style="font-size: 1.0rem; font-weight: bold">City: @Model.City / @Model.District</h3>
+                                    <h3 class="d-block" style="font-size: 1.0rem; font-weight: bold">City: @Model.City</h3>
+                                    <h3 class="d-block" style="font-size: 0.9rem; font-weight: bold">Distict: @Model.District</h3>
                                 </div>
 
                             </div>
@@ -73,7 +74,7 @@
                                         <hr />
 
                                         <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
+                                            <div class="col-sm-3 col-md-2 col-6">
                                                 <label style="font-weight:bold;">Birth Date</label>
                                             </div>
                                             <div class="col-md-8 col-6">
@@ -133,7 +134,10 @@
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
 
-                                        <img src="@Model.ImageUrl" id="imgProfile" style="width: 200px; height: 200px" class="img-thumbnail" />
+                                        @foreach (var item in Model.Gallery)
+                                        {
+                                            <img src="@item.Url" id="imgProfile" style="width: 200px; height: 200px" class="img-thumbnail" />
+                                        }
 
                                     </div>
                                 </div>
