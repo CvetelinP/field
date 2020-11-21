@@ -45,8 +45,7 @@ namespace AspNetCoreTemplate.Services.Data
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
                 City = model.City,
-                District = model.District,
-               
+                District = model.District,             
             };
             foreach (var file in model.Gallery)
             {
@@ -56,12 +55,35 @@ namespace AspNetCoreTemplate.Services.Data
                     Url = file.Url,
                 });
             }
-            
+           
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public  async Task CreateAsyncEdit(IndexPromoterViewModel model)
+        {
+            var promoter = new Promoter
+            {
+                GroupId = model.GroupId,
+                ProjectId = model.ProjectId,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Description = model.Description,
+                Email = model.Email,
+                Gender = model.Gender,
+                Skills = model.Skills,
+                Mobile = model.Mobile,
+                Age = model.Age,
+                Language = model.Language,
+                ImageUrl = model.ImageUrl,
+                City = model.City,
+                District = model.District,
+            };
+            await this.promoteRepository.AddAsync(promoter);
+            await this.promoteRepository.SaveChangesAsync();
+        }
+
+            public IEnumerable<T> GetAll<T>()
         {
             var query = this.promoteRepository.All();
 
@@ -72,7 +94,69 @@ namespace AspNetCoreTemplate.Services.Data
         {
             var promoter = this.promoteRepository.All()
                 .Where(x => x.Id == id).To<T>().FirstOrDefault();
-  
+            return promoter;
+        }
+
+        public IndexPromoterViewModel GetById(int id)
+        {
+            var promoter = db.Promoters.Where(x => x.Id == id)
+              .Select(model => new IndexPromoterViewModel
+              {
+                  Id = model.Id,
+                  GroupId = model.GroupId,
+                  ProjectId = model.ProjectId,
+                  FirstName = model.FirstName,
+                  LastName = model.LastName,
+                  Description = model.Description,
+                  Email = model.Email,
+                  Gender = model.Gender,
+                  Skills = model.Skills,
+                  Mobile = model.Mobile,
+                  Age = model.Age,
+                  Language = model.Language,
+                  ImageUrl = model.ImageUrl,
+                  City = model.City,
+                  District = model.District,
+                  Gallery = model.PromoterGalleries.Select(g => new GalleryPromoterViewModel
+                  {
+                      Id = g.Id,
+                      Name = g.Name,
+                      Url = g.Url,
+
+                  }).ToList(),
+              }).FirstOrDefault();
+
+            return promoter;
+        }
+
+        public EditPromoterViewModel GetByIdEdit(int id)
+        {
+            var promoter = db.Promoters.Where(x => x.Id == id)
+               .Select(model => new EditPromoterViewModel
+               {
+                   Id = model.Id,
+                   GroupId = model.GroupId,
+                   ProjectId = model.ProjectId,
+                   FirstName = model.FirstName,
+                   LastName = model.LastName,
+                   Description = model.Description,
+                   Email = model.Email,
+                   Gender = model.Gender,
+                   Skills = model.Skills,
+                   Mobile = model.Mobile,
+                   Age = model.Age,
+                   Language = model.Language,
+                   ImageUrl = model.ImageUrl,
+                   City = model.City,
+                   District = model.District,
+                   Gallery = model.PromoterGalleries.Select(g => new GalleryPromoterViewModel
+                   {
+                       Id = g.Id,
+                       Name = g.Name,
+                       Url = g.Url,
+
+                   }).ToList(),
+               }).FirstOrDefault();
             return promoter;
         }
     }

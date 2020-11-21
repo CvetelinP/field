@@ -12,6 +12,7 @@
 
     public class IndexPromoterViewModel : IMapFrom<Promoter>, IHaveCustomMappings
     {
+       
         [Key]
         public int Id { get; set; }
 
@@ -44,8 +45,7 @@
         [Required]
         public int Mobile { get; set; }
 
-        [Required]
-        
+        [Required]      
         public City City { get; set; }
 
         [MinLength(1)]

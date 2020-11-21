@@ -62,7 +62,7 @@
 
             if (model.GalleryFiles != null)
             {
-                string folder = "Promoters/gallery/";
+                string folder = "Promoters/gallery";
                 foreach (var file in model.GalleryFiles)
                 {
                     var gallery = new GalleryPromoterViewModel()
@@ -104,39 +104,14 @@
         [IgnoreAntiforgeryToken]
         public ActionResult Profiles(int id)
         {
-            var promoter = db.Promoters.Where(x => x.Id == id)
-                .Select(model => new IndexPromoterViewModel
-                {
-                    Id = model.Id,
-                    GroupId = model.GroupId,
-                    ProjectId = model.ProjectId,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Description = model.Description,
-                    Email = model.Email,
-                    Gender = model.Gender,
-                    Skills = model.Skills,
-                    Mobile = model.Mobile,
-                    Age = model.Age,
-                    Language = model.Language,
-                    ImageUrl = model.ImageUrl,
-                    City = model.City,
-                    District = model.District,
-                    Gallery = model.PromoterGalleries.Select(g => new GalleryPromoterViewModel
-                    {
-                        Id = g.Id,
-                        Name = g.Name,
-                        Url = g.Url,
+            var viewModel = this.promotersService.GetById(id);
 
-                    }).ToList(),
-                }).FirstOrDefault();
-
-            if (promoter == null)
+            if (viewModel == null)
             {
                 this.NotFound();
             }
 
-            return this.View(promoter);
+            return this.View(viewModel);
         }
 
         [Authorize]
@@ -156,7 +131,7 @@
         public IActionResult Edit(int id)
         {
 
-            var viewModel = this.promotersService.GetById<EditPromoterViewModel>(id);
+            var viewModel = this.promotersService.GetById(id);
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
             return this.View(viewModel);
@@ -164,7 +139,7 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Edit(EditPromoterViewModel model)
+        public async Task<IActionResult> Edit(IndexPromoterViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -173,9 +148,10 @@
 
                 return this.View(model);
             }
+
             if (model.ImagePhoto != null)
             {
-                string folder = "Promoters/images/";
+                string folder = "Promoters/images";
                 model.Gallery = new List<GalleryPromoterViewModel>();
                 model.ImageUrl = await this.UploadImage(folder, model.ImagePhoto);
             }
@@ -193,10 +169,11 @@
                     model.Gallery.Add(gallery);
                 }
             }
+
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == model.Id);
             this.db.Promoters.Remove(promoter);
 
-            await this.promotersService.CreateAsync(model);
+            await this.promotersService.CreateAsyncEdit(model);
             await this.db.SaveChangesAsync();
             return this.Redirect("/Promoters/All");
         }

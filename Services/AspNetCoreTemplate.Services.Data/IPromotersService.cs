@@ -8,8 +8,12 @@
     public interface IPromotersService
     {
         Task CreateAsync(IndexPromoterViewModel model);
+        Task CreateAsyncEdit(IndexPromoterViewModel model);
 
-        T GetById<T>(int id);
+        IndexPromoterViewModel GetById(int id);
+        EditPromoterViewModel GetByIdEdit(int id);
+
         IEnumerable<T> GetAll<T>();
     }
 }
+ 

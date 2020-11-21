@@ -23,7 +23,6 @@
     </div>
 
     <div class="row">
-
         <div class="col-md-6">
             <label asp-for="City" style="color: chocolate"></label>
             <select asp-for="City" class="form-control" asp-items="@Html.GetEnumSelectList<City>()"><option value="">Please choose City</option></select>
@@ -91,7 +90,7 @@
         </div>
     </div>
 
-    <hr style="color: orangered">
+    <hr style="color: orange">
     <div class="row-cols-6">
         <label asp-for="ProjectId" style="color: blue">Projects</label>
         <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option value="">Please choose Project</option></select>
