@@ -1,0 +1,110 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexPromoterViewModel
+
+@{
+    var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
+    var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
+}
+
+<h2>Add Project/Group</h2>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label hidden  asp-for="Id" class="control-label"></label>
+                <input hidden asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="ImageUrl" class="control-label"></label>
+                <input hidden asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="FirstName" class="control-label"></label>
+                <input hidden asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="VotesCount" class="control-label"></label>
+                <input hidden asp-for="VotesCount" class="form-control" />
+                <span asp-validation-for="VotesCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="LastName" class="control-label"></label>
+                <input hidden asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Language" class="control-label"></label>
+                <input hidden asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Gender" class="control-label"></label>
+                <input hidden asp-for="Gender" class="form-control" />
+                <span  asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Mobile" class="control-label"></label>
+                <input hidden asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="City" class="control-label"></label>
+                <input  hidden asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="District" class="control-label"></label>
+                <input hidden asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Skills" class="control-label"></label>
+                <input hidden asp-for="Skills" class="form-control" />
+                <span asp-validation-for="Skills" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Age" class="control-label"></label>
+                <input hidden asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Email" class="control-label"></label>
+                <input  hidden asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="Description" class="control-label"></label>
+                <input hidden asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="row-cols-6">
+                <div class="row-cols-6">
+                    <label asp-for="ProjectId" style="color: blue">Projects</label>
+                    <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option value="">Please choose Project</option></select>
+
+                    <label asp-for="GroupId" style="color: blue">Groups</label>
+                    <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option value="">Please choose Group</option></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label hidden asp-for="GalleryFiles" class="control-label"></label>
+                <input hidden asp-for="GalleryFiles" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

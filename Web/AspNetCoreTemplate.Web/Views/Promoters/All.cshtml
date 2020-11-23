@@ -23,78 +23,72 @@
     <div class="table-responsive">
         <table class="table user-list">
             <thead>
-                <tr class="table-success">
+            <tr class="table-success">
 
-                    <th class="text-center" style="width: 30%;"><b>Name/Image</b></th>
-                    <th class="text-center"><b>Id</b></th>
-                    <th class="text-center"><b>Gender</b></th>
-                    <th class="text-center"><b>City</b></th>
-                    <th class="text-center"><b>Email</b></th>
-                    <th class="text-center"><b>Rating</b></th>
-                    <th>&nbsp;</th>
-                </tr>
+                <th class="text-center" style="width: 30%;"><b>Name/Image</b></th>
+                <th class="text-center" hidden><b>Id</b></th>
+                <th class="text-center"><b>Gender</b></th>
+                <th class="text-center"><b>City</b></th>
+                <th class="text-center"><b>Email</b></th>
+                <th class="text-center"><b>Rating</b></th>
+                <th>&nbsp;</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Promoters)
-                {
-                    <tr>
-                        <td>
-                            <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
-                                 class="card-img-top img-fluid card-image" s>
-                            <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
-                        </td>
+            @foreach (var item in Model.Promoters)
+            {
+                <tr>
+                    <td>
+                        <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
+                             class="card-img-top img-fluid card-image" s>
+                        <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
+                    </td>
 
-                        <td>
-                            @item.Id
-                        </td>
-                        <td class="text-center">
-                            <span class="label label-default">@item.Gender</span>
-                        </td>
-                        <td>
-                            @item.City
-                        </td>
-                        <td class="text-center">
-                            @item.Email
-                        </td>
+                    <td hidden>
+                        @item.Id
+                    </td>
+                    <td class="text-center">
+                        <span class="label label-default">@item.Gender</span>
+                    </td>
+                    <td>
+                        @item.City
+                    </td>
+                    <td class="text-center">
+                        @item.Email
+                    </td>
 
-                        <td class="text-center" style="color: crimson">
-                            <span class="label label-default">@item.VotesType</span>
-                        </td>
-                        <td style="width: 25%;">
-                            <a href="/Promoters/Profiles/@item.Id" class="table-link">
-                                <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            <a href="#" class="table-link danger">
-                                <span class="fa-stack">
-                                    <i class="fas fa-user-plus" onclick="AddGroups()"></i>
+                    <td class="text-center" style="color: crimson">
+                        <span class="label label-default">@item.VotesType</span>
+                    </td>
+                    <td style="width: 25%;">
+                        <a href="/Promoters/Profiles/@item.Id" class="table-link">
+                            <button asp-controller="Promoters" asp-action="Profiles" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa fa-search-plus"></i></button>
+                        </a>
+                        
+                        
 
-                                </span>
-                            </a>
+                        <button type="button" class="btn btn-primary" onclick="EditPromoter(@item.Id)"><i class="fas fa-user-plus"></i></button>
 
-                            <button type="button" class="btn btn-primary" onclick="EditPromoter(@item.Id)"><i class="fas fa-user-plus"></i></button>
+                        <a asp-action="Edit" asp-controller="Promoters" asp-route-id="@item.Id">
+                            
+                              <button class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button>
+                            
+                        </a>
+                        <a asp-action="Remove" asp-route-id="@item.Id">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fas fa-trash fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
+                            </span>
+                        </a>
 
-                            <a asp-action="Edit" asp-controller="Promoters" asp-route-id="@item.Id">
-                                <span class="fa-stack">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </span>
-                            </a>
-                            <a asp-action="Remove" asp-route-id="@item.Id">
-                                <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
-                                </span>
-                            </a>
-
-                        </td>
-                    </tr>
-                }
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>
 </div>
+
 <div class="modal fade" id="editPromoter">
     <div class="modal-dialog">
         <div class="modal-content">

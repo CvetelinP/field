@@ -1,8 +1,5 @@
 ﻿namespace AspNetCoreTemplate.Data.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     using AspNetCoreTemplate.Data.Common.Models;
 

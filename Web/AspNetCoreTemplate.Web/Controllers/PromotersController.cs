@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -16,6 +14,7 @@ namespace AspNetCoreTemplate.Web.Controllers
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class PromotersController : Controller
     {
@@ -182,19 +181,20 @@ namespace AspNetCoreTemplate.Web.Controllers
 
         public IActionResult EditPromoter(int id)
         {
-            var viewModel = new IndexPromoterViewModel();
-            var promoter = db.Promoters.SingleOrDefault(x => x.Id == id);
-            if (promoter != null)
-            {
-                viewModel.Id = promoter.Id;
-                viewModel.ProjectId = promoter.ProjectId;
-                viewModel.GroupId = promoter.GroupId;
-            }
-
             List<Project> projects = this.db.Projects.ToList();
             this.ViewBag.ProjectList = new SelectList(projects, "Id", "Name");
-            return this.PartialView($"_AddGroupPartial", viewModel);
+            var viewModel = this.promotersService.GetById(id);
+            viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
+            viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
+
+            if (viewModel == null)
+            {
+                this.NotFound();
+            }
+
+            return this.PartialView($"_EditPromoter", viewModel);
         }
+       
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
@@ -204,7 +204,6 @@ namespace AspNetCoreTemplate.Web.Controllers
 
             return "/" + folderPath;
         }
-
 
     }
 }
