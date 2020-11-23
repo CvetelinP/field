@@ -22,4 +22,5 @@ function enlargeImg(event) {
 }
 function reduceImg(event) {
     event.target.setAttribute("style", "transform: scale(1);");
-} 
+}
+

@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -178,6 +180,22 @@
             return this.Redirect("/Promoters/All");
         }
 
+        public IActionResult EditPromoter(int id)
+        {
+            var viewModel = new IndexPromoterViewModel();
+            var promoter = db.Promoters.SingleOrDefault(x => x.Id == id);
+            if (promoter != null)
+            {
+                viewModel.Id = promoter.Id;
+                viewModel.ProjectId = promoter.ProjectId;
+                viewModel.GroupId = promoter.GroupId;
+            }
+
+            List<Project> projects = this.db.Projects.ToList();
+            this.ViewBag.ProjectList = new SelectList(projects, "Id", "Name");
+            return this.PartialView($"_AddGroupPartial", viewModel);
+        }
+
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
             folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
@@ -186,5 +204,7 @@
 
             return "/" + folderPath;
         }
+
+
     }
 }

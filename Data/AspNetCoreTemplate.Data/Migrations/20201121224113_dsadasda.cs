@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class dsadas : Migration
+    public partial class dsadasda : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

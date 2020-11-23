@@ -3,10 +3,12 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="~/css/PromotersAll.css" rel="stylesheet" asp-append-version="true" />
 <link href="~/css/modal.css" rel="stylesheet" asp-append-version="true" />
+
+<div id="PlaceHolderHere"></div>
 <br />
 <br />
-<form asp-action="All" method="get" >
-    <partial name="_ButtonSearch"/>
+<form asp-action="All" method="get">
+    <partial name="_ButtonSearch" />
 </form>
 <br />
 <form action="/Promoters/Add" class="text-center">
@@ -21,122 +23,113 @@
     <div class="table-responsive">
         <table class="table user-list">
             <thead>
-            <tr class="table-success">
+                <tr class="table-success">
 
-                <th class="text-center" style="width: 30%;"><b>Name/Image</b></th>
-                <th class="text-center"><b>Id</b></th>
-                <th class="text-center"><b>Gender</b></th>
-                <th class="text-center"><b>City</b></th>
-                <th class="text-center"><b>Email</b></th>
-                <th class="text-center"><b>Rating</b></th>
-                <th>&nbsp;</th>
-            </tr>
+                    <th class="text-center" style="width: 30%;"><b>Name/Image</b></th>
+                    <th class="text-center"><b>Id</b></th>
+                    <th class="text-center"><b>Gender</b></th>
+                    <th class="text-center"><b>City</b></th>
+                    <th class="text-center"><b>Email</b></th>
+                    <th class="text-center"><b>Rating</b></th>
+                    <th>&nbsp;</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var item in Model.Promoters)
-            {
-                <tr>
-                    <td>
-                        <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
-                             class="card-img-top img-fluid card-image" s>
-                        <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
-                    </td>
+                @foreach (var item in Model.Promoters)
+                {
+                    <tr>
+                        <td>
+                            <img width="100" height="100" style="border-radius:10px" src="@item.ImageUrl"
+                                 class="card-img-top img-fluid card-image" s>
+                            <p class="font-weight-bolder"><b> @item.FirstName @item.LastName</b></p>
+                        </td>
 
-                    <td>
-                        @item.Id
-                    </td>
-                    <td class="text-center">
-                        <span class="label label-default">@item.Gender</span>
-                    </td>
-                    <td>
-                        @item.City
-                    </td>
-                    <td class="text-center">
-                        @item.Email
-                    </td>
-                   
-                    <td class="text-center" style="color: crimson">
-                        <span class="label label-default">@item.VotesType</span>
-                    </td>
-                    <td style="width: 25%;">
-                        <a href="/Promoters/Profiles/@item.Id" class="table-link">
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td class="text-center">
+                            <span class="label label-default">@item.Gender</span>
+                        </td>
+                        <td>
+                            @item.City
+                        </td>
+                        <td class="text-center">
+                            @item.Email
+                        </td>
 
-                       
-                        <a href="#" class="table-link danger">
-                            <span class="fa-stack">
-                                <i class="fas fa-user-plus" onclick="AddGroups()"></i>
+                        <td class="text-center" style="color: crimson">
+                            <span class="label label-default">@item.VotesType</span>
+                        </td>
+                        <td style="width: 25%;">
+                            <a href="/Promoters/Profiles/@item.Id" class="table-link">
+                                <span class="fa-stack">
+                                    <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            <a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fas fa-user-plus" onclick="AddGroups()"></i>
 
-                            </span>
-                        </a>
+                                </span>
+                            </a>
 
+                            <button type="button" class="btn btn-primary" onclick="EditPromoter(@item.Id)"><i class="fas fa-user-plus"></i></button>
 
-                        <a href="#" onclick="openModal()" class="table-link danger">
-                            <span class="fa-stack">
-                                <i class="fas fa-user-plus" style="color: green"></i>
-                            </span>
-                        </a>
+                            <a asp-action="Edit" asp-controller="Promoters" asp-route-id="@item.Id">
+                                <span class="fa-stack">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                            </a>
+                            <a asp-action="Remove" asp-route-id="@item.Id">
+                                <span class="fa-stack">
+                                    <i class="fa fa-square fa-stack-2x"></i>
+                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
+                                </span>
+                            </a>
 
-                        <a asp-action="Edit" asp-controller="Promoters" asp-route-id="@item.Id">
-                            <span class="fa-stack">
-                                <i class="fas fa-pencil-alt"></i>
-                            </span>
-                        </a>
-                        <a asp-action="Remove" asp-route-id="@item.Id">
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
-                            </span>
-                        </a>    
-
-                    </td>
-                </tr>
-            }
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
-
-        
-        <cs-pager cs-paging-pagenumber="0"
-                  cs-paging-totalitems="10"
-                  cs-paging-pagesize="2"
-                  cs-pagenumber-param="pagenumber"
-                  asp-controller="Promoters"
-                  asp-action="All"
-                  cs-pager-li-current-class="page-item active"
-                  cs-pager-li-other-class="page-item"
-                  cs-pager-li-non-active-class="page-item disabled"
-                  cs-pager-link-current-class="page-link"
-                  cs-pager-link-other-class="page-link"
-        ></cs-pager>
-
-
-        <div style="display: none" class="modal-body">
-            <div class="modal-content">
-                <select>
-                    <option></option>
-                </select>
-                <button type="submit" class="btn btn-primary text-uppercase">SAVE</button>
-            </div>
-            <button onclick="closeModal() "type="submit" class="close-btn">X</button>
-
-        </div>
-
     </div>
 </div>
+<div class="modal fade" id="editPromoter">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Project</h2>
+            </div>
+            <div class="modal-body" id="myModalBodyDiv">
+
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<cs-pager cs-paging-pagenumber="0"
+          cs-paging-totalitems="10"
+          cs-paging-pagesize="2"
+          cs-pagenumber-param="pagenumber"
+          asp-controller="Promoters"
+          asp-action="All"
+          cs-pager-li-current-class="page-item active"
+          cs-pager-li-other-class="page-item"
+          cs-pager-li-non-active-class="page-item disabled"
+          cs-pager-link-current-class="page-link"
+          cs-pager-link-other-class="page-link">
+
+</cs-pager>
 <script>
-    var modalDisplayStyle = document.querySelector(".modal-body");
-    function openModal() {
-        if (modalDisplayStyle.style.display === "none") {
-            modalDisplayStyle.style.display = "block";
-        } else {
-            modalDisplayStyle.style.display = "none";
-        }
-    }
-    function closeModal() {
-        modalDisplayStyle.style.display = "none";
+    var EditPromoter = function (id) {
+      
+        var url = "EditPromoter?id=" + id;
+        $("#myModalBodyDiv").load(url,
+            function () {
+                $("#editPromoter").modal("show");
+            });
     }
 </script>
+
