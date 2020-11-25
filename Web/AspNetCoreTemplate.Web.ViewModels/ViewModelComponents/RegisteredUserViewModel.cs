@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AspNetCoreTemplate.Web.ViewModels.ViewModelComponents
+﻿namespace AspNetCoreTemplate.Web.ViewModels.ViewModelComponents
 {
     public class RegisteredUserViewModel
     {
@@ -11,4 +7,3 @@ namespace AspNetCoreTemplate.Web.ViewModels.ViewModelComponents
         public int Users { get; set; }
     }
 }
-

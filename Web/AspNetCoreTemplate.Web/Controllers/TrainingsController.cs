@@ -20,7 +20,6 @@
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-
         public TrainingsController(IProjectService projectService,
             ITrainingService trainingService, ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
@@ -54,9 +53,11 @@
                 string folder = "trainings/pdf/";
                 model.TrainingPdfUrl = await this.UploadImage(folder, model.TrainingPdf);
             }
+
             await this.trainingService.CreateAsync(model);
             return this.Redirect("/Trainings/All");
         }
+
         [Authorize]
         public IActionResult All(string searchStringFirstName)
         {
@@ -90,7 +91,6 @@
 
             return this.Redirect("/Trainings/All");
         }
-
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {

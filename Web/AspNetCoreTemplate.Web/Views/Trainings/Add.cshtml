@@ -2,7 +2,10 @@
 @{
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-<style type="text/css">.control-label { }</style>
+<style type="text/css">
+    .control-label {
+    }
+</style>
 <form method="post" enctype="multipart/form-data" asp-action="Add" asp-controller="Trainings">
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="col-md-6">
@@ -22,24 +25,28 @@
         <span asp-validation-for="TrainingPdf" class="text-danger"></span>
 
     </div>
-    <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
+    @*<div id="QuestionsContainer">
+        <label asp-for="Questions"></label>
+        <a class="btn btn-primary" onclick="AddQuestion()">+</a>
+        <br>
+    </div>*@
+    <hr>
+    <button type="submit" class="btn btn-success text-uppercase">Submit</button>
 
 </form>
-<hr>
 
-<div id="QuestionContainer">
-    <label asp-for="Questions"></label>
-    <a class="btn btn-primary" onclick="AddQuestion()">+</a>
-</div>
+
+
 
 
 @section Scripts {
     <script>
-    
+        var questionIndex = 0;
         function AddQuestion() {
-
-            $("#QuestionContainer").append("<div class='form-control form-control-lg'> Question: <input type='text' name='Questions["+ groupIndex +"].Name' /></div>");
-           
+          
+            $("#QuestionsContainer").append("<div class='form-control'><input type='text'  name='Questions["+ questionIndex +"].Description'/></div>");
+            
+            questionIndex++;
         }
     </script>
 }

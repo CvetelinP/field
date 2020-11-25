@@ -20,7 +20,7 @@
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly ApplicationDbContext db;
 
-        public ProjectsController(IProjectService projectsService, IClientsService clientsService,IDeletableEntityRepository<Promoter> promoteRepository,ApplicationDbContext db)
+        public ProjectsController(IProjectService projectsService, IClientsService clientsService, IDeletableEntityRepository<Promoter> promoteRepository, ApplicationDbContext db)
         {
             this.projectsService = projectsService;
             this.clientsService = clientsService;
@@ -38,7 +38,7 @@
 
         [Authorize]
         [HttpPost]
-        public async Task <IActionResult> Add(IndexProjectsInputModel model)
+        public async Task<IActionResult> Add(IndexProjectsInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -46,7 +46,7 @@
                 return this.View(model);
             }
 
-           await this.projectsService.CreateAsync(model);
+            await this.projectsService.CreateAsync(model);
 
             return this.Redirect("/Projects/All");
 
@@ -67,7 +67,6 @@
         {
             var viewModel = new IndexViewModel();
             var promoter = db.Promoters.Where(x => x.ProjectId == id).To<IndexPromoterViewModel>().ToList();
-            
 
             viewModel.Promoters = promoter;
 

@@ -44,7 +44,9 @@
 
         public DbSet<Answer> Answers { get; set; }
 
+        public DbSet<Result> Results { get; set; }
 
+        public DbSet<Option> Options { get; set; }
 
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }
 
@@ -94,10 +96,18 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Cascade;
             }
+            builder.Entity<Project>()
+                .HasMany(s => s.Promoters)
+                .WithOne(x=>x.Project)
+                .OnDelete(DeleteBehavior.SetNull);
 
+            builder.Entity<Group>()
+                .HasMany(s => s.Promoters)
+                .WithOne(x => x.Group)
+                .OnDelete(DeleteBehavior.SetNull);
         }
 
-
+      
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
             where T : class, IDeletableEntity

@@ -6,49 +6,38 @@
             <button type="submit" class="btn btn-dark text-uppercase ">Add Group</button>
         </form>
         <hr />
-
+        <partial name="_ButtonSearch" />
         <thead class="thead-dark">
-        <tr>
-            <th scope="col">Group Id</th>
-            <th scope="col">Group Name</th>
-            <th scope="col">Promoters</th>
-            <th class="border-primary">&nbsp;</th>
+            <tr>
+                <th scope="col">Group Id</th>
+                <th scope="col">Group Name</th>
+                <th scope="col">Promoters</th>
+                <th class="border-primary">&nbsp;</th>
 
-        </tr>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model.Groups)
-        {
-            <tr>
-                <th scope="row" class="text-center">@item.Id</th>
-                <th scope="row"class="text-center">@item.Name</th>
-                <th class="text-center">
-                    <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
-                </th>
-                <td style="width: 10%;">
-                    <a href="/Groups/Remove?Id=@item.Id" class="table-link danger">
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </td>
-                <hr>
-            </tr>
-           
-        }
+            @foreach (var item in Model.Groups)
+            {
+                <tr>
+                    <th scope="row" class="text-center">@item.Id</th>
+                    <th scope="row" class="text-center">@item.Name</th>
+                    <th class="text-center">
+                        <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
+                    </th>
+                    <td style="width: 10%;">
+                        <a href="/Groups/Remove?Id=@item.Id" class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <hr>
+                </tr>
+
+            }
         </tbody>
     </table>
-    <cs-pager cs-paging-pagenumber="0"
-              cs-paging-totalitems="10"
-              cs-paging-pagesize="2"
-              cs-pagenumber-param="pagenumber"
-              asp-controller="Promoters"
-              asp-action="All"
-              cs-pager-li-current-class="page-item active"
-              cs-pager-li-other-class="page-item"
-              cs-pager-li-non-active-class="page-item disabled"
-              cs-pager-link-current-class="page-link"
-              cs-pager-link-other-class="page-link"
-    ></cs-pager>
+
 </div>

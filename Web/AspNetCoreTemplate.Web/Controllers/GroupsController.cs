@@ -5,12 +5,12 @@
     using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
+    using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Administration.Dashboard;
     using AspNetCoreTemplate.Web.ViewModels.Group;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using AspNetCoreTemplate.Services.Mapping;
 
     public class GroupsController : Controller
     {
@@ -75,12 +75,9 @@
             var viewModel = new ViewModels.Promoter.IndexViewModel();
             var promoter = db.Promoters.Where(x => x.GroupId == id).To<IndexPromoterViewModel>().ToList();
 
-
             viewModel.Promoters = promoter;
 
             return this.View(viewModel);
-
-          
         }
     }
 }
