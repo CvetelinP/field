@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Training
+﻿using System;
+
+namespace AspNetCoreTemplate.Web.ViewModels.Training
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -25,8 +27,7 @@
 
         public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
 
-        public IEnumerable<IndexQuestionInputModel> Questions { get; set; }
+        public DateTime CreatedOn { get; set; }
 
-        
     }
 }

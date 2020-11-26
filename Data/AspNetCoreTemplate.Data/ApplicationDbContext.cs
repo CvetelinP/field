@@ -40,13 +40,7 @@
 
         public DbSet<Vote> Votes { get; set; }
 
-        public DbSet<Question> Questions { get; set; }
-
-        public DbSet<Answer> Answers { get; set; }
-
-        public DbSet<Result> Results { get; set; }
-
-        public DbSet<Option> Options { get; set; }
+        
 
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }
 

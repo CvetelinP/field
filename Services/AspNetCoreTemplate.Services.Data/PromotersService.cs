@@ -1,4 +1,5 @@
-﻿using AspNetCoreTemplate.Data;
+﻿using System.Security.Cryptography.X509Certificates;
+using AspNetCoreTemplate.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreTemplate.Services.Data
@@ -45,7 +46,7 @@ namespace AspNetCoreTemplate.Services.Data
                 Language = model.Language,
                 ImageUrl = model.ImageUrl,
                 City = model.City,
-                District = model.District,             
+                District = model.District,
             };
             foreach (var file in model.Gallery)
             {
@@ -55,12 +56,12 @@ namespace AspNetCoreTemplate.Services.Data
                     Url = file.Url,
                 });
             }
-           
+
             await this.promoteRepository.AddAsync(promoter);
             await this.promoteRepository.SaveChangesAsync();
         }
 
-        public  async Task CreateAsyncEdit(IndexPromoterViewModel model)
+        public async Task CreateAsyncEdit(IndexPromoterViewModel model)
         {
             var promoter = new Promoter
             {
@@ -83,7 +84,7 @@ namespace AspNetCoreTemplate.Services.Data
             await this.promoteRepository.SaveChangesAsync();
         }
 
-            public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAll<T>()
         {
             var query = this.promoteRepository.All();
 

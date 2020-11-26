@@ -75,6 +75,8 @@
                 }
             }
 
+           
+
             await this.promotersService.CreateAsync(model);
 
             return this.Redirect("/Promoters/All");
@@ -194,7 +196,7 @@
 
             return this.PartialView($"_EditPromoter", viewModel);
         }
-       
+
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {

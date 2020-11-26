@@ -19,40 +19,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Answer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AnswerText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Answers");
-                });
-
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -267,40 +233,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Option", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OptionName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Options");
-                });
-
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -440,74 +372,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasIndex("PromoterId");
 
                     b.ToTable("PromoterGalleries");
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("TrainingId");
-
-                    b.ToTable("Questions");
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Result", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AnswerText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Setting", b =>
@@ -714,24 +578,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Answer", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Question", "Question")
-                        .WithMany("Answers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Option", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Question", "Question")
-                        .WithMany("Options")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Project", b =>
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Client", "Client")
@@ -759,24 +605,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.HasOne("AspNetCoreTemplate.Data.Models.Promoter", "Promoter")
                         .WithMany("PromoterGalleries")
                         .HasForeignKey("PromoterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Question", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Training", "Training")
-                        .WithMany("Questions")
-                        .HasForeignKey("TrainingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Result", b =>
-                {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.Question", "Question")
-                        .WithMany("Results")
-                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
