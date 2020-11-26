@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using AspNetCoreTemplate.Web.Views.Administrations;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Web.ViewModels.Admin;
+    using AspNetCoreTemplate.Web.Views.Administrations;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize(Roles = "Admin")]
     public class AdministrationsController : Controller
     {
         private readonly RoleManager<ApplicationRole> roleManager;
