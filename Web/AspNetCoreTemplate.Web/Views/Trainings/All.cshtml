@@ -1,4 +1,7 @@
-﻿@model AspNetCoreTemplate.Web.ViewModels.Training.IndexTrainingViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using AspNetCoreTemplate.Data.Models
+@model AspNetCoreTemplate.Web.ViewModels.Training.IndexTrainingViewModel
+@inject SignInManager<ApplicationUser> SignInManager
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <h1>Courses</h1>
 <form asp-action="All" method="get">
@@ -6,10 +9,13 @@
     <partial name="_ButtonSearch" />
 </form>
 <br />
-<form action="/Trainings/Add" class="">
-    <button type="submit" class="btn btn-primary text-uppercase ">Add Course</button>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+{
+    <form  asp-action="Add" asp-controller="Trainings">
+        <button type="submit" class="btn btn-primary text-uppercase ">Add Course</button>
 
-</form>
+    </form>
+}
 
 <hr>
 <br />
@@ -18,9 +24,9 @@
         <tr>
             <th scope="col" class="text-center">Id</th>
             <th scope="col" class="text-center">Course Name</th>
-            <th scope="col" class="text-center">Created On<th>
+            <th scope="col" class="text-center">Created On
+            <th>
             <th class="accordion">&nbsp;</th>
-
         </tr>
     </thead>
     <tbody>
@@ -30,7 +36,7 @@
                 <th scope="row" class="text-center">@item.Id</th>
                 <td class="text-center">@item.Name</td>
                 <td class="text-center">@item.CreatedOn</td>
-               
+
 
                 <td>
 
@@ -53,8 +59,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body"style="height: 700px">
-                            <embed src="@item.TrainingPdfUrl" class="w-100" style="height: 700px"/>
+                        <div class="modal-body" style="height: 700px">
+                            <embed src="@item.TrainingPdfUrl" class="w-100" style="height: 700px" />
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

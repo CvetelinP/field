@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using SendGrid;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -117,7 +119,8 @@
 
             if (viewModel == null)
             {
-                this.NotFound();
+                this.Response.StatusCode = 404;
+                return this.View("ErrorPromoterId");
             }
 
             return this.View(viewModel);

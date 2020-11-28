@@ -1,7 +1,4 @@
-﻿using AspNetCoreTemplate.Services.Messaging;
-using Microsoft.AspNetCore.Authorization;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +8,11 @@ namespace AspNetCoreTemplate.Web.Controllers
     using AspNetCoreTemplate.Common;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
+    using AspNetCoreTemplate.Services.Messaging;
     using AspNetCoreTemplate.Web.ViewModels.Contacts;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    
+
     public class ContactsController : Controller
     {
         private const string RedirectedFromContactForm = "RedirectedFromContactForm";
@@ -33,6 +32,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Index(ContactFormViewModel model)
         {
@@ -66,6 +66,7 @@ namespace AspNetCoreTemplate.Web.Controllers
             return this.RedirectToAction("ThankYou");
         }
 
+        [Authorize]
         public IActionResult ThankYou()
         {
             if (this.TempData[RedirectedFromContactForm] == null)
