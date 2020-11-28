@@ -1,19 +1,18 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using AspNetCoreTemplate.Data;
-using Microsoft.EntityFrameworkCore;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
 
+    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Data.Models.Enum;
     using AspNetCoreTemplate.Services.Mapping;
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using Microsoft.EntityFrameworkCore;
 
     public class PromotersService : IPromotersService
     {
@@ -84,11 +83,18 @@ namespace AspNetCoreTemplate.Services.Data
             await this.promoteRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage)
         {
-            var query = this.promoteRepository.All();
-
+            var query = this.promoteRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
             return query.To<T>().ToList();
+        }
+
+        public int GetCount()
+        {
+           return this.promoteRepository.All().Count();
         }
 
         public T GetById<T>(int id)
@@ -100,7 +106,7 @@ namespace AspNetCoreTemplate.Services.Data
 
         public IndexPromoterViewModel GetById(int id)
         {
-            var promoter = db.Promoters.Where(x => x.Id == id)
+            var promoter = this.db.Promoters.Where(x => x.Id == id)
               .Select(model => new IndexPromoterViewModel
               {
                   Id = model.Id,
@@ -132,7 +138,7 @@ namespace AspNetCoreTemplate.Services.Data
 
         public EditPromoterViewModel GetByIdEdit(int id)
         {
-            var promoter = db.Promoters.Where(x => x.Id == id)
+            var promoter = this.db.Promoters.Where(x => x.Id == id)
                .Select(model => new EditPromoterViewModel
                {
                    Id = model.Id,

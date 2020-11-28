@@ -37,7 +37,7 @@
             {
                 return this.View();
             }
-
+            
             var group = new Group
             {
                 Name = model.Name,

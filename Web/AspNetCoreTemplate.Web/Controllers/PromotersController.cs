@@ -27,7 +27,7 @@
 
         public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService, IGroupService groupService, IWebHostEnvironment environment)
         {
-            this.db = db; //TODO:Use Service
+            this.db = db; // TODO:Use Service
             this.promotersService = promotersService;
             this.projectService = projectService;
             this.groupService = groupService;
@@ -75,7 +75,7 @@
                 }
             }
 
-           
+
 
             await this.promotersService.CreateAsync(model);
 
@@ -83,13 +83,19 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, int pageNumber = 1, int pageSize = 10)
+        public IActionResult All( string searchStringFirstName, int id = 1)
         {
-            int records = (pageSize * pageNumber) - pageSize;
-            this.ViewData["CurrentFilter"] = searchStringFirstName;
-            var viewModel = new IndexViewModel();
+            const int itemsPerPage = 10;
 
-            var promoters = this.promotersService.GetAll<IndexPromoterViewModel>();
+            var viewModel = new IndexViewModel
+            {
+                ItemsPerPage = itemsPerPage,
+                PromotersCount = this.promotersService.GetCount(),
+                PageNumber = id,
+                Promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id , itemsPerPage),
+            };
+            this.ViewData["CurrentFilter"] = searchStringFirstName;
+            var promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id,itemsPerPage);
 
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
@@ -99,7 +105,6 @@
                 return this.View(viewModel);
             }
 
-            viewModel.Promoters = promoters.Skip(records).Take(pageSize);
             return this.View(viewModel);
         }
 
@@ -120,7 +125,6 @@
         [Authorize]
         public IActionResult Remove(int id)
         {
-
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == id);
 
             this.db.Promoters.Remove(promoter);
@@ -133,7 +137,6 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
-
             var viewModel = this.promotersService.GetById(id);
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
@@ -206,6 +209,5 @@
 
             return "/" + folderPath;
         }
-
     }
 }
