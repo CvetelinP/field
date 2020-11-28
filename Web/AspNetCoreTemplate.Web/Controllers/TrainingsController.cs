@@ -12,7 +12,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
+   
     public class TrainingsController : Controller
     {
         private readonly IProjectService projectService;
@@ -28,7 +28,7 @@
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
         }
-
+        [Authorize(Roles = "Administrator")]
         [Authorize]
         public IActionResult Add()
         {
@@ -37,7 +37,7 @@
             return this.View(viewModel);
 
         }
-
+        [Authorize(Roles = "Administrator")]
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(IndexTrainingInputModel model)
@@ -95,7 +95,7 @@
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
             folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
-            string serverFolder = Path.Combine(webHostEnvironment.WebRootPath, folderPath);
+            string serverFolder = Path.Combine(this.webHostEnvironment.WebRootPath, folderPath);
 
             await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
 

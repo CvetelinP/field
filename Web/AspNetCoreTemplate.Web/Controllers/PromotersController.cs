@@ -16,6 +16,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
+    [Authorize(Roles = "Administrator")]
     public class PromotersController : Controller
     {
         private readonly ApplicationDbContext db;

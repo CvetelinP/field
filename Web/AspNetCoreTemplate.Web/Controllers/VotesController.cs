@@ -8,7 +8,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-
+    [Authorize(Roles = "Administrator")]
     [ApiController]
     [Route("api/[controller]")]
     public class VotesController : ControllerBase

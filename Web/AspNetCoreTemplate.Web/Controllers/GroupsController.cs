@@ -11,7 +11,7 @@
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-
+    [Authorize(Roles = "Administrator")]
     public class GroupsController : Controller
     {
         private readonly ApplicationDbContext db;

@@ -1,4 +1,5 @@
 ﻿using AspNetCoreTemplate.Services.Messaging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreTemplate.Web.Controllers
 {
@@ -12,7 +13,7 @@ namespace AspNetCoreTemplate.Web.Controllers
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Web.ViewModels.Contacts;
     using Microsoft.AspNetCore.Mvc;
-
+    
     public class ContactsController : Controller
     {
         private const string RedirectedFromContactForm = "RedirectedFromContactForm";

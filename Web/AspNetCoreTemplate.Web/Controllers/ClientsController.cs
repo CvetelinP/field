@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +10,7 @@
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Client;
     using Microsoft.AspNetCore.Mvc;
-
+    [Authorize(Roles = "Administrator")]
     public class ClientsController : Controller
     {
         private readonly IClientsService clientsService;

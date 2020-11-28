@@ -12,7 +12,7 @@
     using AspNetCoreTemplate.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-
+    [Authorize(Roles = "Administrator")]
     public class ProjectsController : Controller
     {
         private readonly IProjectService projectsService;
