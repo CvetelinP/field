@@ -52,14 +52,19 @@
 
         }
 
-        public IActionResult All(int pageNumber = 1, int pageSize = 10)
+        public IActionResult All(string searchStringFirstName)
         {
-            int records = (pageSize * pageNumber) - pageSize;
             var viewModel = new IndexProjectViewModel();
-
             var projects = this.projectsService.GetAll<IndexProjectsInputModel>();
+            this.ViewData["CurrentFilter"] = searchStringFirstName;
+            if (!string.IsNullOrEmpty(searchStringFirstName))
+            {
+                viewModel.Projects = projects.Where(x =>
+                    x.Name.Contains(searchStringFirstName));
 
-            viewModel.Projects = projects.Skip(records).Take(pageSize);
+                return this.View(viewModel);
+            }
+            viewModel.Projects = projects;
             return this.View(viewModel);
         }
 

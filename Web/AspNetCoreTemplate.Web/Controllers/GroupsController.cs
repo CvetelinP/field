@@ -37,7 +37,7 @@
             {
                 return this.View();
             }
-            
+
             var group = new Group
             {
                 Name = model.Name,
@@ -49,14 +49,20 @@
         }
 
         [Authorize]
-        public IActionResult All(int pageNumber = 1, int pageSize = 10)
+        public IActionResult All(string searchStringFirstName)
         {
-            int records = (pageSize * pageNumber) - pageSize;
             var viewModel = new GroupViewModel();
-
             var group = this.groupService.GetAll<IndexGroupViewModel>();
+            this.ViewData["CurrentFilter"] = searchStringFirstName;
+            if (!string.IsNullOrEmpty(searchStringFirstName))
+            {
+                viewModel.Groups = group.Where(x =>
+                    x.Name.Contains(searchStringFirstName));
 
-            viewModel.Groups = group.Skip(records).Take(pageSize);
+                return this.View(viewModel);
+            }
+
+            viewModel.Groups = group;
             return this.View(viewModel);
         }
 
@@ -73,7 +79,7 @@
         public IActionResult GetPromoters(int id)
         {
             var viewModel = new ViewModels.Promoter.IndexViewModel();
-            var promoter = db.Promoters.Where(x => x.GroupId == id).To<IndexPromoterViewModel>().ToList();
+            var promoter = this.db.Promoters.Where(x => x.GroupId == id).To<IndexPromoterViewModel>().ToList();
 
             viewModel.Promoters = promoter;
 
