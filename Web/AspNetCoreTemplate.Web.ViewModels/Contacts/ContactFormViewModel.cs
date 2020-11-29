@@ -1,9 +1,6 @@
 ﻿namespace AspNetCoreTemplate.Web.ViewModels.Contacts
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Text;
 
     public class ContactFormViewModel
     {
@@ -26,7 +23,6 @@
         [Display(Name = "Content of the message")]
         public string Content { get; set; }
 
-        
         public string RecaptchaValue { get; set; }
     }
 }

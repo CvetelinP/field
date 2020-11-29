@@ -40,7 +40,9 @@
 
         public DbSet<Vote> Votes { get; set; }
 
-        
+        public DbSet<Report> Reports { get; set; }
+
+        public DbSet<ReportGallery> ReportGalleries { get; set; }
 
         public DbSet<ContactFormEntry> ContactFormEntries { get; set; }
 

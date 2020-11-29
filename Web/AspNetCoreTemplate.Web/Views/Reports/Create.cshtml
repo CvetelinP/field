@@ -1,0 +1,43 @@
+﻿@model AspNetCoreTemplate.Web.ViewModels.Report.ReportViewModel
+@{
+    var trainingItems = this.Model.TrainingItems.Select(x => new SelectListItem(x.Value, x.Key));
+
+}
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Report</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-controller="Reports" asp-action="Create" method="post" class="mt-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <label asp-for="GalleryFiles" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="GalleryFiles" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ReportFile" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="ReportFile" class="custom-file-input" id="customsFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <span asp-validation-for="ReportFile" class="text-danger"></span>
+            </div>
+            <div class="row-cols-6">
+                <label asp-for="TrainingId" style="color: blue">Training</label>
+                <select asp-for="TrainingId" asp-items="trainingItems" class="form-control col-md-4"> <option value="">Please choose Training</option></select>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success text-uppercase">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+

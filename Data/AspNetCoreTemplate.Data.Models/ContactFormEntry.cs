@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AspNetCoreTemplate.Data.Common.Models;
-
-namespace AspNetCoreTemplate.Data.Models
+﻿namespace AspNetCoreTemplate.Data.Models
 {
-    public class ContactFormEntry:BaseModel<int>
+    using AspNetCoreTemplate.Data.Common.Models;
+
+    public class ContactFormEntry : BaseModel<int>
     {
         public string Name { get; set; }
 

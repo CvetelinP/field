@@ -28,6 +28,7 @@
             this.db = db;
             this.webHostEnvironment = webHostEnvironment;
         }
+
         [Authorize(Roles = "Administrator")]
         [Authorize]
         public IActionResult Add()
@@ -37,6 +38,7 @@
             return this.View(viewModel);
 
         }
+
         [Authorize(Roles = "Administrator")]
         [Authorize]
         [HttpPost]
@@ -81,6 +83,7 @@
             return this.View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [Authorize]
         public IActionResult Remove(int id)
         {

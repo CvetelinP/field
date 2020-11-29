@@ -11,7 +11,7 @@
         public Promoter()
         {
             this.Votes = new HashSet<Vote>();
-            this.PromoterGalleries=new HashSet<PromoterGallery>();
+            this.PromoterGalleries = new HashSet<PromoterGallery>();
         }
 
         public string FirstName { get; set; }
@@ -24,7 +24,6 @@
 
         public string ImageUrl { get; set; }
 
-      
         public Gender Gender { get; set; }
 
         public int Mobile { get; set; }

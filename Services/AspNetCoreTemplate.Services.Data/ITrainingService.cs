@@ -11,5 +11,7 @@
     {
         Task CreateAsync(IndexTrainingInputModel model);
         IEnumerable<T> GetAll<T>();
+
+        IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePair();
     }
 }

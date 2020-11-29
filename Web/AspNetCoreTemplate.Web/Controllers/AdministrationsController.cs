@@ -10,7 +10,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     public class AdministrationsController : Controller
     {
         private readonly RoleManager<ApplicationRole> roleManager;
@@ -33,7 +33,6 @@
         {
             if (this.ModelState.IsValid)
             {
-                
                 ApplicationRole applicationRole = new ApplicationRole()
                 {
                     Name = model.RoleName,

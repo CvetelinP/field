@@ -72,6 +72,7 @@
             services.AddTransient<IVoteService, VoteService>();
             services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<ITrainingService, TrainingService>();
+            services.AddTransient<IReportService, ReportService>();
             services.AddCloudscribePagination();
         }
 

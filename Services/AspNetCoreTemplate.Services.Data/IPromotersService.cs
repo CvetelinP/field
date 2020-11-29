@@ -13,7 +13,6 @@
 
         IndexPromoterViewModel GetById(int id);
 
-        EditPromoterViewModel GetByIdEdit(int id);
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage);
 

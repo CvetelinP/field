@@ -1,6 +1,4 @@
-﻿using SendGrid;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -77,8 +75,6 @@ namespace AspNetCoreTemplate.Web.Controllers
                     model.Gallery.Add(gallery);
                 }
             }
-
-
 
             await this.promotersService.CreateAsync(model);
 
@@ -203,7 +199,6 @@ namespace AspNetCoreTemplate.Web.Controllers
 
             return this.PartialView($"_EditPromoter", viewModel);
         }
-
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {

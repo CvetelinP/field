@@ -27,6 +27,4 @@
         public ICollection<Training> Trainings { get; set; }
 
     }
-
-
 }
