@@ -55,6 +55,8 @@
   <ItemGroup>
     <Folder Include="wwwroot\Promoters\Images\" />
     <Folder Include="wwwroot\Promoters\gallery\" />
+    <Folder Include="wwwroot\Reports\file\" />
+    <Folder Include="wwwroot\Reports\gallery\" />
     <Folder Include="wwwroot\Reports\images\" />
     <Folder Include="wwwroot\trainings\" />
     <Folder Include="wwwroot\trainings\pdf\" />

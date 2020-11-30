@@ -1,10 +1,21 @@
 ﻿@using AspNetCoreTemplate.Data.Models
 @model AspNetCoreTemplate.Web.ViewModels.Report.ReportViewModel
 
-
-    
-<hr />
+<form asp-action="GetReport" method="get">
+    <a class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Download file report</a>
+    <hr />
     @foreach (var item in Model.Gallery)
     {
         <img src="@item.Url" id="imgProfile" style="width: 200px; height: 200px" class="img-thumbnail" />
     }
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <embed src="@Model.ReportUrl" class="w-100" style="height: 1000px" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</form>

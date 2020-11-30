@@ -68,7 +68,8 @@
 
             var user = await this.userManager.GetUserAsync(this.User);
             await this.reportService.CreateAsync(model);
-            return this.Redirect("Reports/Create");
+            ViewBag.message = "Success";
+            return this.RedirectToAction("Create");
         }
 
         public IActionResult GetReport(int id)

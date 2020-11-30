@@ -78,11 +78,6 @@
             return this.View(viewModel);
         }
 
-        public IActionResult GetTrainingById(int id)
-        {
-            return this.View();
-        }
-
         [Authorize(Roles = "Administrator")]
         [Authorize]
         public IActionResult Remove(int id)

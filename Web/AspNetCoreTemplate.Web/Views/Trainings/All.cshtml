@@ -36,12 +36,10 @@
                 <th scope="row" class="text-center">@item.Id</th>
                 <td class="text-center">@item.Name</td>
                 <td class="text-center">@item.CreatedOn</td>
-
-
                 <td>
                     <a class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Read</a>
                     <a class="btn btn-outline-success" asp-controller="Reports" asp-action="Create">Add Report</a>
-                    <a href="/Reports/GetReport?Id=@item.Id" class="btn-outline-success">Get Report</a>
+                    <a href="/Reports/GetReport?Id=@item.Id" class="btn btn-outline-danger">Get Report</a>
                     <a href="/Trainings/Remove?Id=@item.Id" class="table-link danger">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
