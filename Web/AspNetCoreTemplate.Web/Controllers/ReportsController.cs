@@ -71,6 +71,19 @@
             return this.Redirect("Reports/Create");
         }
 
+        public IActionResult GetReport(int id)
+        {
+            var viewModel = this.reportService.GetById(id);
+
+            if (viewModel == null)
+            {
+                this.Response.StatusCode = 404;
+                return NotFound();
+            }
+
+            return this.View(viewModel);
+        }
+
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
             folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;

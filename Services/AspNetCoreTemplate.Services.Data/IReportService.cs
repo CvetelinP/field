@@ -8,5 +8,7 @@
     {
 
         Task CreateAsync(ReportViewModel model);
+
+        ReportViewModel GetById(int trainingId);
     }
 }
