@@ -11,9 +11,9 @@
             this.ReportGalleries = new HashSet<ReportGallery>();
         }
 
-        public string AddedByUserId { get; set; }
+        public string UserId { get; set; }
 
-        public ApplicationUser AddedByUser { get; set; }
+        public ApplicationUser User { get; set; }
 
         public int? TrainingId { get; set; }
 

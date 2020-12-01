@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿using AspNetCoreTemplate.Data.Common.Repositories;
+
+namespace AspNetCoreTemplate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +10,7 @@
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Data;
     using AspNetCoreTemplate.Web.ViewModels.Report;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -16,16 +19,18 @@
     public class ReportsController : Controller
     {
         private readonly IWebHostEnvironment environment;
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IReportService reportService;
         private readonly ITrainingService trainingService;
+        private readonly IDeletableEntityRepository<Report> reportRepository;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public ReportsController(IWebHostEnvironment environment, UserManager<ApplicationUser> userManager, IReportService reportService,ITrainingService trainingService)
+        public ReportsController(IWebHostEnvironment environment, IReportService reportService, ITrainingService trainingService, IDeletableEntityRepository<Report> reportRepository, UserManager<ApplicationUser> userManager)
         {
             this.environment = environment;
-            this.userManager = userManager;
             this.reportService = reportService;
             this.trainingService = trainingService;
+            this.reportRepository = reportRepository;
+            this.userManager = userManager;
         }
 
 
@@ -36,6 +41,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(ReportViewModel model)
         {
@@ -67,9 +73,34 @@
             }
 
             var user = await this.userManager.GetUserAsync(this.User);
-            await this.reportService.CreateAsync(model);
-            ViewBag.message = "Success";
-            return this.RedirectToAction("Create");
+            var currentUsername = await this.userManager.GetUserNameAsync(user);
+            var report = new Report
+            {
+                ReportUrl = model.ReportUrl,
+                TrainingId = model.TrainingId,
+                UserId = user.Id,
+            };
+
+            foreach (var file in model.Gallery)
+            {
+                report.ReportGalleries.Add(new ReportGallery
+                {
+                    Name = file.Name,
+                    Url = file.Url,
+                });
+            }
+
+            await this.reportRepository.AddAsync(report);
+            await this.reportRepository.SaveChangesAsync();
+            ViewData["message"] = true;
+            return this.Redirect("Thank");
+        }
+
+        [Authorize]
+        public IActionResult Thank()
+        {
+
+            return this.View();
         }
 
         public IActionResult GetReport(int id)
@@ -79,7 +110,7 @@
             if (viewModel == null)
             {
                 this.Response.StatusCode = 404;
-                return NotFound();
+                return this.NotFound();
             }
 
             return this.View(viewModel);

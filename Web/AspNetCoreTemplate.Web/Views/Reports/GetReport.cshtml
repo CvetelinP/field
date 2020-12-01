@@ -1,7 +1,9 @@
 ﻿@using AspNetCoreTemplate.Data.Models
 @model AspNetCoreTemplate.Web.ViewModels.Report.ReportViewModel
 
+<h4>By @Model.UserUserName</h4>
 <form asp-action="GetReport" method="get">
+   
     <a class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Download file report</a>
     <hr />
     @foreach (var item in Model.Gallery)
@@ -19,3 +21,4 @@
         </div>
     </div>
 </form>
+

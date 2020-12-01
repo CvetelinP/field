@@ -4,14 +4,16 @@ using AspNetCoreTemplate.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201201112916_dasdasdassd")]
+    partial class dasdasdassd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -681,8 +683,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                 {
                     b.HasOne("AspNetCoreTemplate.Data.Models.Training", "Training")
                         .WithMany("Reports")
-                        .HasForeignKey("TrainingId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("TrainingId");
 
                     b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", "User")
                         .WithMany()

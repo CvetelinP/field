@@ -101,6 +101,10 @@
                 .HasMany(s => s.Promoters)
                 .WithOne(x => x.Group)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            builder.Entity<Report>().HasOne(x => x.Training)
+                .WithMany(x => x.Reports)
+                .OnDelete(DeleteBehavior.SetNull);
         }
 
       

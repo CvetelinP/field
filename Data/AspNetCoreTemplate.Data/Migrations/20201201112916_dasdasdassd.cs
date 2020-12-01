@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AspNetCoreTemplate.Data.Migrations
 {
-    public partial class dasdadsa : Migration
+    public partial class dasdasdassd : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -387,7 +387,7 @@ namespace AspNetCoreTemplate.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    AddedByUserId = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     TrainingId = table.Column<int>(nullable: true),
                     ReportUrl = table.Column<string>(nullable: true)
                 },
@@ -395,15 +395,15 @@ namespace AspNetCoreTemplate.Data.Migrations
                 {
                     table.PrimaryKey("PK_Reports", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reports_AspNetUsers_AddedByUserId",
-                        column: x => x.AddedByUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Reports_Trainings_TrainingId",
                         column: x => x.TrainingId,
                         principalTable: "Trainings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Reports_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -526,11 +526,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                 column: "ReportId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reports_AddedByUserId",
-                table: "Reports",
-                column: "AddedByUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reports_IsDeleted",
                 table: "Reports",
                 column: "IsDeleted");
@@ -539,6 +534,11 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "IX_Reports_TrainingId",
                 table: "Reports",
                 column: "TrainingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reports_UserId",
+                table: "Reports",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
@@ -608,10 +608,10 @@ namespace AspNetCoreTemplate.Data.Migrations
                 name: "Promoters");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Trainings");
 
             migrationBuilder.DropTable(
-                name: "Trainings");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Groups");

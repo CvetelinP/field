@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspNetCoreTemplate.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201129195751_dasdadsa")]
-    partial class dasdadsa
+    [Migration("20201201224136_dasdasdfggg")]
+    partial class dasdasdfggg
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -383,9 +383,6 @@ namespace AspNetCoreTemplate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AddedByUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -404,13 +401,16 @@ namespace AspNetCoreTemplate.Data.Migrations
                     b.Property<int?>("TrainingId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("AddedByUserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("TrainingId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reports");
                 });
@@ -681,13 +681,14 @@ namespace AspNetCoreTemplate.Data.Migrations
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.Report", b =>
                 {
-                    b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", "AddedByUser")
-                        .WithMany()
-                        .HasForeignKey("AddedByUserId");
-
                     b.HasOne("AspNetCoreTemplate.Data.Models.Training", "Training")
                         .WithMany("Reports")
-                        .HasForeignKey("TrainingId");
+                        .HasForeignKey("TrainingId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("AspNetCoreTemplate.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("AspNetCoreTemplate.Data.Models.ReportGallery", b =>

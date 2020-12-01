@@ -7,8 +7,6 @@
     public interface IReportService
     {
 
-        Task CreateAsync(ReportViewModel model);
-
         ReportViewModel GetById(int trainingId);
     }
 }

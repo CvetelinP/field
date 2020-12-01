@@ -15,6 +15,10 @@
 
         public string ReportUrl { get; set; }
 
+        public string UserId { get; set; }
+
+        public string UserUserName { get; set; }
+
         public IFormFileCollection GalleryFiles { get; set; }
 
         public IList<GalleryReportViewModel> Gallery { get; set; }
