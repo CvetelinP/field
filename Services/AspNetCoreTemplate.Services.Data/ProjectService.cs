@@ -1,11 +1,10 @@
-﻿using System.Data;
-using AspNetCoreTemplate.Data;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace AspNetCoreTemplate.Services.Data
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using AspNetCoreTemplate.Data;
     using AspNetCoreTemplate.Data.Common.Repositories;
     using AspNetCoreTemplate.Data.Models;
     using AspNetCoreTemplate.Services.Mapping;
@@ -35,9 +34,7 @@ namespace AspNetCoreTemplate.Services.Data
             };
             await this.projectEntityRepository.AddAsync(project);
             await this.projectEntityRepository.SaveChangesAsync();
-            
         }
-
 
         public IEnumerable<T> GetAll<T>(int? count = null)
         {
@@ -61,6 +58,19 @@ namespace AspNetCoreTemplate.Services.Data
             }).ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
 
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage)
+        {
+            var query = this.projectEntityRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
+            return query.To<T>().ToList();
+        }
+
+        public int GetCount()
+        {
+            return this.projectEntityRepository.All().Count();
+        }
 
     }
 }

@@ -52,9 +52,18 @@
 
         }
 
-        public IActionResult All(string searchStringFirstName)
+        [Authorize]
+        public IActionResult All(string searchStringFirstName, int id = 1)
         {
-            var viewModel = new IndexProjectViewModel();
+            const int itemsPerPage = 10;
+
+            var viewModel = new IndexProjectViewModel
+            {
+                ItemsPerPage = itemsPerPage,
+                ProjectsCount = this.projectsService.GetCount(),
+                PageNumber = id,
+                Projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage),
+            };
             var projects = this.projectsService.GetAll<IndexProjectsInputModel>();
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))
@@ -64,6 +73,7 @@
 
                 return this.View(viewModel);
             }
+
             viewModel.Projects = projects;
             return this.View(viewModel);
         }
@@ -71,9 +81,12 @@
         public IActionResult GetPromoters(int id)
         {
             var viewModel = new IndexViewModel();
-            var promoter = db.Promoters.Where(x => x.ProjectId == id).To<IndexPromoterViewModel>().ToList();
+            if (this.db != null)
+            {
+                var promoter = this.db.Promoters.Where(x => x.ProjectId == id).To<IndexPromoterViewModel>().ToList();
 
-            viewModel.Promoters = promoter;
+                viewModel.Promoters = promoter;
+            }
 
             return this.View(viewModel);
         }

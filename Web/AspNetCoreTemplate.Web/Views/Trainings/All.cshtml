@@ -43,7 +43,7 @@
                     <a href="/Trainings/Remove?Id=@item.Id" class="table-link danger">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Training: @item.Name')"></i>
                         </span>
                     </a>
                 </td>

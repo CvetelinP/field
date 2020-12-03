@@ -2,7 +2,9 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="row">
-
+    @{
+        this.ViewData["Title"] = "All Pages, page " + Model.PageNumber;
+    }
     <form action="/Projects/Add" class="">
         <button type="submit" class="btn btn-primary text-uppercase ">Add Project</button>
     </form>
@@ -10,7 +12,7 @@
     <form action="/Clients/All" class="">
         <button type="submit" class="btn btn-success text-uppercase ">Add Client</button>
     </form>
-   
+
 </div>
 <hr />
 <partial name="_ButtonSearch" />
@@ -42,16 +44,13 @@
                     <a href="/Projects/Remove?Id=@item.Id" class="table-link danger">
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Project:@item.Name')"></i>
                         </span>
                     </a>
 
                 </td>
-                <hr>
             </tr>
-
         }
-
     </tbody>
-
 </table>
+<partial name="_PagingPartial" model="@Model" />
