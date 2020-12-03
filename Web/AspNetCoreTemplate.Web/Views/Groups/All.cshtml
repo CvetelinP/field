@@ -9,7 +9,7 @@
         <partial name="_ButtonSearch" />
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Group Id</th>
+                
                 <th scope="col">Group Name</th>
                 <th scope="col">Promoters</th>
                 <th class="border-primary">&nbsp;</th>
@@ -20,7 +20,7 @@
             @foreach (var item in Model.Groups)
             {
                 <tr>
-                    <th scope="row" class="text-center">@item.Id</th>
+                    
                     <th scope="row" class="text-center">@item.Name</th>
                     <th class="text-center">
                         <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
