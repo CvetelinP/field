@@ -4,8 +4,13 @@
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
+<div class="d-flex justify-content-center"  >
+    <div class="spinner-border" role="status" id="myLoader" style="display: none">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <br />
-<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post" class="mt-3">
+<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post" data-ajax-loading="#myLoader">
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -108,3 +113,18 @@
     <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
 </form>
 
+@*@section scripts{
+    <script>
+        function myComplete(data) {
+            alert("I am from complete");
+        }
+        function mySuccess(data) {
+            alert("I am from success");
+        }
+        function myFailure(data) {
+            alert("I am from failure");
+        }
+
+    </script>
+
+}*@ 
