@@ -1,11 +1,10 @@
-﻿namespace FieldPlatform.Web.ViewModels.Client
+﻿namespace FieldPlatformWeb.ViewModels.Client
 {
     using System.ComponentModel.DataAnnotations;
 
     using FieldPlatform.Services.Mapping;
-    using FieldPlatform.Data.Models;
 
-    public class IndexClientsInputModel : IMapFrom<Client>
+    public class IndexClientsInputModel : IMapFrom<FieldPlatform.Data.Models.Client>
     {
         public int Id { get; set; }
 

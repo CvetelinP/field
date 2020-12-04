@@ -8,7 +8,7 @@
     using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
-    using FieldPlatform.Web.ViewModels.Report;
+    using FieldPlatformWeb.ViewModels.Report;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -108,7 +108,7 @@
             if (viewModel == null)
             {
                 this.Response.StatusCode = 404;
-                return this.NotFound();
+                return View("Report not found.",id);
             }
 
             return this.View(viewModel);

@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Contacts
+﻿namespace FieldPlatformWeb.ViewModels.Contacts
 {
     using System.ComponentModel.DataAnnotations;
 

@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using FieldPlatform.Web.ViewModels.Project;
+    using FieldPlatformWeb.ViewModels.Project;
 
     public interface IProjectService
     {

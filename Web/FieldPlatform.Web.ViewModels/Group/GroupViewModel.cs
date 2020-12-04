@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    using FieldPlatform.Web.ViewModels.Group;
-    using FieldPlatform.Web.ViewModels.Paging;
+    using FieldPlatformWeb.ViewModels.Paging;
 
     public class GroupViewModel:PagingViewModel
     {

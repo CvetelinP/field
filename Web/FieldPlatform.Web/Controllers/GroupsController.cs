@@ -6,7 +6,6 @@
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
     using FieldPlatform.Services.Mapping;
-    using FieldPlatform.Web.ViewModels.Group;
     using FieldPlatform.Web.ViewModels.Promoter;
     using FieldPlatformWeb.ViewModels.Group;
     using Microsoft.AspNetCore.Authorization;
@@ -65,7 +64,7 @@
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
                 viewModel.Groups = group.Where(x =>
-                    x.Name.Contains(searchStringFirstName));
+                    x.Name.ToLower().Contains(searchStringFirstName));
 
                 return this.View(viewModel);
             }

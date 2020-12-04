@@ -1,4 +1,4 @@
-﻿@model FieldPlatform.Web.ViewModels.Project.IndexProjectViewModel
+﻿@model FieldPlatformWeb.ViewModels.Project.IndexProjectViewModel
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="row">
@@ -15,7 +15,10 @@
 
 </div>
 <hr />
-<partial name="_ButtonSearch" />
+<form asp-action="All" method="get">
+
+    <partial name="_ButtonSearch" />
+</form>
 <br />
 <table class="table">
     <thead class="thead-dark">

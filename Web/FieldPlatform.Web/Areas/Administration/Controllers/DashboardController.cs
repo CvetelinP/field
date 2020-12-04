@@ -1,8 +1,7 @@
 ﻿namespace FieldPlatform.Web.Areas.Administration.Controllers
 {
     using FieldPlatform.Services.Data;
-    using FieldPlatform.Web.ViewModels.Administration.Dashboard;
-
+    using FieldPlatformWeb.ViewModels.Administration.Dashboard;
     using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController

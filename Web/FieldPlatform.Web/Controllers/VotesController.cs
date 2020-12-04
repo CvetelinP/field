@@ -4,7 +4,7 @@
 
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
-    using FieldPlatform.Web.ViewModels.Vote;
+    using FieldPlatformWeb.ViewModels.Vote;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;

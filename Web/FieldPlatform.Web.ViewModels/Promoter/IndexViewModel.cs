@@ -1,9 +1,9 @@
-﻿namespace FieldPlatform.Web.ViewModels.Promoter
+﻿using FieldPlatformWeb.ViewModels.Paging;
+
+namespace FieldPlatform.Web.ViewModels.Promoter
 {
     using System;
     using System.Collections.Generic;
-
-    using FieldPlatform.Web.ViewModels.Paging;
 
     public class IndexViewModel : PagingViewModel
     {

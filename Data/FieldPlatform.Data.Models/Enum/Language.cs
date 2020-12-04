@@ -1,9 +1,5 @@
 ﻿namespace FieldPlatform.Data.Models.Enum
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     public enum Language
     {
         English = 1,

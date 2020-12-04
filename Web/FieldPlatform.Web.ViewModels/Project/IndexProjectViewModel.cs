@@ -1,9 +1,9 @@
-﻿namespace FieldPlatform.Web.ViewModels.Project
+﻿namespace FieldPlatformWeb.ViewModels.Project
 {
     using System;
     using System.Collections.Generic;
 
-    using FieldPlatform.Web.ViewModels.Paging;
+    using FieldPlatformWeb.ViewModels.Paging;
 
     public class IndexProjectViewModel : PagingViewModel
     {

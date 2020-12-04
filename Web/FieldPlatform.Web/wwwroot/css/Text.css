@@ -38,3 +38,10 @@ body {
     .table-hover .table-success:hover > td, .table-hover .table-success:hover > th {
         background-color: green
     }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

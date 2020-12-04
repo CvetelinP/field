@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.ViewModelComponents
+﻿namespace FieldPlatformWeb.ViewModels.ViewModelComponents
 {
     public class RegisteredUserViewModel
     {

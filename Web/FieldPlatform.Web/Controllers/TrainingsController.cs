@@ -7,7 +7,6 @@
 
     using FieldPlatform.Data;
     using FieldPlatform.Services.Data;
-    using FieldPlatform.Web.ViewModels.Training;
     using FieldPlatformWeb.ViewModels.Training;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
@@ -80,7 +79,7 @@
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
                 viewModel.Trainings = trainings.Where(x =>
-                    x.Name.Contains(searchStringFirstName));
+                    x.Name.ToLower().Contains(searchStringFirstName));
 
                 return this.View(viewModel);
             }

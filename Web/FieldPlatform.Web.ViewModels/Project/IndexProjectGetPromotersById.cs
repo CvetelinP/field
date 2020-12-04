@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Project
+﻿namespace FieldPlatformWeb.ViewModels.Project
 {
     using System.Collections.Generic;
 

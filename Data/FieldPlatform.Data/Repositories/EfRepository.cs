@@ -1,6 +1,4 @@
-﻿using FieldPlatform.Data;
-
-namespace FieldPlatform.Data.Repositories
+﻿namespace FieldPlatform.Data.Repositories
 {
     using System;
     using System.Linq;

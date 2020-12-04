@@ -4,6 +4,7 @@
 
     using FieldPlatform.Services.Data;
     using FieldPlatform.Web.ViewModels.Client;
+    using FieldPlatformWeb.ViewModels.Client;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

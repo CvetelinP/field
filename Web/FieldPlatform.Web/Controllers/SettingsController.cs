@@ -6,8 +6,7 @@
     using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
-    using FieldPlatform.Web.ViewModels.Settings;
-
+    using FieldPlatformWeb.ViewModels.Settings;
     using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController

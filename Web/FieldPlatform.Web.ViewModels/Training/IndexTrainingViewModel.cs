@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    using FieldPlatform.Web.ViewModels.Paging;
-    using FieldPlatform.Web.ViewModels.Training;
+    using FieldPlatformWeb.ViewModels.Paging;
 
     public class IndexTrainingViewModel:PagingViewModel
     {

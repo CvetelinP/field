@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Vote
+﻿namespace FieldPlatformWeb.ViewModels.Vote
 {
     public class VoteInputModel
     {

@@ -9,6 +9,7 @@
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Mapping;
     using FieldPlatform.Web.ViewModels.Client;
+    using FieldPlatformWeb.ViewModels.Client;
 
     public class ClientsService : IClientsService
     {

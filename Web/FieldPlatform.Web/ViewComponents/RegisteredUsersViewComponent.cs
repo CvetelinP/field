@@ -1,9 +1,10 @@
-﻿namespace FieldPlatform.Web.ViewComponents
+﻿using FieldPlatformWeb.ViewModels.ViewModelComponents;
+
+namespace FieldPlatform.Web.ViewComponents
 {
     using System.Linq;
 
     using FieldPlatform.Data;
-    using FieldPlatform.Web.ViewModels.ViewModelComponents;
     using Microsoft.AspNetCore.Mvc;
 
     public class RegisteredUsersViewComponent : ViewComponent

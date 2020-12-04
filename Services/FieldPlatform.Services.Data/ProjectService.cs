@@ -8,7 +8,7 @@
     using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Mapping;
-    using FieldPlatform.Web.ViewModels.Project;
+    using FieldPlatformWeb.ViewModels.Project;
 
     public class ProjectService : IProjectService
     {

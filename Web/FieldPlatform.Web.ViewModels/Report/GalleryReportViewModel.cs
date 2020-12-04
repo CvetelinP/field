@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Report
+﻿namespace FieldPlatformWeb.ViewModels.Report
 {
     public class GalleryReportViewModel
     {

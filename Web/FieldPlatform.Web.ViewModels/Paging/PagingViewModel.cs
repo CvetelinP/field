@@ -1,8 +1,6 @@
-﻿namespace FieldPlatform.Web.ViewModels.Paging
+﻿namespace FieldPlatformWeb.ViewModels.Paging
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public class PagingViewModel
     {

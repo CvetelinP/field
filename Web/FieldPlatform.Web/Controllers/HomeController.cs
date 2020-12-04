@@ -8,6 +8,7 @@
     using FieldPlatform.Services.Mapping;
     using FieldPlatform.Web.ViewModels;
     using FieldPlatform.Web.ViewModels.Promoter;
+    using FieldPlatformWeb.ViewModels;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController

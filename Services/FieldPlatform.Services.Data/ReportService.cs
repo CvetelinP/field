@@ -1,12 +1,11 @@
-﻿
-namespace FieldPlatform.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System.Linq;
 
     using FieldPlatform.Data;
     using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
-    using FieldPlatform.Web.ViewModels.Report;
+    using FieldPlatformWeb.ViewModels.Report;
 
     public class ReportService : IReportService
     {

@@ -4,12 +4,13 @@
     using System.Threading.Tasks;
 
     using FieldPlatform.Data.Models;
-    using FieldPlatform.Web.ViewModels.Admin;
     using FieldPlatform.Web.Views.Administrations;
+    using FieldPlatformWeb.ViewModels.Admin;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class AdministrationsController : Controller
     {
         private readonly RoleManager<ApplicationRole> roleManager;
@@ -27,6 +28,7 @@
             return this.View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
@@ -53,6 +55,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult ListRoles()
         {
@@ -60,6 +63,7 @@
             return this.View(roles);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EditRole(string id)
         {
@@ -88,6 +92,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditRole(EditRoleViewModel model)
         {
@@ -118,6 +123,7 @@
             }
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)
         {
@@ -156,6 +162,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string roleId)
         {

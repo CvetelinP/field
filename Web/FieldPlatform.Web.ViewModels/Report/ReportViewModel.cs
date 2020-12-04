@@ -1,11 +1,11 @@
-﻿namespace FieldPlatform.Web.ViewModels.Report
+﻿namespace FieldPlatformWeb.ViewModels.Report
 {
     using System.Collections.Generic;
 
     using FieldPlatform.Services.Mapping;
     using Microsoft.AspNetCore.Http;
 
-    public class ReportViewModel : IMapFrom<Data.Models.Report>
+    public class ReportViewModel : IMapFrom<FieldPlatform.Data.Models.Report>
     {
         public int Id { get; set; }
 

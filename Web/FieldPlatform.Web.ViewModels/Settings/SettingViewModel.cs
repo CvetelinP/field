@@ -1,9 +1,8 @@
-﻿namespace FieldPlatform.Web.ViewModels.Settings
+﻿namespace FieldPlatformWeb.ViewModels.Settings
 {
+    using AutoMapper;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

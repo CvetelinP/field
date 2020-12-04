@@ -5,7 +5,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using FieldPlatform.Web.ViewModels.Training;
+    using FieldPlatformWeb.ViewModels.Training;
 
     public interface ITrainingService
     {

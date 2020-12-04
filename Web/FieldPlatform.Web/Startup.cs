@@ -5,13 +5,14 @@
     using FieldPlatform.Data;
     using FieldPlatform.Data.Common;
     using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Data.Repositories;
     using FieldPlatform.Data.Seeding;
     using FieldPlatform.Services.Data;
     using FieldPlatform.Services.Mapping;
     using FieldPlatform.Services.Messaging;
     using FieldPlatform.Web.ViewModels;
-    using FieldPlatform.Data.Models;
-    using FieldPlatform.Data.Repositories;
+    using FieldPlatformWeb.ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
 
-    using FieldPlatform.Web.ViewModels.Report;
+    using FieldPlatformWeb.ViewModels.Report;
 
     public interface IReportService
     {

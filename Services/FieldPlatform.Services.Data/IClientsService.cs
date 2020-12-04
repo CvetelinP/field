@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
 
     using FieldPlatform.Web.ViewModels.Client;
+    using FieldPlatformWeb.ViewModels.Client;
 
     public interface IClientsService
     {

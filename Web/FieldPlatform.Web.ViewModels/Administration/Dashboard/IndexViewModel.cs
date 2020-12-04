@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Administration.Dashboard
+﻿namespace FieldPlatformWeb.ViewModels.Administration.Dashboard
 {
     public class IndexViewModel
     {

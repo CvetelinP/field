@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels
+﻿namespace FieldPlatformWeb.ViewModels
 {
     public class ErrorViewModel
     {

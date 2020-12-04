@@ -1,7 +1,7 @@
-﻿namespace FieldPlatform.Web.ViewModels.Settings
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace FieldPlatformWeb.ViewModels.Settings
+{
     public class SettingsListViewModel
     {
         public IEnumerable<SettingViewModel> Settings { get; set; }

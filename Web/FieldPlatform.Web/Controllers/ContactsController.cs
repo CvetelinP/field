@@ -6,7 +6,7 @@
     using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Messaging;
-    using FieldPlatform.Web.ViewModels.Contacts;
+    using FieldPlatformWeb.ViewModels.Contacts;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

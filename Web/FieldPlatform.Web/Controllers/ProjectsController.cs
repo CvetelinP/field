@@ -8,8 +8,8 @@
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
     using FieldPlatform.Services.Mapping;
-    using FieldPlatform.Web.ViewModels.Project;
     using FieldPlatform.Web.ViewModels.Promoter;
+    using FieldPlatformWeb.ViewModels.Project;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -70,7 +70,7 @@
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
                 viewModel.Projects = projects.Where(x =>
-                    x.Name.Contains(searchStringFirstName));
+                    x.Name.ToLower().Contains(searchStringFirstName));
 
                 return this.View(viewModel);
             }

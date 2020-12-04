@@ -1,11 +1,11 @@
-﻿namespace FieldPlatform.Web.ViewModels.Project
+﻿namespace FieldPlatformWeb.ViewModels.Project
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using FieldPlatform.Services.Mapping;
 
-    public class IndexProjectsInputModel : IMapFrom<Data.Models.Project>
+    public class IndexProjectsInputModel : IMapFrom<FieldPlatform.Data.Models.Project>
     {
         public int Id { get; set; }
 
@@ -18,7 +18,7 @@
         public int Year { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(50)]
         public string Description { get; set; }
 
         [Display(Name = "Clients")]

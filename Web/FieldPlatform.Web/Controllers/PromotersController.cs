@@ -99,7 +99,7 @@
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
                 viewModel.Promoters = promoters.Where(x =>
-                    x.FirstName.Contains(searchStringFirstName) || x.LastName.Contains(searchStringFirstName));
+                    x.FirstName.ToLower().Contains(searchStringFirstName) || x.LastName.ToLower().Contains(searchStringFirstName));
 
                 return this.View(viewModel);
             }

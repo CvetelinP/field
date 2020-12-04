@@ -1,4 +1,4 @@
-﻿namespace FieldPlatform.Web.ViewModels.Admin
+﻿namespace FieldPlatformWeb.ViewModels.Admin
 {
     using System.ComponentModel.DataAnnotations;
 
