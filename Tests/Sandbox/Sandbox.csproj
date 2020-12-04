@@ -27,21 +27,20 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
-    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.205" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AspNetCoreTemplate.Common\FieldPlatform.Common.csproj" />
-    <ProjectReference Include="..\..\Data\AspNetCoreTemplate.Data.Common\FieldPlatform.Data.Common.csproj" />
-    <ProjectReference Include="..\..\Data\AspNetCoreTemplate.Data.Models\FieldPlatform.Data.Models.csproj" />
-    <ProjectReference Include="..\..\Data\AspNetCoreTemplate.Data\FieldPlatform.Data.csproj" />
-    <ProjectReference Include="..\..\Services\AspNetCoreTemplate.Services.Data\FieldPlatform.Services.Data.csproj" />
-    <ProjectReference Include="..\..\Services\AspNetCoreTemplate.Services.Mapping\FieldPlatform.Services.Mapping.csproj" />
-    <ProjectReference Include="..\..\Services\AspNetCoreTemplate.Services.Messaging\FieldPlatform.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\AspNetCoreTemplate.Services\FieldPlatform.Services.csproj" />
+    <ProjectReference Include="..\..\FieldPlatform.Common\FieldPlatform.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data.Common\FieldPlatform.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data.Models\FieldPlatform.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data\FieldPlatform.Data.csproj" />
+    <ProjectReference Include="..\..\Services\FieldPlatform.Services.Data\FieldPlatform.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\FieldPlatform.Services.Mapping\FieldPlatform.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\FieldPlatform.Services.Messaging\FieldPlatform.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\FieldPlatform.Services\FieldPlatform.Services.csproj" />
   </ItemGroup>
 
 </Project>

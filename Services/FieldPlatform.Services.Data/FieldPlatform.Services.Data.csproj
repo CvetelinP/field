@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Providers.Core" Version="2.0.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.205" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data.Common\FieldPlatform.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data.Models\FieldPlatform.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\FieldPlatform.Data\FieldPlatform.Data.csproj" />
+    <ProjectReference Include="..\..\Web\FieldPlatform.Web.ViewModels\FieldPlatformWeb.ViewModels.csproj" />
+    <ProjectReference Include="..\FieldPlatform.Services.Mapping\FieldPlatform.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>
