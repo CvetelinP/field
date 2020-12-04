@@ -1,43 +1,47 @@
-﻿@model FieldPlatform.Web.ViewModels.Group.GroupViewModel
+﻿@model FieldPlatformWeb.ViewModels.Group.GroupViewModel
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+@{
+    this.ViewData["Title"] = "All Pages, page " + Model.PageNumber;
+}
 <form asp-controller="Groups" asp-action="Add">
     <button type="submit" class="btn btn-dark text-uppercase ">Add Group</button>
 
 </form>
 <br />
-<partial name="_ButtonSearch">
-    <br />
-    <table class="table">
-        <thead class="thead-dark">
+<partial name="_ButtonSearch" />
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Group Name</th>
+            <th scope="col">Promoters</th>
+            <th class="border-primary">&nbsp;</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Groups)
+        {
             <tr>
 
-                <th scope="col">Group Name</th>
-                <th scope="col">Promoters</th>
-                <th class="border-primary">&nbsp;</th>
-
+                <th scope="row" class="text-center">@item.Name</th>
+                <th class="text-center">
+                    <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
+                </th>
+                <td style="width: 10%;">
+                    <a href="/Groups/Remove?Id=@item.Id" class="table-link danger">
+                        <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Group: @item.Name')"></i>
+                        </span>
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Groups)
-            {
-                <tr>
 
-                    <th scope="row" class="text-center">@item.Name</th>
-                    <th class="text-center">
-                        <a href="/Groups/GetPromoters?Id=@item.Id">@item.PromotersCount</a>
-                    </th>
-                    <td style="width: 10%;">
-                        <a href="/Groups/Remove?Id=@item.Id" class="table-link danger">
-                            <span class="fa-stack">
-                                <i class="fa fa-square fa-stack-2x"></i>
-                                <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Group: @item.Name')"></i>
-                            </span>
-                        </a>
-                    </td>
-                </tr>
+        }
+    </tbody>
+</table>
 
-            }
-        </tbody>
-    </table>
+<partial name="_PagingPartial" model="@Model" />
 

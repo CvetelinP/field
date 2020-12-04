@@ -8,6 +8,7 @@
     using FieldPlatform.Services.Mapping;
     using FieldPlatform.Web.ViewModels.Group;
     using FieldPlatform.Web.ViewModels.Promoter;
+    using FieldPlatformWeb.ViewModels.Group;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -48,9 +49,17 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName)
+        public IActionResult All(string searchStringFirstName, int id = 1)
         {
-            var viewModel = new GroupViewModel();
+            const int itemsPerPage = 10;
+
+            var viewModel = new GroupViewModel()
+            {
+                ItemsPerPage = itemsPerPage,
+                GroupsCount = this.groupService.GetCount(),
+                PageNumber = id,
+                Groups = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage),
+            };
             var group = this.groupService.GetAll<IndexGroupViewModel>();
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))

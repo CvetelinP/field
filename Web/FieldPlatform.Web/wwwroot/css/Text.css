@@ -22,3 +22,19 @@ body {
     color: black;
     padding: 1.25rem;
 }
+
+.table-success, .table-success > td, .table-success > th {
+    background-color: grey
+}
+
+    .table-success tbody + tbody, .table-success td, .table-success th, .table-success thead th {
+        border-color: green
+    }
+
+.table-hover .table-success:hover {
+    background-color: green
+}
+
+    .table-hover .table-success:hover > td, .table-hover .table-success:hover > th {
+        background-color: green
+    }

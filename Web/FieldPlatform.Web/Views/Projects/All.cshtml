@@ -16,6 +16,7 @@
 </div>
 <hr />
 <partial name="_ButtonSearch" />
+<br />
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -32,8 +33,6 @@
         @foreach (var item in Model.Projects)
         {
             <tr>
-
-
                 <td class="text-center">@item.Name</td>
                 <td class="text-center">@item.Year</td>
                 <td class="text-center">@item.Description</td>

@@ -37,5 +37,19 @@
 
             }).ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
+
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage)
+        {
+            var query = this.groupRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
+            return query.To<T>().ToList();
+        }
+
+        public int GetCount()
+        {
+            return this.groupRepository.All().Count();
+        }
     }
 }

@@ -8,6 +8,7 @@
     using FieldPlatform.Data;
     using FieldPlatform.Services.Data;
     using FieldPlatform.Web.ViewModels.Training;
+    using FieldPlatformWeb.ViewModels.Training;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -62,11 +63,19 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName)
+        public IActionResult All(string searchStringFirstName, int id = 1)
         {
+            const int itemsPerPage = 10;
+
+            var viewModel = new IndexTrainingViewModel
+            {
+                ItemsPerPage = itemsPerPage,
+                TrainingsCount = this.trainingService.GetCount(),
+                PageNumber = id,
+                Trainings = this.trainingService.GetAll<IndexTrainingInputModel>(id, itemsPerPage),
+            };
             this.ViewData["CurrentFilter"] = searchStringFirstName;
 
-            var viewModel = new IndexTrainingViewModel();
             var trainings = this.trainingService.GetAll<IndexTrainingInputModel>();
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {

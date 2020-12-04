@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FieldPlatform.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201204104105_dasdasdas")]
-    partial class dasdasdas
+    [Migration("20201204155512_dasdas")]
+    partial class dasdas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
