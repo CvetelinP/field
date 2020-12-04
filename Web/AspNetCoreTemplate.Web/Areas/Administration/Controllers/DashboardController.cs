@@ -1,7 +1,7 @@
-﻿namespace AspNetCoreTemplate.Web.Areas.Administration.Controllers
+﻿namespace FieldPlatform.Web.Areas.Administration.Controllers
 {
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Administration.Dashboard;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Administration.Dashboard;
 
     using Microsoft.AspNetCore.Mvc;
 

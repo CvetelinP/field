@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AspNetCoreTemplate.Services.Mapping;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Web.ViewModels.Client;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels.Client;
 
     public class ClientsService : IClientsService
     {

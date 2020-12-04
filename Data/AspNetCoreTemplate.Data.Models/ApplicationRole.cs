@@ -1,10 +1,9 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace AspNetCoreTemplate.Data.Models
+
+namespace FieldPlatform.Data.Models
 {
     using System;
-
-    using AspNetCoreTemplate.Data.Common.Models;
-
+    using FieldPlatform.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
@@ -17,7 +16,7 @@ namespace AspNetCoreTemplate.Data.Models
         public ApplicationRole(string name)
             : base(name)
         {
-            this.Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         public DateTime CreatedOn { get; set; }

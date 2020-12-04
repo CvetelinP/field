@@ -1,15 +1,10 @@
-﻿namespace AspNetCoreTemplate.Web.ViewComponents
+﻿namespace FieldPlatform.Web.ViewComponents
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Web.ViewModels.ViewModelComponents;
-    using EllipticCurve;
+    using FieldPlatform.Data;
+    using FieldPlatform.Web.ViewModels.ViewModelComponents;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Configuration;
 
     public class RegisteredUsersViewComponent : ViewComponent
     {
@@ -32,4 +27,3 @@
         }
     }
 }
-

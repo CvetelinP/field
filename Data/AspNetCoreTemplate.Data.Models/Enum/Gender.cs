@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AspNetCoreTemplate.Data.Models.Enum
+namespace FieldPlatform.Data.Models.Enum
 {
     public enum Gender
     {

@@ -1,12 +1,11 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Web.ViewModels.Report;
+    using FieldPlatform.Web.ViewModels.Report;
 
     public interface IReportService
     {
-
         ReportViewModel GetById(int trainingId);
     }
 }

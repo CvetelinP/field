@@ -1,10 +1,9 @@
-﻿namespace AspNetCoreTemplate.Data.Models
+﻿namespace FieldPlatform.Data.Models
 {
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Data.Common.Models;
-    using AspNetCoreTemplate.Data.Models.Enum;
-    using Microsoft.AspNetCore.Http;
+    using FieldPlatform.Data.Common.Models;
+    using FieldPlatform.Data.Models.Enum;
 
     public class Promoter : BaseDeletableModel<int>
     {

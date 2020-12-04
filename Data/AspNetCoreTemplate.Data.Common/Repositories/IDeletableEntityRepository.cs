@@ -1,9 +1,8 @@
-﻿namespace AspNetCoreTemplate.Data.Common.Repositories
+﻿namespace FieldPlatform.Data.Common.Repositories
 {
     using System.Linq;
     using System.Threading.Tasks;
-
-    using AspNetCoreTemplate.Data.Common.Models;
+    using FieldPlatform.Data.Common.Models;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity

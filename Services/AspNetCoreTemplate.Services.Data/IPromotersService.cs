@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Web.ViewModels.Promoter;
 
     public interface IPromotersService
     {
@@ -12,7 +12,6 @@
         Task CreateAsyncEdit(IndexPromoterViewModel model);
 
         IndexPromoterViewModel GetById(int id);
-
 
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage);
 

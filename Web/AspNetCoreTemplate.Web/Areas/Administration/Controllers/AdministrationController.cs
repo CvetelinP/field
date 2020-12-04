@@ -1,7 +1,7 @@
-﻿namespace AspNetCoreTemplate.Web.Areas.Administration.Controllers
+﻿namespace FieldPlatform.Web.Areas.Administration.Controllers
 {
-    using AspNetCoreTemplate.Common;
-    using AspNetCoreTemplate.Web.Controllers;
+    using FieldPlatform.Common;
+    using FieldPlatform.Web.Controllers;
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

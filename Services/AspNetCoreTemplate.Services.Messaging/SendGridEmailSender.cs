@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Services.Messaging
+﻿namespace FieldPlatform.Services.Messaging
 {
     using System;
     using System.Collections.Generic;

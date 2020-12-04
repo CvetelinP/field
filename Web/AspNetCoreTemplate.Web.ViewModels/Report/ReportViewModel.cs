@@ -1,8 +1,8 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Report
+﻿namespace FieldPlatform.Web.ViewModels.Report
 {
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Services.Mapping;
     using Microsoft.AspNetCore.Http;
 
     public class ReportViewModel : IMapFrom<Data.Models.Report>

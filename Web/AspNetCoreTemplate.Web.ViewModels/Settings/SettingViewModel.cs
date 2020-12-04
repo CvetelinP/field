@@ -1,7 +1,7 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Settings
+﻿namespace FieldPlatform.Web.ViewModels.Settings
 {
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Mapping;
 
     using AutoMapper;
 

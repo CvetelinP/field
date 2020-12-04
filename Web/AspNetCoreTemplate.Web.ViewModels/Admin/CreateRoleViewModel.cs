@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Admin
+﻿namespace FieldPlatform.Web.ViewModels.Admin
 {
     using System.ComponentModel.DataAnnotations;
 

@@ -1,6 +1,6 @@
-﻿namespace AspNetCoreTemplate.Data.Models
+﻿namespace FieldPlatform.Data.Models
 {
-    using AspNetCoreTemplate.Data.Common.Models;
+    using FieldPlatform.Data.Common.Models;
 
     public class PromoterGallery : BaseModel<int>
     {

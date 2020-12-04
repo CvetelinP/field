@@ -1,13 +1,13 @@
-﻿namespace AspNetCoreTemplate.Services.Data.Tests
+﻿namespace FieldPlatform.Services.Data.Tests
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Data.Repositories;
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Data.Repositories;
 
     using Microsoft.EntityFrameworkCore;
 

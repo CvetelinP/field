@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -6,10 +6,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

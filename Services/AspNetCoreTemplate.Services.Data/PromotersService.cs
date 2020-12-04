@@ -1,18 +1,14 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Data.Models.Enum;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
-    using Microsoft.EntityFrameworkCore;
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels.Promoter;
 
     public class PromotersService : IPromotersService
     {

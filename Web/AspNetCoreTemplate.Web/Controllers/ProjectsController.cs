@@ -1,17 +1,18 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels.Project;
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels.Project;
+    using FieldPlatform.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     [Authorize(Roles = "Administrator")]
     public class ProjectsController : Controller
     {

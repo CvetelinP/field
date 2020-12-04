@@ -1,18 +1,17 @@
-﻿namespace AspNetCoreTemplate.Web
+﻿namespace FieldPlatform.Web
 {
     using System.Reflection;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Data.Repositories;
-    using AspNetCoreTemplate.Data.Seeding;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Services.Messaging;
-    using AspNetCoreTemplate.Web.ViewModels;
-
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Seeding;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Services.Messaging;
+    using FieldPlatform.Web.ViewModels;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Data.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

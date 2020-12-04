@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Project
+﻿namespace FieldPlatform.Web.ViewModels.Project
 {
     using System;
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Web.ViewModels.Paging;
+    using FieldPlatform.Web.ViewModels.Paging;
 
     public class IndexProjectViewModel : PagingViewModel
     {

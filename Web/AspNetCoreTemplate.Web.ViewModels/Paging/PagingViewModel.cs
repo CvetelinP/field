@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Paging
+﻿namespace FieldPlatform.Web.ViewModels.Paging
 {
     using System;
     using System.Collections.Generic;

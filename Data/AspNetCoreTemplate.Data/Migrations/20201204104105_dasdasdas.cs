@@ -1,9 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace AspNetCoreTemplate.Data.Migrations
+﻿namespace FieldPlatform.Data.Migrations
 {
-    public partial class dadad : Migration
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
+    public partial class dasdasdas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

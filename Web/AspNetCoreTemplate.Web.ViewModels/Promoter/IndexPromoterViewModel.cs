@@ -1,12 +1,12 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace FieldPlatform.Web.ViewModels.Promoter
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Data.Models.Enum;
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Data.Models.Enum;
+    using FieldPlatform.Services.Mapping;
     using AutoMapper;
     using Microsoft.AspNetCore.Http;
 

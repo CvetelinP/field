@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Settings
+﻿namespace FieldPlatform.Web.ViewModels.Settings
 {
     using System.Collections.Generic;
 

@@ -1,15 +1,14 @@
-﻿using AspNetCoreTemplate.Data.Common.Repositories;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Report;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Report;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -32,7 +31,6 @@ namespace AspNetCoreTemplate.Web.Controllers
             this.reportRepository = reportRepository;
             this.userManager = userManager;
         }
-
 
         public IActionResult Create()
         {
@@ -92,7 +90,7 @@ namespace AspNetCoreTemplate.Web.Controllers
 
             await this.reportRepository.AddAsync(report);
             await this.reportRepository.SaveChangesAsync();
-            ViewData["message"] = true;
+            this.ViewData["message"] = true;
             return this.Redirect("Thank");
         }
 

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Training
+﻿namespace FieldPlatform.Web.ViewModels.Training
 {
     using System.Collections.Generic;
 

@@ -1,13 +1,14 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Vote;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Vote;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+
     [Authorize(Roles = "Administrator")]
     [ApiController]
     [Route("api/[controller]")]
@@ -21,6 +22,7 @@
             this.voteService = voteService;
             this.userManager = userManager;
         }
+
         [IgnoreAntiforgeryToken]
         [Authorize]
         [HttpPost]

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Data
+﻿namespace FieldPlatform.Data
 {
     using System.IO;
 

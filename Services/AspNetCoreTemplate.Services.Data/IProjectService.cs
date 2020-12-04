@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Web.ViewModels.Project;
+    using FieldPlatform.Web.ViewModels.Project;
 
     public interface IProjectService
     {

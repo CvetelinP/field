@@ -1,12 +1,13 @@
-﻿namespace AspNetCoreTemplate.Data.Repositories
+﻿namespace FieldPlatform.Data.Repositories
 {
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Common.Models;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Repositories;
+    using FieldPlatform.Data.Common.Models;
     using Microsoft.EntityFrameworkCore;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
@@ -27,8 +28,8 @@
 
         public Task<TEntity> GetByIdWithDeletedAsync(params object[] id)
         {
-            var getByIdPredicate = EfExpressionHelper.BuildByIdPredicate<TEntity>(this.Context, id);
-            return this.AllWithDeleted().FirstOrDefaultAsync(getByIdPredicate);
+            var getByIdPredicate = EfExpressionHelper.BuildByIdPredicate<TEntity>(Context, id);
+            return AllWithDeleted().FirstOrDefaultAsync(getByIdPredicate);
         }
 
         public void HardDelete(TEntity entity) => base.Delete(entity);
@@ -37,14 +38,14 @@
         {
             entity.IsDeleted = false;
             entity.DeletedOn = null;
-            this.Update(entity);
+            Update(entity);
         }
 
         public override void Delete(TEntity entity)
         {
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.UtcNow;
-            this.Update(entity);
+            Update(entity);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Data.Seeding
+﻿namespace FieldPlatform.Data.Seeding
 {
     using System;
     using System.Threading.Tasks;

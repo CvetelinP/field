@@ -1,15 +1,12 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Common;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Messaging;
-    using AspNetCoreTemplate.Web.ViewModels.Contacts;
+    using FieldPlatform.Common;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Messaging;
+    using FieldPlatform.Web.ViewModels.Contacts;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -76,7 +73,5 @@
 
             return this.View();
         }
-
-
     }
 }

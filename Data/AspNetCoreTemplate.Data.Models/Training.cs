@@ -1,8 +1,8 @@
-﻿namespace AspNetCoreTemplate.Data.Models
+﻿namespace FieldPlatform.Data.Models
 {
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Data.Common.Models;
+    using FieldPlatform.Data.Common.Models;
 
     public class Training : BaseDeletableModel<int>
     {

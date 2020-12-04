@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace FieldPlatform.Web.ViewModels.Promoter
 {
     public class GalleryPromoterViewModel
     {

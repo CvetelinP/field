@@ -1,14 +1,13 @@
-﻿namespace AspNetCoreTemplate.Data
+﻿namespace FieldPlatform.Data
 {
     using System;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using AspNetCoreTemplate.Data.Common.Models;
-    using AspNetCoreTemplate.Data.Models;
-
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Data.Common.Models;
+    using FieldPlatform.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 

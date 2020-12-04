@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace AspNetCoreTemplate.Web.ViewModels.Training
+namespace FieldPlatform.Web.ViewModels.Training
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Services.Mapping;
     using Microsoft.AspNetCore.Http;
 
     public class IndexTrainingInputModel : IMapFrom<Data.Models.Training>

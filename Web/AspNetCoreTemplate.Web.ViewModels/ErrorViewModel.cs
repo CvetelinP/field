@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels
+﻿namespace FieldPlatform.Web.ViewModels
 {
     public class ErrorViewModel
     {

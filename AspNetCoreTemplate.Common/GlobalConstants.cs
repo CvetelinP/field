@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Common
+﻿namespace FieldPlatform.Common
 {
     public static class GlobalConstants
     {

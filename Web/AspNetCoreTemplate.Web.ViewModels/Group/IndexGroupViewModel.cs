@@ -1,8 +1,8 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Group
+﻿namespace FieldPlatform.Web.ViewModels.Group
 {
     using System.ComponentModel.DataAnnotations;
 
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Services.Mapping;
 
     public class IndexGroupViewModel : IMapFrom<Data.Models.Group>
     {

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Data.Common.Models
+﻿namespace FieldPlatform.Data.Common.Models
 {
     using System;
 

@@ -1,5 +1,8 @@
-﻿namespace AspNetCoreTemplate.Data.Common.Models
+﻿
+
+namespace FieldPlatform.Data.Common.Models
 {
+    using FieldPlatform.Data.Common.Models;
     using System;
 
     public abstract class BaseDeletableModel<TKey> : BaseModel<TKey>, IDeletableEntity

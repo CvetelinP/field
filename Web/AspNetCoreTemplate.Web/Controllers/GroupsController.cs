@@ -1,22 +1,21 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Linq;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels.Administration.Dashboard;
-    using AspNetCoreTemplate.Web.ViewModels.Group;
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels.Group;
+    using FieldPlatform.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     [Authorize(Roles = "Administrator")]
     public class GroupsController : Controller
     {
         private readonly ApplicationDbContext db;
         private readonly IGroupService groupService;
-
 
         public GroupsController(ApplicationDbContext db, IGroupService groupService)
         {

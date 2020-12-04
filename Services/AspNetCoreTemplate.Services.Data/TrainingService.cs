@@ -1,20 +1,18 @@
-﻿namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels.Training;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels.Training;
 
     public class TrainingService : ITrainingService
     {
         private readonly IDeletableEntityRepository<Training> trainingRepository;
-       
 
         public TrainingService(IDeletableEntityRepository<Training> trainingRepository)
         {

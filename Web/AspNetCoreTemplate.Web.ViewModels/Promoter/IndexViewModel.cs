@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Promoter
+﻿namespace FieldPlatform.Web.ViewModels.Promoter
 {
     using System;
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Web.ViewModels.Paging;
+    using FieldPlatform.Web.ViewModels.Paging;
 
     public class IndexViewModel : PagingViewModel
     {

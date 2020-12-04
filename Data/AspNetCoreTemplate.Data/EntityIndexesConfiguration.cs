@@ -1,9 +1,7 @@
-﻿namespace AspNetCoreTemplate.Data
+﻿namespace FieldPlatform.Data
 {
     using System.Linq;
-
-    using AspNetCoreTemplate.Data.Common.Models;
-
+    using FieldPlatform.Data.Common.Models;
     using Microsoft.EntityFrameworkCore;
 
     internal static class EntityIndexesConfiguration

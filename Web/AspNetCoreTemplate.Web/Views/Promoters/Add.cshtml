@@ -1,5 +1,5 @@
-﻿@using AspNetCoreTemplate.Data.Models.Enum
-@model AspNetCoreTemplate.Web.ViewModels.Promoter.IndexPromoterViewModel
+﻿@using FieldPlatform.Data.Models.Enum
+@model FieldPlatform.Web.ViewModels.Promoter.IndexPromoterViewModel
 @{
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));

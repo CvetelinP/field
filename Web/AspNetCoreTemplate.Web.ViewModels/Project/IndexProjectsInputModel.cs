@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Project
+﻿namespace FieldPlatform.Web.ViewModels.Project
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using AspNetCoreTemplate.Services.Mapping;
+    using FieldPlatform.Services.Mapping;
 
     public class IndexProjectsInputModel : IMapFrom<Data.Models.Project>
     {

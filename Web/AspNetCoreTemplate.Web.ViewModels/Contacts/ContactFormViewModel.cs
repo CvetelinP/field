@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Contacts
+﻿namespace FieldPlatform.Web.ViewModels.Contacts
 {
     using System.ComponentModel.DataAnnotations;
 

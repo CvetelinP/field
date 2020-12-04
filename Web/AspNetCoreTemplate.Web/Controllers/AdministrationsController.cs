@@ -1,12 +1,11 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Web.ViewModels.Admin;
-    using AspNetCoreTemplate.Web.Views.Administrations;
-    using Microsoft.AspNetCore.Authorization;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Web.ViewModels.Admin;
+    using FieldPlatform.Web.Views.Administrations;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -154,7 +153,7 @@
                 model.Add(userRoleViewModel);
             }
 
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]

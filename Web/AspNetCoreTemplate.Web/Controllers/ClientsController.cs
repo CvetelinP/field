@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Client;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Client;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     [Authorize(Roles = "Administrator")]
     public class ClientsController : Controller
     {

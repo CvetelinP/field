@@ -1,13 +1,13 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Diagnostics;
     using System.Linq;
 
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Services.Mapping;
-    using AspNetCoreTemplate.Web.ViewModels;
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Services.Mapping;
+    using FieldPlatform.Web.ViewModels;
+    using FieldPlatform.Web.ViewModels.Promoter;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -18,6 +18,7 @@
         {
             this.promoteRepository = promoteRepository;
         }
+
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel();
@@ -28,7 +29,6 @@
             viewModel.Promoters = promoters;
 
             return this.View(viewModel);
-            return this.View();
         }
 
         public IActionResult Privacy()

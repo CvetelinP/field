@@ -1,18 +1,18 @@
-﻿namespace AspNetCoreTemplate.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Services.Data;
-    using AspNetCoreTemplate.Web.ViewModels.Training;
+    using FieldPlatform.Data;
+    using FieldPlatform.Services.Data;
+    using FieldPlatform.Web.ViewModels.Training;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-   
+
     public class TrainingsController : Controller
     {
         private readonly IProjectService projectService;
@@ -20,7 +20,8 @@
         private readonly ApplicationDbContext db;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public TrainingsController(IProjectService projectService,
+        public TrainingsController(
+            IProjectService projectService,
             ITrainingService trainingService, ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             this.projectService = projectService;
@@ -74,6 +75,7 @@
 
                 return this.View(viewModel);
             }
+
             viewModel.Trainings = trainings;
             return this.View(viewModel);
         }

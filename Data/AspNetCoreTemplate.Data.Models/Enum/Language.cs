@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Data.Models.Enum
+﻿namespace FieldPlatform.Data.Models.Enum
 {
     using System;
     using System.Collections.Generic;

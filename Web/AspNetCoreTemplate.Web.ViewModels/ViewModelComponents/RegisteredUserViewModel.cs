@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.ViewModelComponents
+﻿namespace FieldPlatform.Web.ViewModels.ViewModelComponents
 {
     public class RegisteredUserViewModel
     {

@@ -1,10 +1,10 @@
-﻿namespace AspNetCoreTemplate.Data.Seeding
+﻿namespace FieldPlatform.Data.Seeding
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Models;
+    using FieldPlatform.Data.Models;
     using Microsoft.EntityFrameworkCore.Internal;
 
     public class CitiesSeeder : ISeeder

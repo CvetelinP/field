@@ -1,6 +1,6 @@
-﻿namespace AspNetCoreTemplate.Data.Configurations
+﻿namespace FieldPlatform.Data.Configurations
 {
-    using AspNetCoreTemplate.Data.Models;
+    using FieldPlatform.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Report
+﻿namespace FieldPlatform.Web.ViewModels.Report
 {
     public class GalleryReportViewModel
     {

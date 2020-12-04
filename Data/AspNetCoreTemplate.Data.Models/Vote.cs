@@ -1,7 +1,7 @@
-﻿namespace AspNetCoreTemplate.Data.Models
+﻿namespace FieldPlatform.Data.Models
 {
-    using AspNetCoreTemplate.Data.Common.Models;
-    using AspNetCoreTemplate.Data.Models.Enum;
+    using FieldPlatform.Data.Common.Models;
+    using FieldPlatform.Data.Models.Enum;
 
     public class Vote : BaseModel<int>
     {

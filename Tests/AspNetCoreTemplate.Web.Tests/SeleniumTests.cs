@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.Tests
+﻿namespace FieldPlatform.Web.Tests
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;

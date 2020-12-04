@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace AspNetCoreTemplate.Services.Data
+﻿namespace FieldPlatform.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Web.ViewModels.Client;
+    using FieldPlatform.Web.ViewModels.Client;
 
     public interface IClientsService
     {

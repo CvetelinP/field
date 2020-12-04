@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.Views.Administrations
+﻿namespace FieldPlatform.Web.Views.Administrations
 {
     public class UserRoleViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Client
+﻿namespace FieldPlatform.Web.ViewModels.Client
 {
     using System.Collections.Generic;
 

@@ -1,16 +1,18 @@
 ﻿
-namespace AspNetCoreTemplate.Services.Data
+namespace FieldPlatform.Services.Data
 {
     using System.Linq;
-    using AspNetCoreTemplate.Data;
-    using AspNetCoreTemplate.Data.Common.Repositories;
-    using AspNetCoreTemplate.Data.Models;
-    using AspNetCoreTemplate.Web.ViewModels.Report;
+
+    using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
+    using FieldPlatform.Data.Models;
+    using FieldPlatform.Web.ViewModels.Report;
 
     public class ReportService : IReportService
     {
         private readonly IDeletableEntityRepository<Report> reportRepository;
         private readonly ApplicationDbContext db;
+
         public ReportService(IDeletableEntityRepository<Report> reportRepository, ApplicationDbContext db)
         {
             this.reportRepository = reportRepository;

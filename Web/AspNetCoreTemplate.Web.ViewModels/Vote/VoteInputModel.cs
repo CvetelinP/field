@@ -1,4 +1,4 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Vote
+﻿namespace FieldPlatform.Web.ViewModels.Vote
 {
     public class VoteInputModel
     {

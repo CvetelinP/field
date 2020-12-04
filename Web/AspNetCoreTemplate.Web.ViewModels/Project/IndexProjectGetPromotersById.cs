@@ -1,8 +1,8 @@
-﻿namespace AspNetCoreTemplate.Web.ViewModels.Project
+﻿namespace FieldPlatform.Web.ViewModels.Project
 {
     using System.Collections.Generic;
 
-    using AspNetCoreTemplate.Web.ViewModels.Promoter;
+    using FieldPlatform.Web.ViewModels.Promoter;
 
     public class IndexProjectGetPromotersById
     {

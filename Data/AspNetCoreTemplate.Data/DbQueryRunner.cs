@@ -1,9 +1,9 @@
-﻿namespace AspNetCoreTemplate.Data
+﻿namespace FieldPlatform.Data
 {
     using System;
     using System.Threading.Tasks;
 
-    using AspNetCoreTemplate.Data.Common;
+    using FieldPlatform.Data.Common;
 
     using Microsoft.EntityFrameworkCore;
 
