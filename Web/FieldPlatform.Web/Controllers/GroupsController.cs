@@ -42,6 +42,11 @@
                 Name = model.Name,
             };
 
+            if (model.Name.Contains(group.Name))
+            {
+                return View("name already exists");
+            }
+
             this.db.Groups.Add(group);
             this.db.SaveChanges();
             return this.Redirect("/Groups/All");

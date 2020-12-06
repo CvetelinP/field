@@ -4,15 +4,14 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
+    using AutoMapper;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Data.Models.Enum;
     using FieldPlatform.Services.Mapping;
-    using AutoMapper;
     using Microsoft.AspNetCore.Http;
 
     public class IndexPromoterViewModel : IMapFrom<Promoter>, IHaveCustomMappings
     {
-       
         [Key]
         public int Id { get; set; }
 
@@ -64,7 +63,7 @@
 
         [Required]
         [MinLength(3)]
-        [MaxLength(200)]
+        [MaxLength(400)]
         public string Description { get; set; }
 
         public int VotesType { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace FieldPlatform.Web.Controllers
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace FieldPlatform.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -20,13 +22,15 @@
         private readonly IClientsService clientsService;
         private readonly IDeletableEntityRepository<Promoter> promoteRepository;
         private readonly ApplicationDbContext db;
+        private readonly IDeletableEntityRepository<Project> projectRepository;
 
-        public ProjectsController(IProjectService projectsService, IClientsService clientsService, IDeletableEntityRepository<Promoter> promoteRepository, ApplicationDbContext db)
+        public ProjectsController(IProjectService projectsService, IClientsService clientsService, IDeletableEntityRepository<Promoter> promoteRepository, ApplicationDbContext db, IDeletableEntityRepository<Project> projectRepository)
         {
             this.projectsService = projectsService;
             this.clientsService = clientsService;
             this.promoteRepository = promoteRepository;
             this.db = db;
+            this.projectRepository = projectRepository;
         }
 
         [Authorize]
@@ -47,6 +51,11 @@
                 return this.View(model);
             }
 
+            var modelName = this.projectRepository.All().FirstOrDefault(x => x.Name == model.Name);
+            if (modelName != null)
+            {
+                return this.View("name is already exist");
+            }
             await this.projectsService.CreateAsync(model);
 
             return this.Redirect("/Projects/All");

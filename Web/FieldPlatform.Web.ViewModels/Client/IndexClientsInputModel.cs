@@ -11,6 +11,7 @@
         [Required]
         [MinLength(2)]
         [MaxLength(15)]
+        [RegularExpression(@"[A-Z]+")]
         public string Name { get; set; }
 
         [Required]
