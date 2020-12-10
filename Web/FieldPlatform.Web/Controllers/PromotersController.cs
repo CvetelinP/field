@@ -151,7 +151,6 @@
             {
                 model.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
                 model.GroupsItems = this.groupService.GetAllAsKeyValuePair();
-  
                 return this.View(model);
             }
 
@@ -191,7 +190,6 @@
             var viewModel = this.promotersService.GetById(id);
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
-
 
             return this.PartialView($"_EditPromoter", viewModel);
         }

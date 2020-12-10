@@ -1,4 +1,6 @@
-﻿namespace FieldPlatformWeb.ViewModels.Training
+﻿using System.Globalization;
+
+namespace FieldPlatformWeb.ViewModels.Training
 {
     using System;
     using System.Collections.Generic;

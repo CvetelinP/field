@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace FieldPlatform.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -84,7 +82,6 @@ namespace FieldPlatform.Web.Controllers
                 return this.View(viewModel);
             }
 
-           
             return this.View(viewModel);
         }
 

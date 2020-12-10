@@ -39,7 +39,6 @@
             return this.View(viewModel);
 
         }
-
         [Authorize(Roles = "Administrator")]
         [Authorize]
         [HttpPost]

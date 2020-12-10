@@ -1,7 +1,18 @@
 ﻿body {
-    margin-top: 20px;
-
+    position: relative;
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
+
+html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.footer{position:static}
+   
+
 
 
 /* USER LIST TABLE */

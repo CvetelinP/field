@@ -4,7 +4,7 @@
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-
+<link href="~/css/Add.css" rel="stylesheet" asp-append-version="true" />
 <br />
 <form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>

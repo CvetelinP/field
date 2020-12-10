@@ -12,11 +12,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ImageUrl" class="control-label"></label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
@@ -27,19 +22,9 @@
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VotesCount" class="control-label"></label>
-                <input asp-for="VotesCount" class="form-control" />
-                <span asp-validation-for="VotesCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Language" class="control-label"></label>
-                <input asp-for="Language" class="form-control" />
-                <span asp-validation-for="Language" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
@@ -90,11 +75,6 @@
                     <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option value="">Please choose Group</option></select>
                 </div>
             </div>
-            <label asp-for="GalleryFiles" class="control-label"></label>
-            <div class="custom-file">
-                <input asp-for="GalleryFiles" class="custom-file-input" id="custom-file">
-                <label class="custom-file-label" for="custom-ile">Choose file</label>
-            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -106,6 +86,4 @@
     <a asp-action="All">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
