@@ -42,11 +42,6 @@
                 Name = model.Name,
             };
 
-            if (model.Name.Contains(group.Name))
-            {
-                return View("name already exists");
-            }
-
             this.db.Groups.Add(group);
             this.db.SaveChanges();
             return this.Redirect("/Groups/All");
@@ -60,11 +55,11 @@
             var viewModel = new GroupViewModel()
             {
                 ItemsPerPage = itemsPerPage,
-                GroupsCount = this.groupService.GetCount(),
+                PromotersCount = this.groupService.GetCount(),
                 PageNumber = id,
                 Groups = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage),
             };
-            var group = this.groupService.GetAll<IndexGroupViewModel>();
+            var group = this.groupService.GetAll<IndexGroupViewModel>(id,itemsPerPage);
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
@@ -74,7 +69,7 @@
                 return this.View(viewModel);
             }
 
-            viewModel.Groups = group;
+           
             return this.View(viewModel);
         }
 

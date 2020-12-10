@@ -69,7 +69,7 @@
             var viewModel = new IndexTrainingViewModel
             {
                 ItemsPerPage = itemsPerPage,
-                TrainingsCount = this.trainingService.GetCount(),
+                PromotersCount = this.trainingService.GetCount(),
                 PageNumber = id,
                 Trainings = this.trainingService.GetAll<IndexTrainingInputModel>(id, itemsPerPage),
             };

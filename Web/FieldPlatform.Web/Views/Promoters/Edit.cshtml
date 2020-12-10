@@ -4,12 +4,8 @@
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-   
-
 
 <h1>Edit</h1>
-
-<h4>IndexPromoterViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -94,10 +90,10 @@
                     <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option value="">Please choose Group</option></select>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="GalleryFiles" class="control-label"></label>
-                <input asp-for="GalleryFiles" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            <label asp-for="GalleryFiles" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="GalleryFiles" class="custom-file-input" id="custom-file">
+                <label class="custom-file-label" for="custom-ile">Choose file</label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

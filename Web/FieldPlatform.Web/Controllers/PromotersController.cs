@@ -57,14 +57,14 @@
 
             if (model.ImagePhoto != null)
             {
-                string folder = "Promoters/images";
+                string folder = "Promoters/images/";
                 model.Gallery = new List<GalleryPromoterViewModel>();
                 model.ImageUrl = await this.UploadImage(folder, model.ImagePhoto);
             }
 
             if (model.GalleryFiles != null)
             {
-                string folder = "Promoters/gallery";
+                string folder = "Promoters/gallery/";
                 foreach (var file in model.GalleryFiles)
                 {
                     var gallery = new GalleryPromoterViewModel()
@@ -84,7 +84,7 @@
         [Authorize]
         public IActionResult All( string searchStringFirstName, int id = 1)
         {
-            const int itemsPerPage = 10;
+            const int itemsPerPage = 5;
 
             var viewModel = new IndexViewModel
             {
@@ -151,13 +151,13 @@
             {
                 model.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
                 model.GroupsItems = this.groupService.GetAllAsKeyValuePair();
-
+  
                 return this.View(model);
             }
 
             if (model.ImagePhoto != null)
             {
-                string folder = "Promoters/images";
+                string folder = "Promoters/images/";
                 model.Gallery = new List<GalleryPromoterViewModel>();
                 model.ImageUrl = await this.UploadImage(folder, model.ImagePhoto);
             }
@@ -177,7 +177,7 @@
             }
 
             var promoter = this.db.Promoters.FirstOrDefault(x => x.Id == model.Id);
-            this.db.Promoters.Remove(promoter);
+            this.db.Promoters.Remove(promoter!);
 
             await this.promotersService.CreateAsyncEdit(model);
             await this.db.SaveChangesAsync();
@@ -192,10 +192,6 @@
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
 
-            if (viewModel == null)
-            {
-                this.NotFound();
-            }
 
             return this.PartialView($"_EditPromoter", viewModel);
         }

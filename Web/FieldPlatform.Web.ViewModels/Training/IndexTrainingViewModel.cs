@@ -9,8 +9,5 @@
     {
         public IEnumerable<IndexTrainingInputModel> Trainings { get; set; }
 
-        public int PagesCount => (int)Math.Ceiling((double)this.TrainingsCount / this.ItemsPerPage);
-
-        public int TrainingsCount { get; set; }
     }
 }

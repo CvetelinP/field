@@ -70,11 +70,11 @@ namespace FieldPlatform.Web.Controllers
             var viewModel = new IndexProjectViewModel
             {
                 ItemsPerPage = itemsPerPage,
-                ProjectsCount = this.projectsService.GetCount(),
+                PromotersCount = this.projectsService.GetCount(),
                 PageNumber = id,
                 Projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage),
             };
-            var projects = this.projectsService.GetAll<IndexProjectsInputModel>();
+            var projects = this.projectsService.GetAll<IndexProjectsInputModel>(id,itemsPerPage);
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
@@ -84,7 +84,7 @@ namespace FieldPlatform.Web.Controllers
                 return this.View(viewModel);
             }
 
-            viewModel.Projects = projects;
+           
             return this.View(viewModel);
         }
 

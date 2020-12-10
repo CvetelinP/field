@@ -16,14 +16,13 @@
 <table class="table">
     <thead class="thead-dark">
         <tr>
-
-            <th scope="col">Group Name</th>
-            <th scope="col">Promoters</th>
-            <th class="border-primary">&nbsp;</th>
+            <th scope="col" class="text-center" style="color: coral">Group Name</th>
+            <th scope="col" class="text-center" style="color: coral">Promoters</th>
+            <th class="">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Groups)
+        @foreach (var item in Model.Groups.OrderBy(x=>x.Name))
         {
             <tr>
 

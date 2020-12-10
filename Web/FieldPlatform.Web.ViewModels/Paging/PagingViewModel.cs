@@ -19,5 +19,7 @@
         public int PromotersCount { get; set; }
 
         public int ItemsPerPage { get; set; }
+
+      
     }
 }

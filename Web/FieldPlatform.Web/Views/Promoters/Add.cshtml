@@ -4,16 +4,10 @@
     var projectsItems = this.Model.ProjectsItems.Select(x => new SelectListItem(x.Value, x.Key));
     var groupsItems = this.Model.GroupsItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
-<div class="d-flex justify-content-center"  >
-    <div class="spinner-border" role="status" id="myLoader" style="display: none">
-        <span class="sr-only">Loading...</span>
-    </div>
-</div>
+
 <br />
-<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post" data-ajax-loading="#myLoader">
-
+<form enctype="multipart/form-data" asp-controller="Promoters" asp-action="Add" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-
     <div class="row">
         <div class="col-md-6">
             <label asp-for="FirstName" style="color: chocolate">First Name</label>
@@ -105,7 +99,7 @@
     </div>
     <label asp-for="GalleryFiles" class="control-label"></label>
     <div class="custom-file">
-        <input asp-for="GalleryFiles" class="custom-file-input" id="customFile">
+        <input asp-for="GalleryFiles" class="custom-file-input" id="custom-file">
         <label class="custom-file-label" for="customFile">Choose file</label>
     </div>
 

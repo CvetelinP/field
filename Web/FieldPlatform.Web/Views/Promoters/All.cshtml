@@ -1,12 +1,9 @@
-﻿
-@using Microsoft.VisualStudio.Web.CodeGeneration
-@model FieldPlatform.Web.ViewModels.Promoter.IndexViewModel
+﻿@model FieldPlatform.Web.ViewModels.Promoter.IndexViewModel
 @{
     this.ViewData["Title"] = "All Promoters, page " + Model.PageNumber;
 }
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="~/css/PromotersAll.css" rel="stylesheet" asp-append-version="true" />
-<link href="~/css/modal.css" rel="stylesheet" asp-append-version="true" />
 
 <div id="PlaceHolderHere"></div>
 <br />
@@ -78,8 +75,8 @@
                             </a>
                             <a asp-action="Remove" asp-route-id="@item.Id">
                                 <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fas fa-trash fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
+                                    <i class ="fa fa-square fa-stack-2x" style="color: red"></i>
+                                    <i class ="fas fa-trash fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete promoter:@item.FirstName @item.LastName')"></i>
                                 </span>
                             </a>
 
@@ -95,7 +92,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Add Project</h2>
+                <h2 class="modal-title" style="color: blue">Add Project/Group</h2>
             </div>
             <div class="modal-body" id="myModalBodyDiv">
 
