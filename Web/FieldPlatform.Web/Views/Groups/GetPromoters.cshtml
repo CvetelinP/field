@@ -12,20 +12,18 @@
                     <div class="image-flip">
                         <div class="mainflip flip-0">
                             <div class="frontside">
-                                <div class="card">
+                                <div class="card" style="height: 420px; width: 340px;">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="@item.ImageUrl" alt="card image"></p>
+                                        <p><img class="img-fluid" src="@item.ImageUrl" style="width: 200px; height: 200px; object-fit: cover" alt="card image"></p>
                                         <h4 class="card-title">@item.FirstName @item.LastName</h4>
                                         <p class="card-text">City: @item.City</p>
                                         <p class="card-text">Age: @item.Age</p>
-                                        <a href="/Promoters/Profiles/@item.Id" class="table-link">
-                                            <button asp-controller="Promoters" asp-action="Profiles" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa fa-search-plus"></i></button>
-                                        </a>
+                                        <a href="/Promoters/Profiles/@item.Id" class="table-link"></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="backside">
-                                <div class="card">
+                                <div class="card" style="height: 420px; width: 340px;">
                                     <div class="card-body text-center mt-4">
                                         <h4 class="card-title">@item.FirstName @item.LastName</h4>
                                         <p class="card-text">@item.Description</p>

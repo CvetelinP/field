@@ -4,6 +4,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="~/css/Projects.css" rel="stylesheet" asp-append-version="true" />
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
@@ -17,7 +18,7 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src="@Model.ImageUrl" style="width: 200px; height: 200px" class="img-thumbnail" />
+                                    <img src="@Model.ImageUrl" style="width: 200px; height: 200px; object-fit: cover" class="img-thumbnail" />
 
                                 </div>
                                 <div class="text-muted small ml-3">
@@ -136,7 +137,7 @@
 
                                         @foreach (var item in Model.Gallery)
                                         {
-                                            <img src="@item.Url" id="imgProfile" style="width: 200px; height: 200px" class="img-thumbnail" />
+                                            <img src="@item.Url" id="imgProfile" style="width: 200px; height: 200px; object-fit: cover" class="img-thumbnail" />
                                         }
 
                                     </div>

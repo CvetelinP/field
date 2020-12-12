@@ -10,17 +10,26 @@ html {
     margin: 0px;
     padding: 0px;
 }
-.footer{position:static}
-   
+.footer {
+    position: static;
+}
 
-
+.user-list tbody td {
+    height: 130px;
+}
+.text-center {
+    margin-left: 130px;
+}
 
 /* USER LIST TABLE */
 .user-list tbody td > img {
-    position: relative;
-    max-width: 100px;
+    position: absolute;
+    /* max-width: 100px; */
     float: left;
     margin-right: 30px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .user-list tbody td .user-link {

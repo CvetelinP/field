@@ -1,3 +1,6 @@
 ﻿.footer {
     position: static
 }
+tbody tr td:nth-child(3) {
+    text-align: right;
+}
