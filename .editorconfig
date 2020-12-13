@@ -1,4 +1,4 @@
 ﻿[*.cs]
 
-# CS0006: Metadata file 'C:\Users\cpesh\Source\Repos\field5\Web\FieldPlatform.Web\bin\Debug\netcoreapp3.1\FieldPlatform.Web.dll' could not be found
+# CS0006: Metadata file 'C:\Users\cpesh\Source\Repos\field5\Web\FieldPlatform.Web\bin\Debug\net5.0\FieldPlatform.Web.dll' could not be found
 dotnet_diagnostic.CS0006.severity = error
