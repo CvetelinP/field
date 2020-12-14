@@ -1,9 +1,8 @@
-﻿
-
-namespace FieldPlatform.Data.Common.Models
+﻿namespace FieldPlatform.Data.Common.Models
 {
-    using FieldPlatform.Data.Common.Models;
     using System;
+
+    using FieldPlatform.Data.Common.Models;
 
     public abstract class BaseDeletableModel<TKey> : BaseModel<TKey>, IDeletableEntity
     {

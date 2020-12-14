@@ -8,7 +8,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = "Administrator")]
     public class ClientsController : Controller
     {
         private readonly IClientsService clientsService;
@@ -28,11 +27,13 @@
             return this.View(viewModel);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Add()
         {
             return this.View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Add(IndexClientsInputModel model)
         {

@@ -82,19 +82,19 @@
         }
 
         [Authorize]
-        public IActionResult All( string searchStringFirstName, int id = 1)
+        public IActionResult All(string searchStringFirstName, int id = 1)
         {
-            const int itemsPerPage = 5;
+            const int itemsPerPage = 10;
 
             var viewModel = new IndexViewModel
             {
                 ItemsPerPage = itemsPerPage,
                 PromotersCount = this.promotersService.GetCount(),
                 PageNumber = id,
-                Promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id , itemsPerPage),
+                Promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id, itemsPerPage),
             };
             this.ViewData["CurrentFilter"] = searchStringFirstName;
-            var promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id,itemsPerPage);
+            var promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id, itemsPerPage);
 
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {

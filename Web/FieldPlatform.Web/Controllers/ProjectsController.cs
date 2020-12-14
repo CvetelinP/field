@@ -54,10 +54,10 @@
             {
                 return this.View("name is already exist");
             }
+
             await this.projectsService.CreateAsync(model);
 
             return this.Redirect("/Projects/All");
-
         }
 
         [Authorize]
@@ -72,7 +72,7 @@
                 PageNumber = id,
                 Projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage),
             };
-            var projects = this.projectsService.GetAll<IndexProjectsInputModel>(id,itemsPerPage);
+            var projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage);
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {

@@ -37,8 +37,8 @@
             var viewModel = new IndexTrainingInputModel();
             viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
             return this.View(viewModel);
-
         }
+
         [Authorize(Roles = "Administrator")]
         [Authorize]
         [HttpPost]

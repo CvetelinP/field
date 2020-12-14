@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace FieldPlatformWeb.ViewModels.Training
+﻿namespace FieldPlatformWeb.ViewModels.Training
 {
     using System;
     using System.Collections.Generic;
@@ -29,6 +27,5 @@ namespace FieldPlatformWeb.ViewModels.Training
         public IEnumerable<KeyValuePair<string, string>> ProjectsItems { get; set; }
 
         public DateTime CreatedOn { get; set; }
-
     }
 }

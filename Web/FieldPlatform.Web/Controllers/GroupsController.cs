@@ -59,7 +59,7 @@
                 PageNumber = id,
                 Groups = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage),
             };
-            var group = this.groupService.GetAll<IndexGroupViewModel>(id,itemsPerPage);
+            var group = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage);
             this.ViewData["CurrentFilter"] = searchStringFirstName;
             if (!string.IsNullOrEmpty(searchStringFirstName))
             {
@@ -69,7 +69,6 @@
                 return this.View(viewModel);
             }
 
-           
             return this.View(viewModel);
         }
 

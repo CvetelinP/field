@@ -97,7 +97,6 @@
         [Authorize]
         public IActionResult Thank()
         {
-
             return this.View();
         }
 
@@ -108,7 +107,7 @@
             if (viewModel == null)
             {
                 this.Response.StatusCode = 404;
-                return View("Report not found.",id);
+                return this.View("Report not found.", id);
             }
 
             return this.View(viewModel);
