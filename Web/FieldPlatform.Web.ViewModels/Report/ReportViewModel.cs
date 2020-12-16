@@ -24,6 +24,5 @@
         public IList<GalleryReportViewModel> Gallery { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> TrainingItems { get; set; }
-
     }
 }

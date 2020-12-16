@@ -1,6 +1,10 @@
 ﻿
 @model FieldPlatformWeb.ViewModels.Contacts.ContactFormViewModel
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{
+    this.ViewData["Title"] = "Contacts";
+}
+
 <link href="~/css/Truck.css" rel="stylesheet" asp-append-version="true" />
 <form method="post">
     <div asp-validation-summary="All" class="text-danger"></div>

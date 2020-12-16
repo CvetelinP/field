@@ -5,12 +5,16 @@
 
 
 <link href="~/css/Clients.css" rel="stylesheet" asp-append-version="true" />
+
+@{
+    this.ViewData["Title"] = "Clients";
+}
 <div id="testimonials">
     <form action="/Clients/Add">
         <button type="submit" class="btn btn-primary text-uppercase">Add Client</button>
     </form>
     <div class="container _tm-header">
-        <h1 class="text-center" style="color: azure">Clients</h1>
+        <h1 class="text-center" style="color: azure">Our Clients</h1>
     </div>
     <div class="container">
         <div class="row">

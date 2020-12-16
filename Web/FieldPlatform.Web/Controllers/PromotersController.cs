@@ -38,9 +38,11 @@
         [Authorize]
         public IActionResult Add()
         {
-            var viewModel = new IndexPromoterViewModel();
-            viewModel.ProjectsItems = this.projectService.GetAllAsKeyValuePair();
-            viewModel.GroupsItems = this.groupService.GetAllAsKeyValuePair();
+            var viewModel = new IndexPromoterViewModel
+            {
+                ProjectsItems = this.projectService.GetAllAsKeyValuePair(),
+                GroupsItems = this.groupService.GetAllAsKeyValuePair(),
+            };
             return this.View(viewModel);
         }
 

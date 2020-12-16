@@ -1,3 +1,9 @@
 ﻿.footer {
     position: static
 }
+.userData .row div {
+    margin: 0 100px 0 15px;
+}
+.text-muted {
+    width: 15px;
+}

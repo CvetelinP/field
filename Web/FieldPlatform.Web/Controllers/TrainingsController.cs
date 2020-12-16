@@ -99,6 +99,11 @@
             return this.Redirect("/Trainings/All");
         }
 
+        public IActionResult Modal()
+        {
+            return this.View();
+        }
+
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
             folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;

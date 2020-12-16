@@ -22,3 +22,6 @@
     padding-bottom: 5rem;
     padding-top: 5rem;
 }
+.footer {
+    position: static
+}
