@@ -90,15 +90,16 @@
 
         public int GetCount()
         {
-           return this.promoteRepository.All().Count();
+            return this.promoteRepository.All().Count();
         }
 
-        public T GetById<T>(int id)
+        public IEnumerable<T> Search<T>(string search)
         {
-            var promoter = this.promoteRepository.All()
-                .Where(x => x.Id == id).To<T>().FirstOrDefault();
-            return promoter;
+            var query = this.promoteRepository.AllAsNoTracking()
+                .Where(x => x.FirstName.Contains(search) || x.LastName.Contains(search));
+            return query.To<T>().ToList();
         }
+
 
         public IndexPromoterViewModel GetById(int id)
         {
@@ -125,7 +126,6 @@
                       Id = g.Id,
                       Name = g.Name,
                       Url = g.Url,
-
                   }).ToList(),
               }).FirstOrDefault();
 

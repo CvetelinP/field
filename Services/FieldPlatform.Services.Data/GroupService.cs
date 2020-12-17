@@ -34,7 +34,6 @@
             {
                 x.Id,
                 x.Name,
-
             }).ToList().Select(x => new KeyValuePair<string, string>(x.Id.ToString(), x.Name));
         }
 
@@ -50,6 +49,13 @@
         public int GetCount()
         {
             return this.groupRepository.All().Count();
+        }
+
+        public IEnumerable<T> Search<T>(string search)
+        {
+            var query = this.groupRepository.AllAsNoTracking()
+                .Where(x => x.Name.Contains(search));
+            return query.To<T>().ToList();
         }
     }
 }

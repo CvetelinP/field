@@ -1,3 +1,6 @@
 ﻿.footer {
     position: static
 }
+body {
+    font-family: Georgia, serif;
+}

@@ -33,7 +33,6 @@
                         Id = g.Id,
                         Name = g.Name,
                         Url = g.Url,
-
                     }).ToList(),
                 }).FirstOrDefault();
 

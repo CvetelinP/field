@@ -61,7 +61,7 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, int id = 1)
+        public IActionResult All(string search = null, int id = 1)
         {
             const int itemsPerPage = 10;
 
@@ -73,12 +73,12 @@
                 Projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage),
             };
             var projects = this.projectsService.GetAll<IndexProjectsInputModel>(id, itemsPerPage);
-            this.ViewData["CurrentFilter"] = searchStringFirstName;
-            if (!string.IsNullOrEmpty(searchStringFirstName))
-            {
-                viewModel.Projects = projects.Where(x =>
-                    x.Name.ToLower().Contains(searchStringFirstName));
 
+            if (!string.IsNullOrEmpty(search))
+            {
+                var project = this.projectsService.Search<IndexProjectsInputModel>(search);
+
+                viewModel.Projects = project;
                 return this.View(viewModel);
             }
 

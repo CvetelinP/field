@@ -48,7 +48,7 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, int id = 1)
+        public IActionResult All(string search = null, int id = 1)
         {
             const int itemsPerPage = 10;
 
@@ -60,12 +60,11 @@
                 Groups = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage),
             };
             var group = this.groupService.GetAll<IndexGroupViewModel>(id, itemsPerPage);
-            this.ViewData["CurrentFilter"] = searchStringFirstName;
-            if (!string.IsNullOrEmpty(searchStringFirstName))
+            if (!string.IsNullOrEmpty(search))
             {
-                viewModel.Groups = group.Where(x =>
-                    x.Name.ToLower().Contains(searchStringFirstName));
+                var groups = this.groupService.Search<IndexGroupViewModel>(search);
 
+                viewModel.Groups = groups;
                 return this.View(viewModel);
             }
 

@@ -31,7 +31,6 @@
                     PromoterId = promoterId,
                     UserId = userId,
                     Type = isUpVote ? VoteType.UpVote : VoteType.DownVote,
-
                 };
                 await this.voteRepository.AddAsync(vote);
             }

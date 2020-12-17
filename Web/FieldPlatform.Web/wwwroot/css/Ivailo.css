@@ -11,6 +11,9 @@
     left: calc(50% - 80px);
     top: calc(50% - 80px);
 }
+body {
+    font-family: Georgia, serif;
+}
 
 /* rotate all elements 360deg */
 .avatars {
@@ -105,3 +108,5 @@ img {
     border-radius: 50%;
     object-fit: cover;
 }
+
+

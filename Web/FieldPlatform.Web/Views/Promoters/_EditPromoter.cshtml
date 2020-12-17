@@ -79,10 +79,10 @@
                 <input hidden asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="row-cols-6">
-                <div class="row-cols-6">
+            <div>
+                <div style="width: 700px;">
                     <label asp-for="ProjectId" style="color: blue">Projects</label>
-                    <select asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option value="">Please choose Project</option></select>
+                    <select  asp-for="ProjectId" asp-items="projectsItems" class="form-control col-md-4"> <option value="">Please choose Project</option></select>
 
                     <label asp-for="GroupId" style="color: blue">Groups</label>
                     <select asp-for="GroupId" asp-items="groupsItems" class="form-control col-md-4"> <option value="">Please choose Group</option></select>

@@ -18,5 +18,8 @@
         IEnumerable<T> GetAll<T>(int page, int itemsPerPage);
 
         int GetCount();
+
+
+        IEnumerable<T> Search<T>(string search);
     }
 }

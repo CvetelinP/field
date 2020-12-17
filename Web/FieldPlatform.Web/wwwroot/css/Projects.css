@@ -7,3 +7,15 @@
 .text-muted {
     width: 15px;
 }
+body {
+    font-family: Georgia, serif;
+}
+#imgProfile {
+    /* position: absolute; */
+    /* max-width: 100px; */
+    /* float: left; */
+    /* margin-right: 30px; */
+    /* width: 100px; */
+    /* height: 100px; */
+    object-fit: cover;
+}

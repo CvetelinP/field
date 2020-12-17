@@ -61,7 +61,7 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, int id = 1)
+        public IActionResult All(string search = null, int id = 1)
         {
             const int itemsPerPage = 10;
 
@@ -72,18 +72,14 @@
                 PageNumber = id,
                 Trainings = this.trainingService.GetAll<IndexTrainingInputModel>(id, itemsPerPage),
             };
-            this.ViewData["CurrentFilter"] = searchStringFirstName;
 
-            var trainings = this.trainingService.GetAll<IndexTrainingInputModel>();
-            if (!string.IsNullOrEmpty(searchStringFirstName))
+            if (!string.IsNullOrEmpty(search))
             {
-                viewModel.Trainings = trainings.Where(x =>
-                    x.Name.ToLower().Contains(searchStringFirstName));
-
+                var training = this.trainingService.Search<IndexTrainingInputModel>(search);
+                viewModel.Trainings = training;
                 return this.View(viewModel);
             }
 
-            viewModel.Trainings = trainings;
             return this.View(viewModel);
         }
 
@@ -99,10 +95,6 @@
             return this.Redirect("/Trainings/All");
         }
 
-        public IActionResult Modal()
-        {
-            return this.View();
-        }
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {

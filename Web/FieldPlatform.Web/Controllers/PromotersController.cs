@@ -1,4 +1,6 @@
-﻿namespace FieldPlatform.Web.Controllers
+﻿using FieldPlatform.Data.Common.Repositories;
+
+namespace FieldPlatform.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -25,14 +27,16 @@
         private readonly IProjectService projectService;
         private readonly IGroupService groupService;
         private readonly IWebHostEnvironment environment;
+        private readonly IDeletableEntityRepository<Promoter> promoRepository;
 
-        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService, IGroupService groupService, IWebHostEnvironment environment)
+        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService, IGroupService groupService, IWebHostEnvironment environment,IDeletableEntityRepository<Promoter>promoRepository)
         {
             this.db = db; // TODO:Use Service
             this.promotersService = promotersService;
             this.projectService = projectService;
             this.groupService = groupService;
             this.environment = environment;
+            this.promoRepository = promoRepository;
         }
 
         [Authorize]
@@ -84,7 +88,7 @@
         }
 
         [Authorize]
-        public IActionResult All(string searchStringFirstName, int id = 1)
+        public IActionResult All(string search = null, int id = 1)
         {
             const int itemsPerPage = 10;
 
@@ -95,16 +99,16 @@
                 PageNumber = id,
                 Promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id, itemsPerPage),
             };
-            this.ViewData["CurrentFilter"] = searchStringFirstName;
+
             var promoters = this.promotersService.GetAll<IndexPromoterViewModel>(id, itemsPerPage);
-
-            if (!string.IsNullOrEmpty(searchStringFirstName))
+            if (!string.IsNullOrEmpty(search))
             {
-                viewModel.Promoters = promoters.Where(x =>
-                    x.FirstName.ToLower().Contains(searchStringFirstName) || x.LastName.ToLower().Contains(searchStringFirstName));
+                var promoter = this.promotersService.Search<IndexPromoterViewModel>(search);
 
+                viewModel.Promoters = promoter;
                 return this.View(viewModel);
             }
+
 
             return this.View(viewModel);
         }

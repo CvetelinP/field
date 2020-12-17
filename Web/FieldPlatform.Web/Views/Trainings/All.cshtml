@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using FieldPlatform.Data.Models
-@using FieldPlatformWeb.ViewModels.Training
-@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using System.Security.Cryptography.X509Certificates
 @model FieldPlatformWeb.ViewModels.Training.IndexTrainingViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -30,57 +29,62 @@
 <br />
 <table class="table">
     <thead class="thead-dark">
-        <tr>
+    <tr>
 
-            <th scope="col" class="text-center">Course Name</th>
-            <th scope="col" class="text-center">Created On
-            <th>
-            <th class="accordion">&nbsp;</th>
-        </tr>
+        <th scope="col" class="text-center">Course Name</th>
+        <th scope="col" class="text-center">Created On
+        <th>
+        <th class="accordion">&nbsp;</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Trainings)
-        {
-            <tr>
+    @foreach (var item in Model.Trainings)
+    {
+        <tr>
 
-                <td class="text-center">@item.Name</td>
-                <td class="text-center">@item.CreatedOn</td>
-                <td>
-                    <a class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Read</a>
-                    <a class="btn btn-outline-success" asp-controller="Reports" asp-action="Create">Add Report</a>
-                    <a href="/Reports/GetReport?Id=@item.Id" class="btn btn-outline-danger">Get Report</a>
-                    <a href="/Trainings/Remove?Id=@item.Id" class="table-link danger">
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Training: @item.Name')"></i>
-                        </span>
-                    </a>
-                </td>
+            <td class="text-center">@item.Name</td>
+            <td class="text-center">@item.CreatedOn</td>
+            <td>
+                <div class="btn btn-outline-primary" data-toggle="modal" data-target=@("#modalOpen" +item.Id)>Read</div>
+                
 
-            </tr>
+                
+                <a class="btn btn-outline-success" asp-controller="Reports" asp-action="Create">Add Report</a>
+                <a href="/Reports/GetReport?Id=@item.Id" class="btn btn-outline-danger">Get Report</a>
+                <a href="/Trainings/Remove?Id=@item.Id" class="table-link danger">
+                    <span class="fa-stack">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-trash-o fa-stack-1x fa-inverse" onclick="return confirm('Are you sure want do delete Training: @item.Name')"></i>
+                    </span>
+                </a>
+            </td>
+            <div class="modal fade" id=@("modalOpen" +item.Id) role="dialog" aria-labelledby="exampleModalLabel" tabindex="-1">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body" style="height: 700px">
+                            <embed src="@item.TrainingPdfUrl" class="w-100" style="height: 700px" />
+                        </div>
+                        
+                        
 
-        }
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tr>
+    }
     </tbody>
 </table>
 
-<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="height: 700px">
 
-                <embed src="@Html.ViewBag" class="w-100" style="height: 700px" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 <partial name="_PagingPartial" model="@Model" />
+
+

@@ -1,8 +1,8 @@
-﻿using FieldPlatformWeb.ViewModels.Client;
-
-namespace FieldPlatform.Web.ViewModels.Client
+﻿namespace FieldPlatform.Web.ViewModels.Client
 {
     using System.Collections.Generic;
+
+    using FieldPlatformWeb.ViewModels.Client;
 
     public class IndexClientViewModel
     {
