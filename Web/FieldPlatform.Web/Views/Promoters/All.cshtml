@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Promoters)
+                @foreach (var item in Model.Promoters.OrderBy(x=>x.FirstName))
                 {
                     <tr>
                         <td>

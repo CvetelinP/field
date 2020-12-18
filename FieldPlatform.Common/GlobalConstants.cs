@@ -2,7 +2,7 @@
 {
     public static class GlobalConstants
     {
-        public const string SystemName = "Field System";
+        public const string SystemName = "Field Plaftorm";
 
         public const string AdministratorRoleName = "Administrator";
 

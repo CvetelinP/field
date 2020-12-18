@@ -1,6 +1,4 @@
-﻿using FieldPlatform.Data.Common.Repositories;
-
-namespace FieldPlatform.Web.Controllers
+﻿namespace FieldPlatform.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +7,7 @@ namespace FieldPlatform.Web.Controllers
     using System.Threading.Tasks;
 
     using FieldPlatform.Data;
+    using FieldPlatform.Data.Common.Repositories;
     using FieldPlatform.Data.Models;
     using FieldPlatform.Services.Data;
     using FieldPlatform.Web.ViewModels.Promoter;
@@ -29,7 +28,7 @@ namespace FieldPlatform.Web.Controllers
         private readonly IWebHostEnvironment environment;
         private readonly IDeletableEntityRepository<Promoter> promoRepository;
 
-        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService, IGroupService groupService, IWebHostEnvironment environment,IDeletableEntityRepository<Promoter>promoRepository)
+        public PromotersController(ApplicationDbContext db, IPromotersService promotersService, IProjectService projectService, IGroupService groupService, IWebHostEnvironment environment, IDeletableEntityRepository<Promoter> promoRepository)
         {
             this.db = db; // TODO:Use Service
             this.promotersService = promotersService;
@@ -108,7 +107,6 @@ namespace FieldPlatform.Web.Controllers
                 viewModel.Promoters = promoter;
                 return this.View(viewModel);
             }
-
 
             return this.View(viewModel);
         }

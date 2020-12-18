@@ -22,7 +22,9 @@
 
         public TrainingsController(
             IProjectService projectService,
-            ITrainingService trainingService, ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
+            ITrainingService trainingService, 
+            ApplicationDbContext db, 
+            IWebHostEnvironment webHostEnvironment)
         {
             this.projectService = projectService;
             this.trainingService = trainingService;

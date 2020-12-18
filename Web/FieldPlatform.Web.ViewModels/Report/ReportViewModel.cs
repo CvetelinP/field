@@ -1,4 +1,6 @@
-﻿namespace FieldPlatformWeb.ViewModels.Report
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FieldPlatformWeb.ViewModels.Report
 {
     using System.Collections.Generic;
 
@@ -11,16 +13,19 @@
 
         public int? TrainingId { get; set; }
 
+        
         public IFormFile ReportFile { get; set; }
 
+ 
         public string ReportUrl { get; set; }
 
         public string UserId { get; set; }
 
         public string UserUserName { get; set; }
 
+       
         public IFormFileCollection GalleryFiles { get; set; }
-
+       
         public IList<GalleryReportViewModel> Gallery { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> TrainingItems { get; set; }

@@ -50,6 +50,7 @@
             }
 
             var modelName = this.projectRepository.All().FirstOrDefault(x => x.Name == model.Name);
+
             if (modelName != null)
             {
                 return this.View("name is already exist");

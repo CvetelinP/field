@@ -33,9 +33,9 @@
                 <span asp-validation-for="ReportFile" class="text-danger"></span>
             </div>
 
-            <div class="row-cols-6">
-                <label asp-for="TrainingId" style="color: blue">Training</label>
-                <select asp-for="TrainingId" asp-items="trainingItems" class="form-control col-md-4"> <option value="">Please choose Training</option></select>
+            <div style="width: 700px;">
+                <label hidden asp-for="TrainingId" style="color: blue">Training</label>
+                <select hidden asp-for="TrainingId" asp-items="trainingItems" class="form-control col-md-4"> <option value="">Please choose Training</option></select>
             </div>
             <hr>
 
